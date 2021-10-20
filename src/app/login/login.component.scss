@@ -1,0 +1,64 @@
+h1 {
+    margin-left: 38%;
+    margin-top: 10%;
+}
+
+form {
+    background: white;
+    border: 2px solid silver;
+    padding: 5px;
+    margin-left: 38%;
+    margin-right: 38%;
+}
+
+input {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid silver;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+.check {
+    width: 10%;
+}
+
+.forgot {
+    text-align: right;
+    float: right;
+}
+
+button {
+    background-color: rgba(199, 15, 55, 0.774);
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.title h1 {
+    margin: 1rem 0 3rem 0;
+}
+
+.title-logo {
+    margin: 1rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgba(178, 140, 198, 1) rgba(163, 185, 198);
+}
+
+#nav-logo img {
+    padding: 5px 10px;
+}
