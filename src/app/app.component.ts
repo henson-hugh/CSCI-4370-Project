@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Pigeon Theatres';
-  greeting = {'id': 'XXX', 'content': 'Hello World'};
+  constructor(private router: Router) { }
+
+  
 }

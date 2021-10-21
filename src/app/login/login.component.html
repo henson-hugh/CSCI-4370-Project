@@ -1,13 +1,13 @@
-<a class="active" id="nav-logo" href="homepage.html"
-  ><img
-    src="../assets/images/sample-logo.jpg"
+<a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active">
+  <img
+    src="assets/images/sample-logo.jpg"
     alt="logo"
     height="50px"
     width="50px"
 /></a>
 <div class="title">
   <img
-    src="../assets/images/sample-logo.jpg"
+    src="assets/images/sample-logo.jpg"
     class="title-logo"
     alt="logo"
     height="200px"
@@ -15,7 +15,7 @@
   />
   <h1>Pigeon Theatres</h1>
 </div>
-<form action="Homepage.html">
+<form action="#">
   <h2>Sign In</h2>
   <div class="container">
     <label><b>Username</b></label>
@@ -34,7 +34,7 @@
     <button type="submit">Login</button>
 
     <p style="text-align: center">
-      <b>New user? <a href="Register.html">Register ></a></b>
+      <b>New user? <a routerLink="/register" routerLinkActive="active">Register here!</a></b>
     </p>
   </div>
 </form>

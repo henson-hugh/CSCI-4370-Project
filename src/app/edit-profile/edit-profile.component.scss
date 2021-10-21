@@ -1,0 +1,109 @@
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(90deg, rgba(178,140,198,1) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(163,185,198) 100%);
+  color: white;
+}
+
+h1 {
+    padding-left: 6%;
+    margin-left: 3rem;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 0.5rem 2rem 0.5rem 0;
+    cursor: pointer;
+    background-color: rgb(147,141,147);
+    width: 50%;
+    float: left;
+}
+
+img {
+    margin: 5px 0 0 10px;
+}
+
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.left {
+    float: left;
+    padding: 5%;
+    margin-left: 3rem;
+}
+
+.left label {
+    padding: 1rem;
+}
+
+.left input {
+    margin-left: 1rem;
+    height: 3rem;
+    width: 30rem;
+    margin-bottom: 1rem;
+}
+
+.left input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+}
+
+#emailLabel {
+    padding: 0;
+}
+
+.promotion {
+    display: block;
+    margin-left: 8rem;
+    margin-right: auto;
+    width: 50%;
+}
+
+.promotion input {
+    height: 3rem;
+    width: 30rem;
+    margin-bottom: 2rem;
+}
+
+.promotion  {
+    margin-bottom: 2rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.right {
+    float: left;
+    padding: 5% 0 0 2%;
+}
+
+.right input {
+    height: 3rem;
+    margin-top: 0.5rem;
+    width: 12.5rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.bottom button {
+    width: 12%;
+}
+
+.bottom {
+    padding-left: 6%;
+    margin-left: 3rem;
+}

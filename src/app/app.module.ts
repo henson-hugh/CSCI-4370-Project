@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { MovieInformationComponent } from './movie-information/movie-information.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    MovieInformationComponent
+    RoutingComponents,
+    MovieInformationComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
