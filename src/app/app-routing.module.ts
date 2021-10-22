@@ -18,5 +18,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const RoutingComponents = [LoginComponent, EditProfileComponent, RegisterComponent, HomepageComponent];
