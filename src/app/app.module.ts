@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AppService } from './app.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { XhrInterceptor } from './XhrInterceptor';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { AppService } from './app.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppService],
+  providers: [LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
