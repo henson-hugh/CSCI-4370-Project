@@ -9,30 +9,33 @@
     />
     <h1>Pigeon Theatres</h1>
 </div>
-<form action="ConfirmEmail.html">
+<form #registerForm="ngForm" (ngSubmit)="registerCustomer()">
     <h2>Register</h2>
-    <div class="container">
-    
-        <label><b>Username</b></label>
-        <input  placeholder="Enter Username" name="Usernmae" required>
+    <div class="container form-group">
+        <label for="email"><b>Email</b></label>
+        <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required>
 
-        <label><b>Email</b></label>
-        <input  placeholder="Enter Email" name="Email" required>
+        <label for="firstName"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required
+            [class.is-invalid="firstName.invalid && firstName.touched"]>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" required>
+        <label for="lastName"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" #password="ngModel" required/>
   
-        <label><b>Re-Enter Password</b></label>
-        <input type="password" placeholder="Enter Password" required>
+        <label for="confirmPassword"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" required>
 
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="!registerForm.valid">Submit</button>
         
         <form action="Login.html">
             <button type="submit">Cancel</button>
         </form>
         
         <p style="text-align: center">
-                <b>Already have an account? <a routerLink="/login" routerLinkActive="active">Login here!</a></b>
+                <b>Existing user? <a routerLink="/login" routerLinkActive="active">Login here!</a></b>
         </p>
     </div>
     
