@@ -12,8 +12,18 @@
 <form #registerForm="ngForm" (ngSubmit)="registerCustomer()">
     <h2>Register</h2>
     <div class="container form-group">
-        <label for="email"><b>Email</b></label>
-        <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required>
+
+    <label for="email"><b>Email:</b></label>
+    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required 
+      #emailref="ngModel" 
+      email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
+      [class.is-invalid]="emailref.invalid && emailref.touched"/>
+    <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+      <div [hidden]="!emailref.errors?.pattern">
+        <small class="invalid" *ngIf="emailref.errors!.required">Email is a required field.</small>
+        <small class="invalid" *ngIf="emailref.errors!.pattern">Enter a valid email.</small>
+      </div> 
+    </div>
 
         <label for="firstName"><b>First Name</b></label>
         <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required
@@ -28,7 +38,7 @@
         <label for="confirmPassword"><b>Confirm Password</b></label>
         <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" required>
 
-        <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+        <button type="submit" [disabled]="!registerForm.valid">Register</button>
         
         <form action="Login.html">
             <button type="submit">Cancel</button>
@@ -38,5 +48,4 @@
                 <b>Existing user? <a routerLink="/login" routerLinkActive="active">Login here!</a></b>
         </p>
     </div>
-    
 </form>

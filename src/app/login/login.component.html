@@ -19,6 +19,7 @@
   <h2>Sign In</h2>
   <small class="invalid">{{msg}}</small>
   <div class="container form-group">
+    
     <label for="email"><b>Email:</b></label>
     <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required 
       #emailref="ngModel" 
@@ -30,6 +31,7 @@
         <small class="invalid" *ngIf="emailref.errors!.pattern">Enter a valid email.</small>
       </div> 
     </div>
+
     <label for="password"
       ><b>Password</b>
       <a class="forgot" href="ForgotPassword.html">Forgot Password?</a></label

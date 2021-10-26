@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { XhrInterceptor } from './XhrInterceptor';
 import { LoginService } from './login/login.service';
+import { RegistrationService } from './register/registration.service';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { LoginService } from './login/login.service';
     EditProfileComponent,
     RegisterComponent,
     MovieInformationComponent,
-    LogoutComponent
+    LogoutComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { LoginService } from './login/login.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, RegistrationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
