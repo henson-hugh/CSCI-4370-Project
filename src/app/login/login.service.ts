@@ -8,8 +8,6 @@ import { Customer } from './customer';
 })
 export class LoginService {
 
-  authenticated = false;
-
   constructor(private _http: HttpClient) { }
 
   // authenticate(credentials: any, callback: any) {
