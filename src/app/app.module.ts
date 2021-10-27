@@ -19,6 +19,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { EditProfileService } from './edit-profile/edit-profile.service';
+import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditProfileService } from './edit-profile/edit-profile.service';
     LogoutComponent,
     PasswordResetComponent,
     AdminMenuComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    EmailConfirmedComponent
   ],
   imports: [
     BrowserModule,
