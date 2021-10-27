@@ -17,6 +17,8 @@ import { LoginService } from './login/login.service';
 import { RegistrationService } from './register/registration.service';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { EditProfileService } from './edit-profile/edit-profile.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
     MovieInformationComponent,
     LogoutComponent,
     PasswordResetComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService, RegistrationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, RegistrationService, EditProfileService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

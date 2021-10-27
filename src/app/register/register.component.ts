@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  msg = '';
   output = '';
   customer: Customer = new Customer();
 
@@ -22,10 +23,10 @@ export class RegisterComponent implements OnInit {
     this._service.registerCustomerFromRemote(this.customer).subscribe(
       data => {
         console.log("Response" + data);
-        this._router.navigate(['/home']);
+        this._router.navigate(['/confirm-email']);
       }, 
       error => {
-        this.output = 'Please fill out all fields'
-      })
+        this.msg = 'Account with email already exists'
+      });
   }
 }

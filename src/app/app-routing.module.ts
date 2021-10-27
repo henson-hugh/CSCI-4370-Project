@@ -5,6 +5,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'edit-profile', component: EditProfileComponent},
-  { path: 'admin-menu', component: AdminMenuComponent}
+  { path: 'admin-menu', component: AdminMenuComponent},
+  { path: 'confirm-email', component: ConfirmEmailComponent}
 ];
 
 @NgModule({
