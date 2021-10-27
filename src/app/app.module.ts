@@ -16,6 +16,9 @@ import { XhrInterceptor } from './XhrInterceptor';
 import { LoginService } from './login/login.service';
 import { RegistrationService } from './register/registration.service';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { EditProfileService } from './edit-profile/edit-profile.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     RegisterComponent,
     MovieInformationComponent,
     LogoutComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    AdminMenuComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService, RegistrationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, RegistrationService, EditProfileService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

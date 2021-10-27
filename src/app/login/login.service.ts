@@ -25,6 +25,10 @@ export class LoginService {
   //   });
   // }
 
+  public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
+    return this._http.get<any>("http://localhost:8080/customers/email/" + customer.email);
+  }
+
   public loginCustomerFromRemote(customer: Customer): Observable<any> {
     return this._http.post<any>("http://localhost:8080/login", customer);
   }

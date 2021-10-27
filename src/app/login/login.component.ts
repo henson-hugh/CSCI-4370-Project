@@ -14,16 +14,26 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class LoginComponent implements OnInit {
 
   customer: Customer = new Customer();
+  resultType = '';
   msg = '';
 
   constructor(private _service: LoginService, private _router: Router) { 
   }
 
-  login() {
+  async login() {
+    await this._service.getCustomerInfoFromRemote(this.customer).subscribe(
+      data => {
+        console.log("Response " + data['type']);
+        this.resultType = data['type'];
+      }
+    )
     this._service.loginCustomerFromRemote(this.customer).subscribe(
       data => {
-        console.log("Response" + data);
-        this._router.navigate(['/home']);
+        if (this.resultType == 'admin') {
+          this._router.navigate(['/admin-menu']);
+        } else {
+          this._router.navigate(['/home']);
+        }
       }, 
       error => {
         this.msg = 'Invalid credentials, incorrect email and/or password'

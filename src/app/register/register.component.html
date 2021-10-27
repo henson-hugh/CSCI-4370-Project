@@ -11,6 +11,7 @@
 </div>
 <form #registerForm="ngForm" (ngSubmit)="registerCustomer()">
     <h2>Register</h2>
+    <small class="invalid">{{msg}}</small>
     <div class="container form-group">
 
     <label for="email"><b>Email:</b></label>
@@ -39,11 +40,11 @@
         <label for="confirmPassword"><b>Confirm Password</b></label>
         <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" required>
 
-        <!-- <label for="address"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" >
+        <label for="address"><b>Address</b></label>
+        <input type="text" placeholder="Enter Address" name="address" #address="ngModel" [(ngModel)]="customer.address" required>
 
-        <label for="confirmPassword"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" > -->
+        <label for="paymentCard"><b>Payment Card</b></label>
+        <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" [(ngModel)]="customer.paymentCard" required>
 
         <button type="submit" [disabled]="!registerForm.valid">Register</button>
         

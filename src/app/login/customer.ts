@@ -5,6 +5,10 @@ export class Customer {
     email: string = '';
     password: string = ''; 
     address: string = '';
+    paymentCard: string = '';
+    active: boolean = false;
+    type: string = '';
+    verificationCode: string = '';
     
     constructor(){}
 }
