@@ -5,6 +5,9 @@ export class Customer {
     email: string = '';
     password: string = ''; 
     address: string = '';
+    active: boolean = false;
+    type: string = '';
+    verificationCode: string = '';
     
     constructor(){}
 }

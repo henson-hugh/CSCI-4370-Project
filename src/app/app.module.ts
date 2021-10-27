@@ -16,6 +16,7 @@ import { XhrInterceptor } from './XhrInterceptor';
 import { LoginService } from './login/login.service';
 import { RegistrationService } from './register/registration.service';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     RegisterComponent,
     MovieInformationComponent,
     LogoutComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    AdminMenuComponent
   ],
   imports: [
     BrowserModule,
