@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../login/customer';
 
@@ -15,10 +15,14 @@ export class EditProfileService {
   options = { headers: this.headers };
 
   public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.get<any>("http://localhost:8080/customers/" + customer.id);
+    return this._http.get<any>("http://localhost:8080/customers/" + 28);
   }
 
   public updateCustomerFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/customers/name/", customer.lastName + "+" + customer.firstName, this.options);
+    return this._http.post<any>("http://localhost:8080/customers/save", customer);
+  }
+
+  public verifyOldPasswordFromRemote(customer: Customer): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/customers/verifyPass", customer);
   }
 }
