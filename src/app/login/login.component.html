@@ -26,9 +26,11 @@
       email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
       [class.is-invalid]="emailref.invalid && emailref.touched"/>
     <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+      <div [hidden]="!emailref.errors?.required">
+        <small class="invalid">Email is a required field</small>
+      </div> 
       <div [hidden]="!emailref.errors?.pattern">
-        <small class="invalid" *ngIf="emailref.errors!.required">Email is a required field.</small>
-        <small class="invalid" *ngIf="emailref.errors!.pattern">Enter a valid email.</small>
+        <small class="invalid">Enter a valid email address</small>
       </div> 
     </div>
 
@@ -36,7 +38,14 @@
       ><b>Password</b>
       <a class="forgot" href="ForgotPassword.html">Forgot Password?</a></label
     >
-    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" />
+    <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
+    #passwordref="ngModel"
+    [class.is-invalid]="passwordref.invalid && passwordref.touched"/>
+    <div *ngIf="passwordref.invalid &&(passwordref.touched || passwordref.dirty)" class ="alert alert-danger">
+      <div [hidden]="!passwordref.errors?.required">
+        <small class="invalid">Password is a required field</small>
+      </div> 
+    </div>
 
     <label class="check">
       <input class="check" type="checkbox" checked />Remember me

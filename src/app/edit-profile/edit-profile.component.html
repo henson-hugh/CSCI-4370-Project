@@ -18,7 +18,7 @@
             <input type="password" placeholder="Re-enter password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" required /><br>
 
             <label for="address"><b>Address</b></label><br>
-            <input type="text" placeholder="Enter Address" name="address" #address="ngModel" [(ngModel)]="customer.address" required><br>
+            <input type="text" placeholder="Enter Address" name="address" #address="ngModel" [(ngModel)]="customer.street" required><br>
 
             <label for="paymentCard"><b>Payment Card</b></label><br>
             <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" [(ngModel)]="customer.paymentCard" required><br>

@@ -15,38 +15,120 @@
     <div class="container form-group">
 
     <label for="email"><b>Email:</b></label>
-    <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
-      <div [hidden]="!emailref.errors?.pattern">
-        <small class="invalid" *ngIf="emailref.errors!.required">Email is a required field.</small>
-        <small class="invalid" *ngIf="emailref.errors!.pattern">Enter a valid email.</small>
-      </div> 
-    </div>
     <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required 
       #emailref="ngModel" 
       email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
       [class.is-invalid]="emailref.invalid && emailref.touched"/>
+    <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+      <div [hidden]="!emailref.errors?.required">
+        <small class="invalid">Email is a required field</small>
+      </div> 
+      <div [hidden]="!emailref.errors?.pattern">
+        <small class="invalid">Enter a valid email address</small>
+      </div> 
+    </div>
+    
     
 
         <label for="firstName"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required
-            [class.is-invalid]="firstName.invalid && firstName.touched">
+        <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="customer.firstName" required
+        #nameref="ngModel" 
+        [class.is-invalid]="nameref.invalid && nameref.touched"/>
+        <div *ngIf="nameref.invalid &&(nameref.touched || nameref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!nameref.errors?.required">
+            <small class="invalid">First Name is a required field</small>
+          </div> 
+        </div>
 
         <label for="lastName"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
+        <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel">
 
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" #password="ngModel" required/>
+        <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
+        #passwordref="ngModel"
+        [class.is-invalid]="passwordref.invalid && passwordref.touched"/>
+        <div *ngIf="passwordref.invalid &&(passwordref.touched || passwordref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!passwordref.errors?.required">
+            <small class="invalid">Password is a required field</small>
+          </div> 
+        </div>
   
         <label for="confirmPassword"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Re-enter Password" name="confirmPassword" #confirmPassword="ngModel" (ngModel)="customer.password" required>
+        <input type="password" placeholder="Re-enter Password" name="confirmPassword" (ngModel)="customer.password" required
+        #confirmref="ngModel"
+        [class.is-invalid]="confirmref.invalid && confirmref.touched"/>
+        <div *ngIf="confirmref.invalid &&(confirmref.touched || confirmref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!confirmref.errors?.required">
+            <small class="invalid">Password is a required field</small>
+          </div> 
+        </div>
 
-        <label for="address"><b>Address</b></label>
-        <input type="text" placeholder="Enter Address" name="address" #address="ngModel" [(ngModel)]="customer.address" required>
+        <label for="phone"><b>Phone Number</b></label>
+        <input type="text" placeholder="Enter Phone Number" name="phone" [(ngModel)]="customer.phone" required
+        #phoneref="ngModel" 
+        [class.is-invalid]="phoneref.invalid && phoneref.touched"/>
+        <div *ngIf="phoneref.invalid &&(phoneref.touched || phoneref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!phoneref.errors?.required">
+            <small class="invalid">Phone Number is a required field</small>
+          </div> 
+        </div>
+
+        <label for="street"><b>Street</b></label>
+        <input type="text" placeholder="Enter Street" name="street" #street="ngModel" [(ngModel)]="customer.street">
+        
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="Enter City" name="city" ngModel [required]="customer.street ? true : false"
+        [(ngModel)]="customer.city"
+        #cityref="ngModel" 
+        [class.is-invalid]="cityref.invalid && cityref.touched"/>
+        <div *ngIf="cityref.invalid &&(cityref.touched || cityref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!cityref.errors?.required">
+            <small class="invalid">City required</small>
+          </div> 
+        </div>
+        
+
+        <label for="state"><b>State</b></label>
+        <input type="text" placeholder="Enter State" name="state" ngModel [required]="customer.street ? true : false"
+        [(ngModel)]="customer.state"
+        #stateref="ngModel" 
+        [class.is-invalid]="stateref.invalid && stateref.touched"/>
+        <div *ngIf="stateref.invalid &&(stateref.touched || stateref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!stateref.errors?.required">
+            <small class="invalid">State required</small>
+          </div> 
+        </div>
+
+        <label for="zip"><b>Zip</b></label>
+        <input type="text" placeholder="Enter Zip" name="zip" ngModel [required]="customer.street ? true : false"
+        [(ngModel)]="customer.zip"
+        #zipref="ngModel" 
+        [class.is-invalid]="zipref.invalid && zipref.touched"/>
+        <div *ngIf="zipref.invalid &&(zipref.touched || zipref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!zipref.errors?.required">
+            <small class="invalid">Zip required</small>
+          </div> 
+        </div>
 
         <label for="paymentCard"><b>Payment Card</b></label>
-        <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" [(ngModel)]="customer.paymentCard" required>
+        <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" [(ngModel)]="customer.paymentCard">
 
-        <button type="submit" [disabled]="!registerForm.valid">Register</button>
+        <label for="expDate"><b>Expiration Date</b></label>
+        <input type="text" placeholder="Enter Expiration Date" name="expDate" ngModel [required]="customer.paymentCard ? true : false"
+        [(ngModel)]="customer.expDate"
+        #expref="ngModel" 
+        [class.is-invalid]="expref.invalid && expref.touched"/>
+        <div *ngIf="expref.invalid &&(expref.touched || expref.dirty)" class ="alert alert-danger">
+          <div [hidden]="!expref.errors?.required">
+            <small class="invalid">Expiration date required</small>
+          </div> 
+        </div>
+
+        <label for="promo"><b>Subscribe to Promotions</b></label>
+        <input id= "promo" type="checkbox" placeholder="Sign up for Promo" name="promo" #promo="ngModel" [(ngModel)]="customer.getPromo"/>
+
+
+        <button type="submit" >Register</button>
         
         <form action="Login.html">
             <button type="submit">Cancel</button>

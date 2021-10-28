@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   msg = '';
   output = '';
   customer: Customer = new Customer();
