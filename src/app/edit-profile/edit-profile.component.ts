@@ -36,21 +36,23 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateCustomer() {
-    let verified = false;
     if (this.customer.password != '') {
       this._service.verifyOldPasswordFromRemote(this.customer).subscribe(
       data => {
-        verified = true;
+        this.customer.password = this.newPass;
+        this.updateCustomerDetails();
       },
       error => {
         this.msg = 'Current password is incorrect'
       });
+    } else {
+      this.updateCustomerDetails();
     }
 
-    if (verified) {
-      this.customer.password = this.newPass;
-    }
+    
+  }
 
+  updateCustomerDetails() {
     this._service.updateCustomerFromRemote(this.customer).subscribe(
       data => {
         
@@ -60,11 +62,5 @@ export class EditProfileComponent implements OnInit {
       error => {
         this.msg = 'Enter all required fields'
       });
-
-    
-  }
-
-  updateTest() {
-    
   }
 }
