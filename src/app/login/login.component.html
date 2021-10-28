@@ -36,7 +36,7 @@
 
     <label for="password"
       ><b>Password</b>
-      <a class="forgot" href="ForgotPassword.html">Forgot Password?</a></label
+      <a class="forgot" routerLink="/password-reset" routerLinkActive="active">Forgot Password?</a></label
     >
     <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
     #passwordref="ngModel"
