@@ -1,1 +1,8 @@
-<p>logout works!</p>
+<a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" alt="logo" height="50px" width="50px"/></a>
+<form #logoutForm="ngForm" role="form" (ngSubmit)="logout()">
+    <div class="container"> 
+        <h2>Logout?</h2>
+        <button type="submit" [disabled]="!logoutForm.valid">Logout</button>
+        <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active">Return</a>
+    </div>
+</form>

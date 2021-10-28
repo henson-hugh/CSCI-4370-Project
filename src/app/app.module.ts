@@ -33,7 +33,8 @@ import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.compo
     PasswordResetComponent,
     AdminMenuComponent,
     ConfirmEmailComponent,
-    EmailConfirmedComponent
+    EmailConfirmedComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

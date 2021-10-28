@@ -15,7 +15,7 @@ export class EditProfileService {
   options = { headers: this.headers };
 
   public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.get<any>("http://localhost:8080/customers/" + 28);
+    return this._http.get<any>("http://localhost:8080/customers/" + sessionStorage.getItem('cid'));
   }
 
   public updateCustomerFromRemote(customer: Customer): Observable<any> {

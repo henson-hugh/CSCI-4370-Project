@@ -21,6 +21,7 @@ export class EditProfileComponent implements OnInit {
     this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
         console.log("Response " + data['type']);
+        this.customer.email = data['email'];
         this.customer.cid = data['cid'];
         this.customer.firstName = data['firstName'];
         this.customer.lastName = data['lastName'];
@@ -37,8 +38,10 @@ export class EditProfileComponent implements OnInit {
 
   updateCustomer() {
     if (this.customer.password != '') {
+      console.log(this.customer.password)
       this._service.verifyOldPasswordFromRemote(this.customer).subscribe(
       data => {
+        console.log("verified");
         this.customer.password = this.newPass;
         this.updateCustomerDetails();
       },

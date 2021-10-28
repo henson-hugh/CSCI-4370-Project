@@ -7,10 +7,10 @@
                 <button type="submit" label="Search">Search</button>
             </form>
         </div>
-    </div>
-    <div class="nav-right">
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-        <a routerLink="/edit-profile" routerLinkActive="active">Profile</a>
+        <div class="nav-right">
+            <a [routerLink] = " '/' + profileURL " routerLinkActive="active">{{profileName}}</a>
+            <a [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
+        </div>
     </div>
 </div>
 

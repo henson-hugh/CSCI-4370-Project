@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { NgForm } from '@angular/forms';
 import { Customer } from './customer';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-login',
@@ -13,11 +16,20 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class LoginComponent implements OnInit {
 
+  remember: boolean = false;
   customer: Customer = new Customer();
   resultType = '';
   msg = '';
 
   constructor(private _service: LoginService, private _router: Router) { 
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('mail') != "") {
+      this.customer.email = localStorage.getItem('mail') || "";
+      localStorage.removeItem('mail');
+      this.remember = true;
+    }
   }
 
   async login() {
@@ -34,13 +46,14 @@ export class LoginComponent implements OnInit {
         } else {
           this._router.navigate(['/home']);
         }
+        sessionStorage.setItem('loggedIn', 'true');
+        sessionStorage.setItem('cid', data['cid']);
+        if (this.remember) {
+          localStorage.setItem('mail', this.customer.email);
+        }
       }, 
       error => {
         this.msg = 'Invalid credentials, incorrect email and/or password'
       })
   }
-
-  ngOnInit(): void {
-  }
-
 }
