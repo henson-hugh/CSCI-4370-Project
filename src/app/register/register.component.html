@@ -128,11 +128,11 @@
         <input id= "promo" type="checkbox" placeholder="Sign up for Promo" name="promo" #promo="ngModel" [(ngModel)]="customer.getPromo"/>
 
 
-        <button type="submit" >Register</button>
+        <button type="submit">Register</button>
         
-        <form action="Login.html">
-            <button type="submit">Cancel</button>
-        </form>
+        <p style="text-align: center">
+          <b><a routerLink="/home" routerLinkActive="active">Cancel and continue browsing</a></b>
+        </p>
         
         <p style="text-align: center">
                 <b>Existing user? <a routerLink="/login" routerLinkActive="active">Login here!</a></b>

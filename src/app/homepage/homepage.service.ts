@@ -15,6 +15,6 @@ export class HomePageService {
     options = { headers: this.headers };
 
     public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
-        return this._http.get<any>("http://localhost:8080/customers/" + 29);
+        return this._http.get<any>("http://localhost:8080/customers/" + sessionStorage.getItem('cid'));
       }
 }

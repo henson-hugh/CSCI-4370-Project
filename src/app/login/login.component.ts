@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   remember: boolean = false;
   customer: Customer = new Customer();
   resultType = '';
+  active = false;
   msg = '';
 
   constructor(private _service: LoginService, private _router: Router) { 
@@ -35,8 +36,9 @@ export class LoginComponent implements OnInit {
   async login() {
     await this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
-        console.log("Response " + data['type']);
+        console.log("Response active: " + data['active']);
         this.resultType = data['type'];
+        this.active = data['active'];
       }
     )
     this._service.loginCustomerFromRemote(this.customer).subscribe(
@@ -44,7 +46,11 @@ export class LoginComponent implements OnInit {
         if (this.resultType == 'admin') {
           this._router.navigate(['/admin-menu']);
         } else {
-          this._router.navigate(['/home']);
+          if (this.active) {
+            this._router.navigate(['/home']);
+          } else {
+            this.msg = 'Account is not active, please verify your email'
+          }
         }
         sessionStorage.setItem('loggedIn', 'true');
         sessionStorage.setItem('cid', data['cid']);

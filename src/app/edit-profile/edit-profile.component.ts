@@ -29,6 +29,7 @@ export class EditProfileComponent implements OnInit {
         this.customer.city = data['city'];
         this.customer.state = data['state'];
         this.customer.zip = data['zip'];
+        this.customer.phone = data['phone'];
         this.customer.paymentCard = data['paymentCard'];
         this.customer.expDate = data['expDate'];
         this.customer.getPromo = data['getPromo'];

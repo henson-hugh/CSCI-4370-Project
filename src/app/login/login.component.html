@@ -47,9 +47,8 @@
       </div> 
     </div>
 
-    <label class="check">
-      <input type="checkbox" [(ngModel)]="remember" [ngModelOptions]="{standalone: true}" checked/>Remember me
-    </label>
+    <label for="check"><b>Remember me</b></label>
+    <input id="check" type="checkbox" [(ngModel)]="remember" [ngModelOptions]="{standalone: true}" checked/>
 
     <button type="submit" [disabled]="!loginForm.valid">Login</button>
 

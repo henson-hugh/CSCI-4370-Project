@@ -23,7 +23,7 @@ input {
 
 #promo {
     width: auto;
-    margin: 5px;
+    margin: 1rem;
 }
 
 .check {
@@ -75,4 +75,14 @@ button:hover {
 
 .container {
     margin: 1rem 0;
+}
+
+a:link, a:visited {
+    color: rgb(0, 151, 238);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+a:hover {
+    color: rgba(199, 15, 55, 0.774);
 }

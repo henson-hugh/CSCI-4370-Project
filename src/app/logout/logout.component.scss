@@ -78,3 +78,13 @@ button:hover {
 .container {
     color: black;
 }
+
+a:link, a:visited {
+    color: rgb(0, 151, 238);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+a:hover {
+    color: rgba(199, 15, 55, 0.774);
+}
