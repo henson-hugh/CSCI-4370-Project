@@ -20,6 +20,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { EditProfileService } from './edit-profile/edit-profile.service';
 import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.component';
+import { PasswordResetConfirmComponent } from './password-reset-confirm/password-reset-confirm.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.compo
     AdminMenuComponent,
     ConfirmEmailComponent,
     EmailConfirmedComponent,
-    LogoutComponent
+    LogoutComponent,
+    PasswordResetConfirmComponent
   ],
   imports: [
     BrowserModule,
