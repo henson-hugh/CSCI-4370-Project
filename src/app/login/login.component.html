@@ -19,24 +19,24 @@
   <h2>Sign In</h2>
   <small class="invalid">{{msg}}</small>
   <div class="container form-group">
-    
+
     <label for="email"><b>Email:</b></label>
-    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required 
-      #emailref="ngModel" 
-      email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
+    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required
+      #emailref="ngModel"
+      email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       [class.is-invalid]="emailref.invalid && emailref.touched"/>
     <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
       <div [hidden]="!emailref.errors?.required">
         <small class="invalid">Email is a required field</small>
-      </div> 
+      </div>
       <div [hidden]="!emailref.errors?.pattern">
         <small class="invalid">Enter a valid email address</small>
-      </div> 
+      </div>
     </div>
 
     <label for="password"
       ><b>Password</b>
-      <a class="forgot" routerLink="/password-reset" routerLinkActive="active">Forgot Password?</a></label
+      <a class="forgot" routerLink="/password-reset-email" routerLinkActive="active">Forgot Password?</a></label
     >
     <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
     #passwordref="ngModel"
@@ -44,7 +44,7 @@
     <div *ngIf="passwordref.invalid &&(passwordref.touched || passwordref.dirty)" class ="alert alert-danger">
       <div [hidden]="!passwordref.errors?.required">
         <small class="invalid">Password is a required field</small>
-      </div> 
+      </div>
     </div>
 
     <label for="check"><b>Remember me</b></label>

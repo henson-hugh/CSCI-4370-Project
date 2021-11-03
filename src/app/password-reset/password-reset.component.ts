@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PasswordResetService } from './password-reset.services';
+import { Customer } from '../login/customer';
 import { Router } from '@angular/router';
-import { PasswordResetService } from './password-reset.service';
 
 @Component({
   selector: 'app-password-reset',
@@ -9,25 +10,25 @@ import { PasswordResetService } from './password-reset.service';
 })
 export class PasswordResetComponent implements OnInit {
 
-  email: string = "";
-  id: number = 0;
+  newPass: string = "";
+  customer: Customer = new Customer();
 
 
   constructor(private _service: PasswordResetService, private _router: Router) { }
 
   ngOnInit(): void {
   }
-  
-  sendResetEmail() {
-    this._service.sendResetEmailFromRemote(this.email).subscribe(
+
+  resetPassword() {
+    this.customer.password = this.newPass;
+    this.customer.cid = parseInt(localStorage.getItem('resetid') || "0");
+    this._service.resetPasswordFromRemote(this.customer).subscribe(
       data => {
-        this.id = data['cid'];
-        localStorage.setItem("resetid", this.id.toString());
-        this._router.navigate(['/home']);
+        console.log("Response active: " + data['active']);
+        localStorage.removeItem('resetid');
+        this._router.navigate(['/password-reset-confirm']);
       }
     )
   }
-
-
 
 }

@@ -15,11 +15,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { XhrInterceptor } from './XhrInterceptor';
 import { LoginService } from './login/login.service';
 import { RegistrationService } from './register/registration.service';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordResetEmailComponent } from './password-reset-email/password-reset-email.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { EditProfileService } from './edit-profile/edit-profile.service';
 import { EmailConfirmedComponent } from './email-confirmed/email-confirmed.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PasswordResetConfirmComponent } from './password-reset-confirm/password-reset-confirm.component';
 
 @NgModule({
@@ -31,11 +32,12 @@ import { PasswordResetConfirmComponent } from './password-reset-confirm/password
     RegisterComponent,
     MovieInformationComponent,
     LogoutComponent,
-    PasswordResetComponent,
+    PasswordResetEmailComponent,
     AdminMenuComponent,
     ConfirmEmailComponent,
     EmailConfirmedComponent,
     LogoutComponent,
+    PasswordResetComponent,
     PasswordResetConfirmComponent
   ],
   imports: [

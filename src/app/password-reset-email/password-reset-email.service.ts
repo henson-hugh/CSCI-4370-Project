@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PasswordResetConfirmService {
+export class PasswordResetEmailService {
 
   constructor(private _http: HttpClient) { }
 
-  public resetPasswordFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/resetPass", customer);
+  public sendResetEmailFromRemote(email: string): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/forgotPass", email);
   }
 
 }
