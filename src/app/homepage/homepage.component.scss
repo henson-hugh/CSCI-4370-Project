@@ -202,3 +202,31 @@ img.footer-logo {
 #filter a {
   color: white;
 }
+
+.mat-toolbar.mat-primary {
+  background: rgba(178,140,198,1);
+  color: #fff;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button {
+  font-size: 17px;
+}
+
+.toolbar-icon {
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: rgba(163,185,198);
+}
+
+.toolbar-title {
+  margin-left: 1rem;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

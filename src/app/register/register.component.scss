@@ -3,51 +3,51 @@ h1 {
     margin-top: 10%;
 }
 
-form {
-    background: white;
-    border: 2px solid silver;
-    padding: 5px;
-    margin-left: 38%;
-    margin-right: 38%;
-    color: black;
-}
+// form {
+//     background: white;
+//     border: 2px solid silver;
+//     padding: 5px;
+//     margin-left: 38%;
+//     margin-right: 38%;
+//     color: black;
+// }
 
-input {
-    width: 100%;
-    display: inline-block;
-    border: 1px solid silver;
-    box-sizing: border-box;
-    padding: 10px 20px;
-    margin: 10px 0;
-}
+// input {
+//     width: 100%;
+//     display: inline-block;
+//     border: 1px solid silver;
+//     box-sizing: border-box;
+//     padding: 10px 20px;
+//     margin: 10px 0;
+// }
 
-#promo {
-    width: auto;
-    margin: 1rem;
-}
+// #promo {
+//     width: auto;
+//     margin: 1rem;
+// }
 
-.check {
-    width: 10%;
-}
+// .check {
+//     width: 10%;
+// }
 
-.forgot {
-    text-align: right;
-    float: right;
-}
+// .forgot {
+//     text-align: right;
+//     float: right;
+// }
 
-button {
-    background-color: rgba(199, 15, 55, 0.774);
-    color: white;
-    cursor: pointer;
-    border: none;
-    width: 100%;
-    padding: 10px 20px;
-    margin: 10px 0;
-}
+// button {
+//     background-color: rgba(199, 15, 55, 0.774);
+//     color: white;
+//     cursor: pointer;
+//     border: none;
+//     width: 100%;
+//     padding: 10px 20px;
+//     margin: 10px 0;
+// }
 
-button:hover {
-    opacity: 0.9;
-}
+// button:hover {
+//     opacity: 0.9;
+// }
 
 .title {
     text-align: center;
@@ -65,24 +65,50 @@ button:hover {
     border-color: rgba(178, 140, 198, 1) rgba(163, 185, 198);
 }
 
-#nav-logo img {
-    padding: 5px 10px;
+// #nav-logo img {
+//     padding: 5px 10px;
+// }
+
+// .invalid {
+//     color: red;
+// }
+
+// .container {
+//     margin: 1rem 0;
+// }
+
+// a:link, a:visited {
+//     color: rgb(0, 151, 238);
+//     text-decoration: none;
+//     font-size: 17px;
+// }
+
+// a:hover {
+//     color: rgba(199, 15, 55, 0.774);
+// }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.invalid {
-    color: red;
+.mat-form-field {
+    display: inline;
 }
 
-.container {
-    margin: 1rem 0;
-}
+.mat-stepper-vertical {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
 
-a:link, a:visited {
-    color: rgb(0, 151, 238);
-    text-decoration: none;
-    font-size: 17px;
-}
+  .mat-form-field[_ngcontent-fdp-c176] {
+    margin-top: 16px;
+  }
 
-a:hover {
-    color: rgba(199, 15, 55, 0.774);
-}
+  .mat-vertical-content-container {
+      margin-top: 16px;
+  }

@@ -3,7 +3,6 @@ import { Customer } from '../login/customer';
 import { RegistrationService } from './registration.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-register',

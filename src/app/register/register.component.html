@@ -149,8 +149,12 @@
         <input matInput placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
+        <mat-label>First Name</mat-label>
         <input matInput placeholder="Enter First Name" name="firstName" id="firstName" [(ngModel)]="customer.firstName" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Enter Last Name" name="firstName" id="firstName" [(ngModel)]="customer.firstName" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
@@ -160,6 +164,21 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Address</mat-label>
         <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
