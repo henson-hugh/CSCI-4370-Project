@@ -1,4 +1,9 @@
-<a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" alt="logo" height="50px" width="50px"/></a>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
+</mat-toolbar>
 <div class="title">
     <img
         src="assets/images/sample-logo.jpg"
@@ -183,6 +188,23 @@
         <mat-label>Address</mat-label>
         <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" [optional]="true">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Fill out your payment information</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Card Number</mat-label>
+        <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Expiration Date</mat-label>
+        <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY">
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
