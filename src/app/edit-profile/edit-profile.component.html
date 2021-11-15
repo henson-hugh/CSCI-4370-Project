@@ -1,5 +1,9 @@
-<a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active" title="Back to Browsing">
-<img src="assets/images/sample-logo.jpg" alt="logo" height="50px" width="50px"></a>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
+</mat-toolbar>
 <form #editProfileForm="ngForm" (ngSubmit)="updateCustomer()">
     <h1>Edit Profile</h1>
     <small class="invalid">{{msg}}</small>

@@ -7,6 +7,25 @@ body {
   color: white;
 }
 
+.mat-toolbar.mat-primary {
+    background: rgba(178,140,198,1);
+    color: #fff;
+}
+
+.mat-button {
+    font-size: 17px;
+}
+  
+.toolbar-icon {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(163,185,198);
+}
+
+.toolbar-title {
+    margin-left: 1rem;
+}
+
 h1 {
     padding-left: 6%;
     margin-left: 3rem;
@@ -25,10 +44,6 @@ h1 {
     background-color: rgb(147,141,147);
     width: 50%;
     float: left;
-}
-
-img {
-    margin: 5px 0 0 10px;
 }
 
 .container:after {

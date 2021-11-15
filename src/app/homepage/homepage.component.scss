@@ -124,7 +124,7 @@ img.footer-logo {
 }
 
 .genre {
-  padding-left: 1rem;
+  margin-left: 1rem;
 }
 
 // #mystery {
@@ -193,22 +193,22 @@ img.footer-logo {
   padding: 0.5rem 0 0 10rem;
 }
 
-#filter {
-    float: right;
-    text-align: right;
-    padding-right: 0.5rem;
-}
+// #filter {
+//     float: right;
+//     text-align: right;
+//     padding-right: 0.5rem;
+// }
 
-#filter a {
-  color: white;
-}
+// #filter a {
+//   color: white;
+// }
 
 .mat-toolbar.mat-primary {
   background: rgba(178,140,198,1);
   color: #fff;
 }
 
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }
 
@@ -246,6 +246,10 @@ header {
   color: white;
   font-weight: 700;
   background-color: rgba(178,140,198,1);
+}
+
+.tab-title {
+  margin-left: 1rem;
 }
 
 .label-title {

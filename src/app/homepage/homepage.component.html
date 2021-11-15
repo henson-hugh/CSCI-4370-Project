@@ -18,7 +18,7 @@
         <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
     </button>
     <span class="toolbar-title">Pigeon Theatres</span>
-    <div class="example-spacer"></div>
+    <div class="spacer"></div>
     <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
         <mat-icon class="login-icon">login</mat-icon> {{profileName}}
     </a>
@@ -44,7 +44,7 @@
             <mat-icon class="now-playing-icon">local_play</mat-icon>
             <span class="label-title">Now Playing</span>
         </ng-template>
-        <h2 class="subtitle" id="now-playing-subtitle">Now Playing</h2>
+        <h2 class="tab-title">Now Playing</h2>
         <div class="movie-container recommended">
             <div class="movie-card recommended">
                 <mat-card class="recommended-card">
@@ -140,7 +140,7 @@
             <mat-icon class="coming-soon-icon">event</mat-icon>
             <span class="label-title">Coming Soon</span>
         </ng-template>
-        <h2 class="subtitle" id="coming-soon-subtitle">Coming Soon</h2>
+        <h2 class="tab-title">Coming Soon</h2>
         <div class="movie-container action">
             <div class="movie-card action">
                 <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
@@ -283,7 +283,7 @@
             <mat-icon class="coming-soon-icon">rocket_launch</mat-icon>
             <span class="label-title">Action</span>
         </ng-template>
-        <h2 class="genre" id="action">Action</h2>
+        <h2 class="tab-title" id="action">Action</h2>
         <div class="movie-container action">
             <div class="movie-card action">
                 <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
@@ -331,7 +331,7 @@
             <mat-icon class="coming-soon-icon">question_mark</mat-icon>
             <span class="label-title">Mystery</span>
         </ng-template>
-        <h2 class="genre" id="action">Comedy</h2>
+        <h2 class="tab-title" id="comedy">Comedy</h2>
         <div class="movie-container action">
             <div class="movie-card action">
                 <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
@@ -379,7 +379,7 @@
             <mat-icon class="coming-soon-icon">sentiment_very_satisfied</mat-icon>
             <span class="label-title">Comedy</span>
         </ng-template>
-        <h2 class="genre" id="action">Mystery</h2>
+        <h2 class="tab-title" id="mystery">Mystery</h2>
         <div class="movie-container action">
             <div class="movie-card action">
                 <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                

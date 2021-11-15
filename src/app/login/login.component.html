@@ -1,10 +1,9 @@
-<a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active">
-  <img
-    src="assets/images/sample-logo.jpg"
-    alt="logo"
-    height="50px"
-    width="50px"
-/></a>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
+</mat-toolbar>
 <div class="title">
   <img
     src="assets/images/sample-logo.jpg"
@@ -36,7 +35,7 @@
 
     <label for="password"
       ><b>Password</b>
-      <a class="forgot" routerLink="/password-reset-email" routerLinkActive="active">Forgot Password?</a></label
+      <a id="forgot" class="link" routerLink="/password-reset-email" routerLinkActive="active">Forgot Password?</a></label
     >
     <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
     #passwordref="ngModel"
@@ -50,10 +49,10 @@
     <label for="check"><b>Remember me</b></label>
     <input id="check" type="checkbox" [(ngModel)]="remember" [ngModelOptions]="{standalone: true}" checked/>
 
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button class="submit" type="submit" [disabled]="!loginForm.valid">Login</button>
 
     <p style="text-align: center">
-      <b>New user? <a routerLink="/register" routerLinkActive="active">Register here!</a></b>
+      <b>New user? <a class="link" routerLink="/register" routerLinkActive="active">Register here!</a></b>
     </p>
   </div>
 </form>
