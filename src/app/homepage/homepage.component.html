@@ -1,18 +1,14 @@
-<div class="nav-belt">
-    <div class="nav-left">
-        <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" alt="logo" height="50px" width="50px"></a>
-        <div class="search-container">
-            <form action="#">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit" label="Search">Search</button>
-            </form>
-        </div>
-        <div class="nav-right">
-            <a [routerLink] = " '/' + profileURL " routerLinkActive="active">{{profileName}}</a>
-            <a [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
-        </div>
-    </div>
-</div>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+        <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+    </button>
+    <span class="toolbar-title">Pigeon Theatres</span>
+    <div class="spacer"></div>
+    <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
+        <mat-icon class="login-icon">login</mat-icon> {{profileName}}
+    </a>
+    <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
+</mat-toolbar>
 
 <header>
     <div class="title">
@@ -21,140 +17,307 @@
         <h3>Don't knock 'em till you try 'em - Pigeon Theatres Enthusiast Albert Einstein</h3>
     </div>
 </header>
-<div class="label-container">
-    <h2 class="label" id="recommended">Recommended</h2>
-    <p class="label" id="info">Click the movie image or title for more info!</p>
-    <h2 class="label" id="filter"><a href="#">Now Playing</a> | <a href="#">Coming Soon</a></h2>
+<div class="subtitle-container">
+    <h2 class="subtitle" id="recommended">Movies at Pigeon</h2>
+    <p class="subtitle" id="info">Click the movie image or title for more info!</p>
 </div>
 
-<div class="movie-container recommended">
-    <div class="movie-card recommended">
-        <a href="movie-details.html"><img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px"></a>                
-        <div class="card-text">
-            <a href="movie-details.html"><h2>The Sweet Man</h2></a>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="now-playing-icon">local_play</mat-icon>
+            <span class="label-title">Now Playing</span>
+        </ng-template>
+        <h2 class="tab-title">Now Playing</h2>
+        <div class="movie-container recommended">
+            <div class="movie-card recommended">
+                <mat-card class="recommended-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        
+            <div class="movie-card recommended">
+                <mat-card class="recommended-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        
+            <div class="movie-card recommended">
+                <mat-card class="recommended-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        
+            <div class="movie-card recommended">
+                <mat-card class="recommended-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
-    </div>
-
-    <div class="movie-card recommended">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="coming-soon-icon">event</mat-icon>
+            <span class="label-title">Coming Soon</span>
+        </ng-template>
+        <h2 class="tab-title">Coming Soon</h2>
+        <div class="movie-container action">
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="movie-card recommended">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-
-    <div class="movie-card recommended">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-</div>
+    </mat-tab>
+  </mat-tab-group>
 
 <h1 id="genre-label" class="genre">Popular Genres</h1>
-<h2 class="genre" id="action">Action</h2>
-<div class="movie-container action">
-    <div class="movie-card action">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
 
-    <div class="movie-card action">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="coming-soon-icon">rocket_launch</mat-icon>
+            <span class="label-title">Action</span>
+        </ng-template>
+        <h2 class="tab-title" id="action">Action</h2>
+        <div class="movie-container action">
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
         </div>
-    </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="coming-soon-icon">question_mark</mat-icon>
+            <span class="label-title">Mystery</span>
+        </ng-template>
+        <h2 class="tab-title" id="comedy">Comedy</h2>
+        <div class="movie-container action">
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="coming-soon-icon">sentiment_very_satisfied</mat-icon>
+            <span class="label-title">Comedy</span>
+        </ng-template>
+        <h2 class="tab-title" id="mystery">Mystery</h2>
+        <div class="movie-container action">
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        
+            <div class="movie-card action">
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <div class="card-text">
+                    <h2>The Sweet Man</h2>
+                    <h3>2 hour 23 minutes</h3>
+                    <h3>PG-13</h3>
+                    <a href="#"><p><b>Get Tickets ></b></p></a>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
 
-    <div class="movie-card action">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-
-    <div class="movie-card action">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-</div>
-
-<h2 class="genre" id="mystery">Mystery</h2>
-<div class="movie-container mystery">
-    <div class="movie-card mystery">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-
-    <div class="movie-card mystery">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-
-    <div class="movie-card mystery">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-
-    <div class="movie-card mystery">
-        <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
-        <div class="card-text">
-            <h2>The Sweet Man</h2>
-            <h3>2 hour 23 minutes</h3>
-            <h3>PG-13</h3>
-            <a href="#"><p><b>Get Tickets ></b></p></a>
-        </div>
-    </div>
-</div>
 <div class="footer">
     <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" class="footer-logo" alt="logo" height="100px" width="100px"></a>
     <p id="copyright">Pigeon Theatres &copy</p>

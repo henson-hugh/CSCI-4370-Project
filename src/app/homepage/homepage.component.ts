@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Customer } from '../login/customer';
+import { Customer } from '../model/customer';
 import { HomePageService } from './homepage.service';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomepageComponent implements OnInit {
   loggedIn: string = JSON.parse(sessionStorage.getItem('loggedIn') || 'false');

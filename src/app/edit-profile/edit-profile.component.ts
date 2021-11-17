@@ -1,7 +1,8 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { EditProfileService } from './edit-profile.service';
 import { Router } from '@angular/router';
-import { Customer } from '../login/customer';
+import { Customer } from '../model/customer';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,7 +14,8 @@ export class EditProfileComponent implements OnInit {
   msg: string = '';
   oldPass: string = '';
   newPass: string = '';
-  customer: Customer = new Customer();
+  customer: Customer;
+  user: User;
 
   constructor(private _service: EditProfileService, private _router: Router) { }
 
@@ -21,7 +23,7 @@ export class EditProfileComponent implements OnInit {
     this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
         console.log("Response " + data['type']);
-        this.customer.email = data['email'];
+        this.user.email = data['email'];
         this.customer.cid = data['cid'];
         this.customer.firstName = data['firstName'];
         this.customer.lastName = data['lastName'];
@@ -30,28 +32,28 @@ export class EditProfileComponent implements OnInit {
         this.customer.state = data['state'];
         this.customer.zip = data['zip'];
         this.customer.phone = data['phone'];
-        this.customer.paymentCard = data['paymentCard'];
-        this.customer.expDate = data['expDate'];
+        // this.customer.paymentCard = data['paymentCard'];
+        // this.customer.expDate = data['expDate'];
         this.customer.getPromo = data['getPromo'];
       }
     )
   }
 
   updateCustomer() {
-    if (this.customer.password != '') {
-      console.log(this.customer.password)
-      this._service.verifyOldPasswordFromRemote(this.customer).subscribe(
-      data => {
-        console.log("verified");
-        this.customer.password = this.newPass;
-        this.updateCustomerDetails();
-      },
-      error => {
-        this.msg = 'Current password is incorrect'
-      });
-    } else {
-      this.updateCustomerDetails();
-    }
+    // if (this.user.password != '') {
+    //   console.log(this.user.password)
+    //   this._service.verifyOldPasswordFromRemote(this.user).subscribe(
+    //   data => {
+    //     console.log("verified");
+    //     this.customer.password = this.newPass;
+    //     this.updateCustomerDetails();
+    //   },
+    //   error => {
+    //     this.msg = 'Current password is incorrect'
+    //   });
+    // } else {
+    //   this.updateCustomerDetails();
+    // }
 
     
   }

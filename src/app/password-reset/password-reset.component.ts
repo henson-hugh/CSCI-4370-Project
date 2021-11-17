@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PasswordResetService } from './password-reset.services';
-import { Customer } from '../login/customer';
+import { Customer } from '../model/customer';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-password-reset',
@@ -12,6 +13,7 @@ export class PasswordResetComponent implements OnInit {
 
   newPass: string = "";
   customer: Customer = new Customer();
+  user: User;
 
 
   constructor(private _service: PasswordResetService, private _router: Router) { }
@@ -20,7 +22,7 @@ export class PasswordResetComponent implements OnInit {
   }
 
   resetPassword() {
-    this.customer.password = this.newPass;
+    this.user.password = this.newPass;
     this.customer.cid = parseInt(localStorage.getItem('resetid') || "0");
     this._service.resetPasswordFromRemote(this.customer).subscribe(
       data => {

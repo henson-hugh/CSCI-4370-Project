@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Customer } from './customer';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +10,8 @@ export class LoginService {
 
   constructor(private _http: HttpClient) { }
 
-  // authenticate(credentials: any, callback: any) {
-  //   const headers = new HttpHeaders(credentials ? {
-  //     authorization : 'Basic' + btoa(credentials.username + ':' + credentials.password)
-  //   } : {});
-
-  //   this.http.get('login', {headers: headers}).subscribe(response => {
-  //     if(response) {
-  //       this.authenticated = true;
-  //     } else {
-  //       this.authenticated = false;
-  //     }
-  //     return callback && callback();
-  //   });
-  // }
-
-  public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.get<any>("http://localhost:8080/customers/email/" + customer.email);
-  }
-
-  public loginCustomerFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/login", customer);
+  public loginUserFromRemote(user: User): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/login", user);
   }
 
 }

@@ -3,6 +3,21 @@ h1 {
     margin-top: 10%;
 }
 
+.mat-toolbar.mat-primary {
+    background: rgba(178,140,198,1);
+    color: #fff;
+}
+
+.mat-button {
+    font-size: 17px;
+ }
+  
+.toolbar-icon {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(163,185,198);
+}
+
 form {
     background: white;
     border: 2px solid silver;
@@ -25,12 +40,12 @@ input {
     width: 10%;
 }
 
-.forgot {
+#forgot {
     text-align: right;
     float: right;
 }
 
-button {
+.submit {
     background-color: rgba(199, 15, 55, 0.774);
     color: white;
     cursor: pointer;
@@ -40,7 +55,7 @@ button {
     margin: 10px 0;
 }
 
-button:hover {
+.submit:hover {
     opacity: 0.9;
 }
 
@@ -60,9 +75,9 @@ button:hover {
     border-color: rgba(178, 140, 198, 1) rgba(163, 185, 198);
 }
 
-#nav-logo img {
-    padding: 5px 10px;
-}
+// #nav-logo img {
+//     padding: 5px 10px;
+// }
 
 .invalid {
     color: red;
@@ -72,13 +87,13 @@ button:hover {
     margin: 1rem 0;
 }
 
-a:link, a:visited {
+.link:link, .link:visited {
     color: rgb(0, 151, 238);
     text-decoration: none;
     font-size: 17px;
 }
 
-a:hover {
+.link:hover {
     color: rgba(199, 15, 55, 0.774);
 }
 
