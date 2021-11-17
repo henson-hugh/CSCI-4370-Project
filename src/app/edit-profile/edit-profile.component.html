@@ -19,12 +19,12 @@
             <label><b>Re-enter new password</b></label><br>
             <input type="password" placeholder="Re-enter password" name="confirmPassword" #confirmPassword="ngModel" ngModel [required]="newPass ? true : false"
             (ngModel)="newPass"
-            #confirmref="ngModel" 
+            #confirmref="ngModel"
             [class.is-invalid]="confirmref.invalid && confirmref.touched"/>
             <div *ngIf="confirmref.invalid &&(confirmref.touched || confirmref.dirty)" class ="alert alert-danger">
               <div [hidden]="!confirmref.errors?.required">
                 <small class="invalid">Password is required</small>
-              </div> 
+              </div>
             </div> <br>
 
             <label for="street"><b>Street</b></label><br>
@@ -55,6 +55,6 @@
     </div>
     <div class="bottom">
         <button class="button save" [disabled]="!editProfileForm.valid">Save</button>
-        <button class="button remove">Cancel</button> 
+        <button class="button remove">Cancel</button>
     </div>
 </form>

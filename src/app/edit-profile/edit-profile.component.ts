@@ -3,6 +3,7 @@ import { EditProfileService } from './edit-profile.service';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { User } from '../model/user';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,8 +15,8 @@ export class EditProfileComponent implements OnInit {
   msg: string = '';
   oldPass: string = '';
   newPass: string = '';
-  customer: Customer;
-  user: User;
+  customer: Customer = new Customer();
+  user: User = new User();
 
   constructor(private _service: EditProfileService, private _router: Router) { }
 
@@ -23,45 +24,45 @@ export class EditProfileComponent implements OnInit {
     this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
         console.log("Response " + data['type']);
-        this.user.email = data['email'];
-        this.customer.cid = data['cid'];
-        this.customer.firstName = data['firstName'];
-        this.customer.lastName = data['lastName'];
-        this.customer.street = data['street'];
-        this.customer.city = data['city'];
-        this.customer.state = data['state'];
-        this.customer.zip = data['zip'];
-        this.customer.phone = data['phone'];
-        // this.customer.paymentCard = data['paymentCard'];
-        // this.customer.expDate = data['expDate'];
-        this.customer.getPromo = data['getPromo'];
+        this.user.uid = data['uid'];
+        this.customer.cid = data.customer['cid'];
+        this.customer.firstName = data.customer['firstName'];
+        this.customer.lastName = data.customer['lastName'];
+        this.customer.street = data.customer['street'];
+        this.customer.city = data.customer['city'];
+        this.customer.state = data.customer['state'];
+        this.customer.zip = data.customer['zip'];
+        this.customer.phone = data.customer['phone'];
+        this.customer.getPromo = data.customer['getPromo'];
       }
     )
   }
 
   updateCustomer() {
-    // if (this.user.password != '') {
-    //   console.log(this.user.password)
-    //   this._service.verifyOldPasswordFromRemote(this.user).subscribe(
-    //   data => {
-    //     console.log("verified");
-    //     this.customer.password = this.newPass;
-    //     this.updateCustomerDetails();
-    //   },
-    //   error => {
-    //     this.msg = 'Current password is incorrect'
-    //   });
-    // } else {
-    //   this.updateCustomerDetails();
-    // }
+    if (this.user.password) {
+      console.log(this.user.password)
+      this._service.verifyOldPasswordFromRemote(this.user).subscribe(
+      data => {
+        console.log("verified old password");
+        this.user.password = this.newPass;
+        this._service.updateUserPasswordFromRemote(this.user).subscribe(
+          result => {
+            console.log("updated password");
+          }
+        );
+      },
+      error => {
+        this.msg = 'Current password is incorrect'
+      });
+    }
+    this.updateCustomerDetails();
 
-    
   }
 
   updateCustomerDetails() {
     this._service.updateCustomerFromRemote(this.customer).subscribe(
       data => {
-        
+
         console.log("Response" + data['email']);
         this._router.navigate(['/home']);
       },

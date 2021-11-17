@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   active = false;
   msg = '';
 
-  constructor(private _service: LoginService, private _router: Router) { 
+  constructor(private _service: LoginService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -37,29 +37,27 @@ export class LoginComponent implements OnInit {
     await this._service.loginUserFromRemote(this.user).subscribe(
       data => {
         console.log("Response active: " + data['active']);
-        this.resultType = data['type'];
-        this.active = data['active'];
-      }
-    )
-    this._service.loginUserFromRemote(this.user).subscribe(
-      data => {
-        if (this.resultType == 'admin') {
+
+        // check for privilege
+        if (data['privilege'] == 'admin') { // send to admin page
           this._router.navigate(['/admin-menu']);
-        } else {
-          if (this.active) {
-            this._router.navigate(['/home']);
-          } else {
-            this.msg = 'Account is not active, please verify your email'
+        } else { // send to customer page
+          if (!data['verified']) { // check verification
+            this.msg = 'Account is not active, please verify your email.'
+          } else if (data['suspended']){ // check suspension
+            this.msg = 'Account has been suspended. Please contact an Admin.'
+          } else { // successful customer login
+          // set logged in as true and remember cid
+          sessionStorage.setItem('loggedIn', 'true');
+          sessionStorage.setItem('cid', data['cid']);
+          this._router.navigate(['/home']);
           }
         }
-        sessionStorage.setItem('loggedIn', 'true');
-        sessionStorage.setItem('cid', data['cid']);
         if (this.remember) {
-          localStorage.setItem('mail', this.user.email);
+          // Set cookies to remember
+
         }
-      }, 
-      error => {
-        this.msg = 'Invalid credentials, incorrect email and/or password'
-      })
+      }
+    )
   }
 }

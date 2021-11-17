@@ -13,5 +13,4 @@ export class LoginService {
   public loginUserFromRemote(user: User): Observable<any> {
     return this._http.post<any>("http://localhost:8080/login", user);
   }
-
 }

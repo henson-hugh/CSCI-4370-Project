@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
       this.customer.cid = this.userId;
       await this._service.getCustomerInfoFromRemote(this.customer).subscribe(
         data => {
-          this.profileName = data['firstName'];
+          this.profileName = data.customer['firstName'];
           this.profileURL = "edit-profile";
           this.registerName = "Logout";
           this.registerURL = "logout";
