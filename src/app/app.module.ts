@@ -31,6 +31,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     EmailConfirmedComponent,
     LogoutComponent,
     PasswordResetComponent,
-    PasswordResetConfirmComponent
+    PasswordResetConfirmComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

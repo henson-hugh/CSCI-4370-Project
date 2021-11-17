@@ -1,193 +1,67 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
-      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
-  </button>
-  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 <div class="title">
-    <img
-        src="assets/images/sample-logo.jpg"
-        class="title-logo"
-        alt="logo"
-        height="200px"
-        width="170px"
-    />
-    <h1>Pigeon Theatres</h1>
+  <img
+    src="assets/images/sample-logo.jpg"
+    class="title-logo"
+    alt="logo"
+    height="200px"
+    width="170px"
+  />
+  <h1>Pigeon Theatres</h1>
 </div>
-<form #registerForm="ngForm" (ngSubmit)="registerCustomer()">
-    <h2>Register</h2>
-    <small class="invalid">{{msg}}</small>
-    <div class="container form-group">
 
-    <label for="email"><b>Email:</b></label>
-    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required
-      #emailref="ngModel"
-      email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-      [class.is-invalid]="emailref.invalid && emailref.touched"/>
-    <div *ngIf="emailref.invalid &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
-      <div [hidden]="!emailref.errors?.required">
-        <small class="invalid">Email is a required field</small>
-      </div>
-      <div [hidden]="!emailref.errors?.pattern">
-        <small class="invalid">Enter a valid email address</small>
-      </div>
-    </div>
-
-
-
-        <label for="firstName"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="customer.firstName" required
-        #nameref="ngModel"
-        [class.is-invalid]="nameref.invalid && nameref.touched"/>
-        <div *ngIf="nameref.invalid &&(nameref.touched || nameref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!nameref.errors?.required">
-            <small class="invalid">First Name is a required field</small>
-          </div>
-        </div>
-
-        <label for="lastName"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel">
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
-        #passwordref="ngModel"
-        [class.is-invalid]="passwordref.invalid && passwordref.touched"/>
-        <div *ngIf="passwordref.invalid &&(passwordref.touched || passwordref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!passwordref.errors?.required">
-            <small class="invalid">Password is a required field</small>
-          </div>
-        </div>
-
-        <label for="confirmPassword"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Re-enter Password" name="confirmPassword" (ngModel)="customer.password" required
-        #confirmref="ngModel"
-        [class.is-invalid]="confirmref.invalid && confirmref.touched"/>
-        <div *ngIf="confirmref.invalid &&(confirmref.touched || confirmref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!confirmref.errors?.required">
-            <small class="invalid">Password is a required field</small>
-          </div>
-        </div>
-
-        <label for="phone"><b>Phone Number</b></label>
-        <input type="text" placeholder="Enter Phone Number" name="phone" [(ngModel)]="customer.phone" required
-        #phoneref="ngModel"
-        [class.is-invalid]="phoneref.invalid && phoneref.touched"/>
-        <div *ngIf="phoneref.invalid &&(phoneref.touched || phoneref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!phoneref.errors?.required">
-            <small class="invalid">Phone Number is a required field</small>
-          </div>
-        </div>
-
-        <label for="street"><b>Street</b></label>
-        <input type="text" placeholder="Enter Street" name="street" #street="ngModel" [(ngModel)]="customer.street">
-
-        <label for="city"><b>City</b></label>
-        <input type="text" placeholder="Enter City" name="city" ngModel [required]="customer.street ? true : false"
-        [(ngModel)]="customer.city"
-        #cityref="ngModel"
-        [class.is-invalid]="cityref.invalid && cityref.touched"/>
-        <div *ngIf="cityref.invalid &&(cityref.touched || cityref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!cityref.errors?.required">
-            <small class="invalid">City required</small>
-          </div>
-        </div>
-
-
-        <label for="state"><b>State</b></label>
-        <input type="text" placeholder="Enter State" name="state" ngModel [required]="customer.street ? true : false"
-        [(ngModel)]="customer.state"
-        #stateref="ngModel"
-        [class.is-invalid]="stateref.invalid && stateref.touched"/>
-        <div *ngIf="stateref.invalid &&(stateref.touched || stateref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!stateref.errors?.required">
-            <small class="invalid">State required</small>
-          </div>
-        </div>
-
-        <label for="zip"><b>Zip</b></label>
-        <input type="text" placeholder="Enter Zip" name="zip" ngModel [required]="customer.street ? true : false"
-        [(ngModel)]="customer.zip"
-        #zipref="ngModel"
-        [class.is-invalid]="zipref.invalid && zipref.touched"/>
-        <div *ngIf="zipref.invalid &&(zipref.touched || zipref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!zipref.errors?.required">
-            <small class="invalid">Zip required</small>
-          </div>
-        </div>
-
-        <label for="paymentCard"><b>Payment Card</b></label>
-        <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" [(ngModel)]="customer.paymentCard">
-
-        <label for="expDate"><b>Expiration Date</b></label>
-        <input type="text" placeholder="Enter Expiration Date" name="expDate" ngModel [required]="customer.paymentCard ? true : false"
-        [(ngModel)]="customer.expDate"
-        #expref="ngModel"
-        [class.is-invalid]="expref.invalid && expref.touched"/>
-        <div *ngIf="expref.invalid &&(expref.touched || expref.dirty)" class ="alert alert-danger">
-          <div [hidden]="!expref.errors?.required">
-            <small class="invalid">Expiration date required</small>
-          </div>
-        </div>
-
-        <label for="promo"><b>Subscribe to Promotions</b></label>
-        <input id= "promo" type="checkbox" placeholder="Sign up for Promo" name="promo" #promo="ngModel" [(ngModel)]="customer.getPromo"/>
-
-
-        <button type="submit">Register</button>
-
-        <p style="text-align: center">
-          <b><a routerLink="/home" routerLinkActive="active">Cancel and continue browsing</a></b>
-        </p>
-
-        <p style="text-align: center">
-                <b>Existing user? <a routerLink="/login" routerLinkActive="active">Login here!</a></b>
-        </p>
-    </div>
-</form>
-
-<mat-stepper orientation="vertical" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+<mat-stepper orientation="vertical" #stepper linear>
+  <h2>Register</h2>
+  <mat-step [stepControl]="firstFormGroup" [editable]="true">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Fill out your Email and Name</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required>
+        <input matInput formControlName="emailCtrl" placeholder="Enter Email" name="email" id="email" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="Enter First Name" name="firstName" id="firstName" [(ngModel)]="customer.firstName" required>
+        <input matInput formControlName="firstNameCtrl" placeholder="Enter First Name" name="firstName" id="firstName" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Enter Last Name" name="firstName" id="firstName" [(ngModel)]="customer.firstName" required>
+        <input matInput formControlName="lastNameCtrl" placeholder="Enter Last Name" name="lastName" id="lastName" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="passwordCtrl" placeholder="Enter Password" name="password" id="password" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="confirmPasswordCtrl" placeholder="Re-enter Password" name="confirmPassword" id="confirmPassword" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phoneCtrl" placeholder="Enter Phone Number" name="phone" id="phone" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
+  <mat-step [stepControl]="secondFormGroup" [optional]="true">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
       <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <mat-label>Street Address</mat-label>
+        <input matInput formControlName="streetCtrl" placeholder="Ex. 123 Lazy St.">
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <mat-label>City</mat-label>
+        <input matInput formControlName="cityCtrl" placeholder="Ex. Atlanta">
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <mat-label>State</mat-label>
+        <input matInput formControlName="stateCtrl" placeholder="Ex. GA">
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <mat-label>Zip</mat-label>
+        <input matInput formControlName="zipCtrl" placeholder="Ex. 00000">
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -200,15 +74,15 @@
       <ng-template matStepLabel>Fill out your payment information</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Card Number</mat-label>
-        <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY">
+        <input matInput formControlName="cardNumberCtrl" placeholder="XXXX XXXX XXXX">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Expiration Date</mat-label>
-        <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY">
+        <input matInput formControlName="expDateCtrl" placeholder="01/22">
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button type="button" (click)="registerCustomer()">Register</button>
       </div>
     </form>
   </mat-step>

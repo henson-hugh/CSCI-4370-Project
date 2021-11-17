@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Customer } from '../login/customer';
+import { Customer } from '../model/customer';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class EditProfileService {
     return this._http.post<any>("http://localhost:8080/customers/save", customer);
   }
 
-  public verifyOldPasswordFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/customers/verifyPass", customer);
-  }
+  // public verifyOldPasswordFromRemote(user: User): Observable<any> {
+  //   return this._http.post<any>("http://localhost:8080/verifyPass", user);
+  // }
 }

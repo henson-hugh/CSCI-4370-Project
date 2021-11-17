@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { NgForm } from '@angular/forms';
-import { Customer } from './customer';
+import { Customer } from '../model/customer';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   remember: boolean = false;
   customer: Customer = new Customer();
+  user: User = new User();
   resultType = '';
   active = false;
   msg = '';
@@ -27,21 +27,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('mail') != "") {
-      this.customer.email = localStorage.getItem('mail') || "";
+      this.user.email = localStorage.getItem('mail') || "";
       localStorage.removeItem('mail');
       this.remember = true;
     }
   }
 
   async login() {
-    await this._service.getCustomerInfoFromRemote(this.customer).subscribe(
+    await this._service.loginUserFromRemote(this.user).subscribe(
       data => {
         console.log("Response active: " + data['active']);
         this.resultType = data['type'];
         this.active = data['active'];
       }
     )
-    this._service.loginCustomerFromRemote(this.customer).subscribe(
+    this._service.loginUserFromRemote(this.user).subscribe(
       data => {
         if (this.resultType == 'admin') {
           this._router.navigate(['/admin-menu']);
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('loggedIn', 'true');
         sessionStorage.setItem('cid', data['cid']);
         if (this.remember) {
-          localStorage.setItem('mail', this.customer.email);
+          localStorage.setItem('mail', this.user.email);
         }
       }, 
       error => {

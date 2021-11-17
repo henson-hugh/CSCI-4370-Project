@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Customer } from '../login/customer';
+import { Customer } from '../model/customer';
 import { HomePageService } from './homepage.service';
 
 @Component({

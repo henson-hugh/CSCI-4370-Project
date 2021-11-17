@@ -1,9 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
-      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
-  </button>
-  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 <div class="title">
   <img
     src="assets/images/sample-logo.jpg"
@@ -20,7 +15,7 @@
   <div class="container form-group">
 
     <label for="email"><b>Email:</b></label>
-    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="customer.email" required
+    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" [(ngModel)]="user.email" required
       #emailref="ngModel"
       email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       [class.is-invalid]="emailref.invalid && emailref.touched"/>
@@ -37,7 +32,7 @@
       ><b>Password</b>
       <a id="forgot" class="link" routerLink="/password-reset-email" routerLinkActive="active">Forgot Password?</a></label
     >
-    <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="customer.password" required
+    <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="user.password" required
     #passwordref="ngModel"
     [class.is-invalid]="passwordref.invalid && passwordref.touched"/>
     <div *ngIf="passwordref.invalid &&(passwordref.touched || passwordref.dirty)" class ="alert alert-danger">

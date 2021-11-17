@@ -1,9 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
-      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
-  </button>
-  <a mat-button routerLink="/home" routerLinkActive="active">Back To Home</a>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 <form #editProfileForm="ngForm" (ngSubmit)="updateCustomer()">
     <h1>Edit Profile</h1>
     <small class="invalid">{{msg}}</small>
@@ -16,7 +11,7 @@
             <input type="text" placeholder="Enter last name" name="lName" #lastName="ngModel" [(ngModel)]="customer.lastName" /><br>
 
             <label><b>Current Password</b></label><br>
-            <input type="password" placeholder="Enter current password" name="old password" #opassword="ngModel" [(ngModel)]="customer.password" /><br>
+            <input type="password" placeholder="Enter current password" name="old password" #opassword="ngModel" [(ngModel)]="user.password" /><br>
 
             <label><b>New Password</b></label><br>
             <input type="password" placeholder="Enter password" name="password" #password="ngModel" [(ngModel)]="newPass" /><br>
@@ -47,11 +42,11 @@
             <label for="phone"><b>Phone</b></label><br>
             <input type="text" placeholder="Enter Phone" name="phone" #phone="ngModel" [(ngModel)]="customer.phone"><br>
 
-            <label for="paymentCard"><b>Payment Card</b></label><br>
+            <!-- <label for="paymentCard"><b>Payment Card</b></label><br>
             <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" (ngModel)="customer.paymentCard"><br>
 
             <label for="expDate"><b>Expiration Date</b></label><br>
-            <input type="text" placeholder="Enter Expiration Date" name="expDate" #expDate="ngModel" [(ngModel)]="customer.expDate"><br>
+            <input type="text" placeholder="Enter Expiration Date" name="expDate" #expDate="ngModel" [(ngModel)]="customer.expDate"><br> -->
 
             <label><b>Change promotion notifications</b></label><br>
             <input type="checkbox" id="email" name="email" value="I would like to receive emails about promotions!" [(ngModel)]="customer.getPromo">
