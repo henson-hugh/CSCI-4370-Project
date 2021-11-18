@@ -1,18 +1,14 @@
-<div class="nav-belt">
-    <div class="nav-left">
-        <a class="active" id="nav-logo" routerLink="/admin-menu" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" alt="logo" height="50px" width="50px"></a>
-        <div class="search-container">
-            <form action="#">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit" label="Search">Search</button>
-            </form>
-        </div>
-    </div>
-    <div class="nav-right">
-        <a routerLink="/admin-menu" routerLinkActive="active">Admin</a>
-        <a routerLink = "/logout" routerLinkActive="active">Logout</a>
-    </div>
-</div>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+        <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+    </button>
+    <span class="toolbar-title">Pigeon Theatres</span>
+    <div class="spacer"></div>
+    <a mat-raised-button color="primary" routerLink="/admin-menu" routerLinkActive="active">
+        <mat-icon class="login-icon">supervisor_account</mat-icon>Admin
+    </a>
+    <a mat-button routerLink="/logout" routerLinkActive="active">Logout</a>
+</mat-toolbar>
 <div class="title">
     <img
         src="assets/images/sample-logo.jpg"
@@ -24,10 +20,10 @@
     <h1>Pigeon Theatres</h1>
 </div>
 <div class="manage">
-    <button class="button promotions">Manage Promotions</button>
-    <button class="button movies">Manage Movies</button>            
+    <button mat-button class="button promotions">Manage Promotions</button>
+    <button mat-button class="button movies">Manage Movies</button>            
 </div>
 <div class="footer">
     <a class="active" id="logo" routerLink="/admin-menu" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" class="footer-logo" alt="logo" height="100px" width="100px"></a>
-    <p id="copyright">Pigeon Theatres &copy</p>
+    <p id="copyright">Pigeon Theatres</p>
 </div>

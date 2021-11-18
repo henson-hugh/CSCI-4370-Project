@@ -1,95 +1,5 @@
 * {box-sizing: border-box;}
 
-// .nav-belt {
-//   overflow: hidden;
-//   background: rgb(147,141,147);
-// }
-
-// .nav-belt a {
-//   float: left;
-//   display: block;
-//   color: white;
-//   text-align: center;
-//   text-decoration: none;
-//   font-size: 17px;
-//   padding: 14px 16px;
-// }
-
-// .nav-belt a:hover {
-//   background-color: rgba(163,185,198);
-//   color: black;
-// }
-
-// .nav-belt a.active {
-//   color: white;
-// }
-
-// .nav-belt .search-container {
-//   float: left;
-//   width: 80%;
-// }
-
-// .nav-belt input[type=text] {
-//   padding: 6px;
-//   margin-top: 8px;
-//   font-size: 17px;
-//   border: none;
-//   width: 90%;
-// }
-
-// .nav-belt .search-container button {
-//   float: right;
-//   padding: 4px 10px;
-//   margin-top: 8px;
-//   margin-right: 16px;
-//   background: #ddd;
-//   font-size: 17px;
-//   border: none;
-//   cursor: pointer;
-// }
-
-// .nav-belt .search-container button:hover {
-//   background: #ccc;
-// }
-
-// .nav-belt #logo {
-//     float: left;
-//     padding: 5px 6px;
-// }
-
-// .nav-belt #nav-right {
-//     float: right;
-// }
-
-// @media screen and (max-width: 600px) {
-//   .nav-belt .search-container {
-//     float: none;
-//   }
-//   .nav-belt a, .nav-belt input[type=text], .nav-belt .search-container button {
-//     float: none;
-//     display: block;
-//     text-align: left;
-//     width: 100%;
-//     margin: 0;
-//     padding: 14px;
-//   }
-//   .nav-belt input[type=text] {
-//     border: 1px solid #ccc;  
-//   }
-// }
-
-// .search-container {
-//   margin-top: 0.5rem;
-// }
-
-// .nav-right {
-//   margin-top: 0.5rem;
-// }
-
-// #nav-logo {
-//   padding: 5px 10px;
-// }
-
 .footer {
   left: 0;
   bottom: 0;
@@ -127,39 +37,12 @@ img.footer-logo {
   margin-left: 1rem;
 }
 
-// #mystery {
-//   margin-top: 8rem;
-// }
-
 .movie-card {
-  // border: 5px ridge rgb(147,141,147); 
   padding: 16px;
-  // background-color: black;
   float: left;
   width: 25%;
   padding: 0 10px;
 }
-
-// .movie-card img {
-//     margin: auto;
-//     display: block;
-//     border: 5px outset rgba(163,185,198);
-//     margin-top: 2rem;
-// }
-
-// .card-text {
-//     padding-left: 3.2rem;
-// }
-
-// .card-text a:visited, a:link {
-//   color: white;
-//   text-decoration: none;
-// }
-
-// .card-text p {
-//     text-align: right;
-//     padding-right: 3.2rem;
-// }
 
 .title {
     text-align: center;
@@ -192,16 +75,6 @@ img.footer-logo {
   float: left;
   padding: 0.5rem 0 0 10rem;
 }
-
-// #filter {
-//     float: right;
-//     text-align: right;
-//     padding-right: 0.5rem;
-// }
-
-// #filter a {
-//   color: white;
-// }
 
 .mat-toolbar.mat-primary {
   background: rgba(178,140,198,1);
