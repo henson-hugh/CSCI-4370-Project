@@ -10,6 +10,7 @@ export class Customer {
     zip: string = '';
     active: boolean = false;
     getPromo: boolean = false;
+    suspend: boolean = false;
     
     constructor(){}
 }
