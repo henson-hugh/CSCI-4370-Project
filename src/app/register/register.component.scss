@@ -22,12 +22,15 @@ h1 {
 
 .register-title {
     margin: auto;
-    width: 70%;
+    width: 15%;
     padding: 1rem;
+    background-color: white;
+    color: black;
+    text-align: center;
 }
 
 .link:link, .link:visited {
-    color: rgb(142, 76, 179);
+    color: rgba(0, 151, 238);
     text-decoration: none;
     font-size: 17px;
 }

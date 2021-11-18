@@ -1,0 +1,56 @@
+.mat-toolbar.mat-primary {
+    background: rgba(178,140,198,1);
+    color: #fff;
+}
+
+.mat-button {
+    font-size: 17px;
+ }
+  
+.toolbar-icon {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: rgba(163,185,198);
+}
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(90deg, rgba(178,140,198,1) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(163,185,198) 100%);
+  color: white;
+}
+
+.title {
+    margin: 3rem 11rem;
+}
+
+.general-fields {
+    margin-top: 1rem;
+}
+
+.container {
+    padding: 1rem;
+    background-color: white;
+    width: 75%;
+    margin: auto;
+    color: black;
+}
+
+.mat-form-field {
+    margin-right: 16px;
+    width: 335px;
+}
+
+.synopsis.mat-form-field {
+    width: 50%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.mat-input-element {
+    color: black !important;
+}

@@ -1,0 +1,93 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/admin-menu" routerLinkActive="active">
+        <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+    </button>
+    <a mat-button routerLink="/admin-menu" routerLinkActive="active">Back To Admin Menu</a>
+</mat-toolbar>
+
+<div class="title">
+    <h1>Manage Movies</h1>
+</div>
+<div class="container">
+    <form action="adminMenu.html">
+        <h2>Edit Movie</h2>
+        <h3>Enter Movie ID</h3>
+        <mat-form-field appearance="fill">
+            <mat-label>Movie ID</mat-label>
+            <input matInput placeholder="Enter Movie ID" name="movieId" id="movieId" [(ngModel)]="movie.mid" required>
+        </mat-form-field>
+
+        <div class="general-fields">
+            <h3>Fill in Movie Information</h3>
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Enter Title" name="title" id="title" [(ngModel)]="movie.title" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Rating</mat-label>
+                <input matInput placeholder="Enter Rating" name="rating" id="rating" [(ngModel)]="movie.rating" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Genre</mat-label>
+                <mat-chip-list #chipList required>
+                    <mat-chip
+                        *ngFor="let genre of genres"
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        (removed)="remove(genre)">
+                        {{genre.name}}
+                        <button matChipRemove *ngIf="removable">
+                        <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                    <input
+                        placeholder="Enter list of genres..."
+                        #fruitInput
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Trailer link</mat-label>
+                <input matInput placeholder="Enter Trailer Link" name="trailerLink" id="trailerLink" required>
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field class="synopsis" appearance="fill">
+            <mat-label>Synopsis</mat-label>
+            <textarea matInput placeholder="Enter Synopsis" name="synopsis" id="synopsis" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="7" required></textarea>
+        </mat-form-field>
+        
+        <div class="time">
+            <!-- <mat-form-field appearance="fill">
+                <mat-label>Time</mat-label>
+                <mat-chip-list #chipList required>
+                    <mat-chip
+                        *ngFor="let time of times"
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        (removed)="remove(time)">
+                        {{movie.name}}
+                        <button matChipRemove *ngIf="removable">
+                        <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                    <input
+                        placeholder="Enter list of genres..."
+                        #fruitInput
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field> -->
+        </div>
+    
+    
+        <button class="button save">Save</button>
+        <button class="button remove">Remove</button>  
+    
+    </form>
+</div>

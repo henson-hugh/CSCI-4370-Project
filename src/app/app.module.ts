@@ -32,6 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ManageMoviesComponent } from './admin-menu/manage-movies/manage-movies.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     LogoutComponent,
     PasswordResetComponent,
     PasswordResetConfirmComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ManageMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    TextFieldModule,
+    MatChipsModule
   ],
   providers: [LoginService, RegistrationService, EditProfileService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
