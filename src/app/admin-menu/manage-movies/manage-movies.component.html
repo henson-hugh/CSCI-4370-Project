@@ -49,7 +49,6 @@
           id="movieTitle"
           formControlName="movieTitle"
           required
-          [formControl]="movieForm.value['movieTitle']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -61,7 +60,6 @@
           id="movieDirector"
           formControlName="movieDirector"
           required
-          [formControl]="movieForm.value['movieDirector']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -73,7 +71,6 @@
           id="producer"
           formControlName="movieProducer"
           required
-          [value]="movieForm.value['movieProducer']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -85,7 +82,6 @@
           id="rating"
           formControlName="movieRating"
           required
-          [value]="movieForm.value['movieRating']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -97,7 +93,6 @@
           id="duration"
           formControlName="movieDuration"
           required
-          [value]="movieForm.value['movieDuration']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -133,7 +128,6 @@
           id="trailerPic"
           formControlName="movieTrailerPic"
           required
-          [value]="movieForm.value['movieTrailerPic']"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -145,7 +139,6 @@
             id="trailerVid"
             formControlName="movieTrailerVid"
             required
-            [value]="movieForm.value['movieTrailerVid']"
           />
         </mat-form-field>
     </div>
@@ -163,7 +156,6 @@
         cdkAutosizeMinRows="3"
         cdkAutosizeMaxRows="7"
         required
-        [value]="movieSynopsis"
       ></textarea>
     </mat-form-field>
 
@@ -210,7 +202,7 @@
               matInput
               placeholder="Enter Room ID"
               type="text"
-              formControlName="roomId"
+              formControlName="roomid"
               class="form-control"
             />
           </mat-form-field>

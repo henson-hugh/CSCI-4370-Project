@@ -6,6 +6,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { Showing } from 'src/app/model/showing';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { ManageMoviesService } from './manage-movies.service';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-movies',
@@ -17,9 +19,7 @@ export class ManageMoviesComponent implements OnInit {
   movieForm: FormGroup;
   movie: Movie = new Movie();
   genres: Genre[] = [];
-  showingList: Showing[] = [
-    new Showing(new Date('12-23-21'), new Date('12-23-21T00:00:00'))
-  ];
+  showingList: Showing[] = [];
 
   selectable = true;
   removable = true;
@@ -27,7 +27,7 @@ export class ManageMoviesComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
 
 
-  constructor(private _formBuilder: FormBuilder, private _service: ManageMoviesService) { }
+  constructor(private _formBuilder: FormBuilder, private _service: ManageMoviesService, private _router: Router) { }
 
   ngOnInit(): void {
     this.movieForm = this._formBuilder.group({
@@ -71,7 +71,7 @@ export class ManageMoviesComponent implements OnInit {
     return this._formBuilder.group({
       date: '',
       time: '',
-      roomId: ''
+      roomid: ''
     });
   }
 
@@ -87,14 +87,14 @@ export class ManageMoviesComponent implements OnInit {
     console.log(this.movieForm.value);
 
     this.movie.mid = this.movieForm.value['movieId'];
-    this.movie.title = this.movieForm.value['movieTitle'];
-    this.movie.director = this.movieForm.value['movieDirector'];
-    this.movie.producer = this.movieForm.value['movieProducer'];
-    this.movie.rating = this.movieForm.value['movieRating'];
-    this.movie.trailerpic = this.movieForm.value['movieTrailerPic'];
-    this.movie.trailervid = this.movieForm.value['movieTrailerVid'];
-    this.movie.synopsis = this.movieForm.value['movieSynopsis'];
-    this.movie.duration = this.movieForm.value['movieDuration'];
+    this.movie.title = this.movieForm.controls.movieTitle.value;
+    this.movie.director = this.movieForm.controls.movieDirector.value;
+    this.movie.producer = this.movieForm.controls.movieProducer.value;
+    this.movie.rating = this.movieForm.controls.movieRating.value;
+    this.movie.trailerpic = this.movieForm.controls.movieTrailerPic.value;
+    this.movie.trailervid = this.movieForm.controls.movieTrailerVid.value;
+    this.movie.synopsis = this.movieForm.controls.movieSynopsis.value;
+    this.movie.duration = this.movieForm.controls.movieDuration.value;
     this.showingList = this.movieForm.value['showings'];
     this.showingList.forEach(show => {
       show.movieid = this.movieId;
@@ -105,26 +105,60 @@ export class ManageMoviesComponent implements OnInit {
     console.log('showingList ' + this.showingList);
 
 
-    // call service methods save the changes to movie, genres, and showingList, respectively, to the database
+    this._service.editMovieInfoFromRemote(this.movie).subscribe(
+      data => {
+
+      }
+    )
+
+    this.genres.forEach((genre: Genre) => {
+      this._service.editGenreInfoFromRemote(genre.name, this.movieId).subscribe(
+        data =>{
+
+        },
+        error => {
+          console.log("exists, or something wrong");
+        }
+      )
+    })
+
+    this.showingList.forEach(show => {
+      this._service.editShowingInfoFromRemote(show).subscribe(
+        data =>{
+
+        }
+      )
+    });
+
+    this._router.navigate(['/home']);
   }
 
   findByMovieId(movieId: number) {
     this._service.getMovieInfoFromRemote(this.movieForm.value['movieId']).subscribe(
       data => {
-        this.movieForm.value['movieTitle'] = data.movie['title']
-        this.movieForm.value['movieDirector'] = data.movie['director']
-        this.movieForm.value['movieProducer'] = data.movie['producer']
-        this.movieForm.value['movieRating'] = data.movie['rating']
-        this.movieForm.value['movieTrailerPic'] = data.movie['trailerpic']
-        this.movieForm.value['movieTrailerVid'] = data.movie['trailervid']
-        this.movieForm.value['movieSynopsis'] = data.movie['synopsis']
-        this.movieForm.value['movieDuration'] = data.movie['duration']
+        this.movieForm.controls.movieTitle.setValue(data.movie['title']);
+        this.movieForm.controls.movieDirector.setValue(data.movie['director']);
+        this.movieForm.controls.movieProducer.setValue(data.movie['producer']);
+        this.movieForm.controls.movieRating.setValue(data.movie['rating']);
+        this.movieForm.controls.movieTrailerPic.setValue(data.movie['trailerpic']);
+        this.movieForm.controls.movieTrailerVid.setValue(data.movie['trailervid']);
+        this.movieForm.controls.movieSynopsis.setValue(data.movie['synopsis']);
+        this.movieForm.controls.movieDuration.setValue(data.movie['duration']);
 
         data.genres.forEach((element: any) =>{
           this.genres.push({name: element['name']});
         })
 
-        console.log(this.movieForm.value['movieDirector']);
+        data.showings.forEach((element: any) =>{
+
+          var d = new Date(element['date']);
+
+          this.showings().push(this._formBuilder.group({
+            date: new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + d.getTimezoneOffset()).toISOString(),
+            time: element['time'],
+            roomid: element['roomid']
+          }))
+        })
 
         // set all fields
         // set genre array

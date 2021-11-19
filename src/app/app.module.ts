@@ -43,6 +43,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage-promotions.component';
 import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.service';
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
     ToolbarComponent,
     ManageMoviesComponent,
     AddMovieComponent,
-    ManagePromotionsComponent
+    ManagePromotionsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

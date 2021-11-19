@@ -6,6 +6,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { Showing } from 'src/app/model/showing';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { AddMovieService } from './add-movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-movie',
@@ -14,6 +15,7 @@ import { AddMovieService } from './add-movie.service';
 })
 export class AddMovieComponent implements OnInit {
 
+  movieId: number;
   movieForm: FormGroup;
   movie: Movie = new Movie();
   genres: Genre[] = [];
@@ -24,7 +26,7 @@ export class AddMovieComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
 
-  constructor(private _formBuilder: FormBuilder, private _service: AddMovieService) { }
+  constructor(private _formBuilder: FormBuilder, private _service: AddMovieService, private _router: Router) { }
 
   ngOnInit(): void {
     this.movieForm = this._formBuilder.group({
@@ -43,7 +45,7 @@ export class AddMovieComponent implements OnInit {
   showings(): FormArray {
     return this.movieForm.get('showings') as FormArray;
   }
-  
+
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
@@ -98,8 +100,30 @@ export class AddMovieComponent implements OnInit {
     this._service.addMovieInfoFromRemote(this.movie).subscribe(
       data => {
         console.log('works');
-    }, error => {
-        console.log('dont work');
-    });
+        this.movieId = data['mid'];
+
+        this.showingList.forEach(show => {
+          this._formBuilder.group({
+            date: show.date,
+            time: show.time,
+            roomId: show.roomid
+          });
+          show.movieid = this.movieId;
+        })
+
+        this.genres.forEach((genre: Genre) => {
+          this._service.addGenreInfoFromRemote(genre.name, this.movieId).subscribe(
+            data =>{
+
+            },
+            error => {
+              console.log("exists, or something wrong");
+            }
+          )
+        })
+
+
+        this._router.navigate(['/home']);
+      })
   }
 }

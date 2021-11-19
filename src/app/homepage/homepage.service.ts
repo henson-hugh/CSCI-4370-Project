@@ -17,4 +17,12 @@ export class HomePageService {
     public getCustomerInfoFromRemote(customer: Customer): Observable<any> {
         return this._http.get<any>("http://localhost:8080/customer/" + sessionStorage.getItem('cid'));
       }
+
+      public getNowMovieInfoFromRemote(): Observable<any> {
+        return this._http.post<any>("http://localhost:8080/showing/movie/home/now", '');
+      }
+
+      public getSoonMovieInfoFromRemote(): Observable<any> {
+        return this._http.post<any>("http://localhost:8080/showing/movie/home/soon", '');
+      }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
+import { Movie } from '../model/movie';
+import { SearchComponent } from '../search/search.component';
 import { HomePageService } from './homepage.service';
 
 @Component({
@@ -12,6 +14,8 @@ import { HomePageService } from './homepage.service';
 })
 export class HomepageComponent implements OnInit {
   selectedValue: string;
+  searchval: string = (localStorage.getItem('search') || '');
+  type: string = (localStorage.getItem('type') || 'title');
   loggedIn: string = JSON.parse(sessionStorage.getItem('loggedIn') || 'false');
   userId: number = 0;
   customer: Customer = new Customer();
@@ -20,6 +24,11 @@ export class HomepageComponent implements OnInit {
   profileURL: string = 'login';
   registerName: string = 'Register';
   registerURL: string = 'register';
+
+  movies: Movie = new Movie();
+  nowCards: any = []
+  soonCards: any = []
+
   constructor(private _service: HomePageService, private _router: Router) {}
 
   async ngOnInit(): Promise<void> {
@@ -36,10 +45,38 @@ export class HomepageComponent implements OnInit {
         })
     }
 
-
+    this.getInfo();
     //send to admin page
     if (sessionStorage.getItem('privilege')) {
       this._router.navigate(['/admin-menu']);
     }
   }
+
+  search() {
+    localStorage.setItem('search', this.searchval);
+    localStorage.setItem('type', this.type);
+    this._router.navigate(['/search']);
+  }
+
+  getInfo() {
+    this._service.getNowMovieInfoFromRemote().subscribe(
+      data => {
+        this.nowCards = Array.of(data);
+        console.log(data);
+      })
+
+      this._service.getSoonMovieInfoFromRemote().subscribe(
+        data => {
+          this.soonCards = Array.of(data);
+          console.log(data);
+        })
+
+  }
+
+  gotoInfo(id: number) {
+    localStorage.setItem('movieid', id.toString());
+    this._router.navigate(['/movie-information']);
+  }
+
+
 }

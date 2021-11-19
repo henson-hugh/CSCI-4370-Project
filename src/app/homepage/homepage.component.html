@@ -6,20 +6,20 @@
     <p class="search-text">Search</p>
     <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
       <mat-label>By</mat-label>
-      <mat-select value="option0">
-        <mat-option value="option0">Title</mat-option>
-        <mat-option value="option1">Genre</mat-option>
-        <mat-option value="option2">Director</mat-option>
-        <mat-option value="option3">Producer</mat-option>
-        <mat-option value="option4">Cast</mat-option>
-        <mat-option value="option5">Rating</mat-option>
+      <mat-select [(value)]="type">
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="genre">Genre</mat-option>
+        <mat-option value="director">Director</mat-option>
+        <mat-option value="producer">Producer</mat-option>
+        <mat-option value="cast">Cast</mat-option>
+        <mat-option value="rating">Rating</mat-option>
       </mat-select>
     </mat-form-field>
     <p>:</p>
     <mat-form-field appearance="outline" class="search-bar" [style.width.px]=360>
-      <input matInput placeholder="Type here..."/>
+      <input matInput placeholder="Type here..." [(ngModel)]="searchval"/>
     </mat-form-field>
-    <a class="search-button" mat-raised-button color="primary" [routerLink] = " '/home' " routerLinkActive="active">
+    <a class="search-button" mat-raised-button color="primary" role="button" (click)="search()">
       <mat-icon class="search-icon">search</mat-icon> Search
     </a>
     <div class="spacer"></div>
@@ -50,147 +50,67 @@
             <span class="label-title">Now Playing</span>
         </ng-template>
         <h2 class="tab-title">Now Playing</h2>
-        <div class="movie-container recommended">
-            <div class="movie-card recommended">
+        <div class="movie-container recommended"*ngFor="let card of nowCards">
+            <div class="movie-card recommended" *ngFor="let movie of card.movies">
                 <mat-card class="recommended-card">
                     <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>Shiba Inu</mat-card-title>
-                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                      <div></div>
+                      <mat-card-title>{{movie.movie.title}}</mat-card-title>
+                      <mat-card-subtitle>Rated: {{movie.movie.rating}} </mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <img mat-card-image src={{movie.movie.trailerpic}} alt="Photo of a Shiba Inu">
                     <mat-card-content>
+                      <p style="display: inline;">Genres:</p>
+                      <p style="display: inline;"*ngFor="let genre of movie.genres">
+                        {{genre.name}}
+                      </p>
                       <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
+                        Duration: {{movie.movie.duration}}Min
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
+                      <button mat-button (click)="gotoInfo(movie.movie.mid)">Goto</button>
+                      <button mat-button>Book</button>
                     </mat-card-actions>
                 </mat-card>
-            </div>
-
-            <div class="movie-card recommended">
-                <mat-card class="recommended-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>Shiba Inu</mat-card-title>
-                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-
-            <div class="movie-card recommended">
-                <mat-card class="recommended-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>Shiba Inu</mat-card-title>
-                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-
-            <div class="movie-card recommended">
-                <mat-card class="recommended-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>Shiba Inu</mat-card-title>
-                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
+          </div>
         </div>
     </mat-tab>
     <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="coming-soon-icon">event</mat-icon>
-            <span class="label-title">Coming Soon</span>
-        </ng-template>
-        <h2 class="tab-title">Coming Soon</h2>
-        <div class="movie-container action">
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-        </div>
+      <ng-template mat-tab-label>
+        <mat-icon class="now-playing-icon">local_play</mat-icon>
+        <span class="label-title">Coming Soon</span>
+    </ng-template>
+    <h2 class="tab-title">Coming Soon</h2>
+    <div class="movie-container recommended"*ngFor="let card of soonCards">
+        <div class="movie-card recommended" *ngFor="let movie of card.movies">
+            <mat-card class="recommended-card">
+                <mat-card-header>
+                  <div></div>
+                  <mat-card-title>{{movie.movie.title}}</mat-card-title>
+                  <mat-card-subtitle>Rated: {{movie.movie.rating}} </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{movie.movie.trailerpic}} alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <p style="display: inline;">Genres:</p>
+                  <p style="display: inline;"*ngFor="let genre of movie.genres">
+                    {{genre.name}}
+                  </p>
+                  <p>
+                    Duration: {{movie.movie.duration}}Min
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button (click)="gotoInfo(movie.movie.mid)">Goto</button>
+                  <button mat-button>Book</button>
+                </mat-card-actions>
+            </mat-card>
+      </div>
+    </div>
     </mat-tab>
   </mat-tab-group>
 
-<h1 id="genre-label" class="genre">Popular Genres</h1>
+<!-- <h1 id="genre-label" class="genre">Popular Genres</h1>
 
 <mat-tab-group>
     <mat-tab>
@@ -337,7 +257,7 @@
             </div>
         </div>
     </mat-tab>
-</mat-tab-group>
+</mat-tab-group> -->
 
 <div class="footer">
     <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" class="footer-logo" alt="logo" height="100px" width="100px"></a>

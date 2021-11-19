@@ -36,20 +36,9 @@
             required
           />
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>6 Character Promotion Code</mat-label>
-          <input
-            matInput
-            placeholder="Enter 6 Character Code"
-            name="pcode"
-            id="pcode"
-            formControlName="pcode"
-            required
-          />
-        </mat-form-field>
-        
+
       </div>
-  
+
       <button mat-button (click)="submitPromotion()">Submit New Promotion</button>
       <a class="active" id="logo" routerLink="/admin-menu" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
     </form>

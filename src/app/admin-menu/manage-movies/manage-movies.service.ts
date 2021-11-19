@@ -17,14 +17,14 @@ export class ManageMoviesService {
   }
 
   public editMovieInfoFromRemote(movie: Movie): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/showing/", movie); // change this to correct endpoint
+    return this._http.post<any>("http://localhost:8080/admin/movie/edit", movie);
   }
 
-  public editGenreInfoFromRemote(genre: Genre): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/genre/", genre); // change this to correct endpoint
+  public editGenreInfoFromRemote(genre: string, movieId:number): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/admin/movie/" + movieId + "/addGenre", genre);
   }
 
   public editShowingInfoFromRemote(showing: Showing): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/showing/", showing); // change this to correct endpoint
+    return this._http.post<any>("http://localhost:8080/admin/movie/schedule", showing); // change this to correct endpoint
   }
 }
