@@ -87,7 +87,7 @@ import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
     MatSelectModule
   ],
   providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, ManageMoviesService, AddMovieService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

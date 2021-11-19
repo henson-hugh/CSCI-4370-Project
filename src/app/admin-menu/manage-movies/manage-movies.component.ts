@@ -4,7 +4,7 @@ import { Movie } from 'src/app/model/movie';
 import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Showing } from 'src/app/model/showing';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { ManageMoviesService } from './manage-movies.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class ManageMoviesComponent implements OnInit {
     return this.movieForm.get('showings') as FormArray;
   }
 
-  
+
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
@@ -104,15 +104,27 @@ export class ManageMoviesComponent implements OnInit {
     console.log('genres ' + this.genres);
     console.log('showingList ' + this.showingList);
 
+
     // call service methods save the changes to movie, genres, and showingList, respectively, to the database
   }
 
   findByMovieId(movieId: number) {
     this._service.getMovieInfoFromRemote(this.movieForm.value['movieId']).subscribe(
       data => {
-        console.log(data['director']);
-        this.movieForm.value['movieTitle'] = data['title']
-        this.movieForm.value['movieDirector'] = data['director']
+        this.movieForm.value['movieTitle'] = data.movie['title']
+        this.movieForm.value['movieDirector'] = data.movie['director']
+        this.movieForm.value['movieProducer'] = data.movie['producer']
+        this.movieForm.value['movieRating'] = data.movie['rating']
+        this.movieForm.value['movieTrailerPic'] = data.movie['trailerpic']
+        this.movieForm.value['movieTrailerVid'] = data.movie['trailervid']
+        this.movieForm.value['movieSynopsis'] = data.movie['synopsis']
+        this.movieForm.value['movieDuration'] = data.movie['duration']
+
+        data.genres.forEach((element: any) =>{
+          this.genres.push({name: element['name']});
+        })
+
+        console.log(this.movieForm.value['movieDirector']);
 
         // set all fields
         // set genre array
@@ -131,6 +143,30 @@ export class ManageMoviesComponent implements OnInit {
 
   get movieDirector() {
     return this.movieForm.value['movieDirector'];
+  }
+
+  get movieProducer() {
+    return this.movieForm.value['movieProducer'];
+  }
+
+  get movieDuration() {
+    return this.movieForm.value['movieDuration'];
+  }
+
+  get movieRating() {
+    return this.movieForm.value['movieRating'];
+  }
+
+  get movieSynopsis() {
+    return this.movieForm.value['movieSynopsis'];
+  }
+
+  get movieTrailerPic() {
+    return this.movieForm.value['movieTrailerPic'];
+  }
+
+  get movieTrailerVid() {
+    return this.movieForm.value['movieTrailerVid'];
   }
 
   get shows() {
