@@ -12,6 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PasswordResetConfirmComponent } from './password-reset-confirm/password-reset-confirm.component';
 import { ManageMoviesComponent } from './admin-menu/manage-movies/manage-movies.component';
+import { AddMovieComponent } from './admin-menu/add-movie/add-movie.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'password-reset', component: PasswordResetComponent},
   { path: 'password-reset-confirm', component: PasswordResetConfirmComponent},
-  { path: 'manage-movies', component: ManageMoviesComponent}
+  { path: 'manage-movies', component: ManageMoviesComponent},
+  { path: 'add-movie', component: AddMovieComponent},
 ];
 
 @NgModule({

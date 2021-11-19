@@ -37,6 +37,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddMovieComponent } from './admin-menu/add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     PasswordResetComponent,
     PasswordResetConfirmComponent,
     ToolbarComponent,
-    ManageMoviesComponent
+    ManageMoviesComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,

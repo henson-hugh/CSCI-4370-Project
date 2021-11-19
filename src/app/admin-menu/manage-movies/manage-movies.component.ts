@@ -5,6 +5,7 @@ import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Showing } from 'src/app/model/showing';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { ManageMoviesService } from './manage-movies.service';
 
 @Component({
   selector: 'app-manage-movies',
@@ -16,6 +17,7 @@ export class ManageMoviesComponent implements OnInit {
   movieForm: FormGroup;
   movie: Movie = new Movie();
   genres: Genre[] = [];
+  showingList: Showing[] = [];
 
   selectable = true;
   removable = true;
@@ -23,12 +25,14 @@ export class ManageMoviesComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
 
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private _service: ManageMoviesService) { }
 
   ngOnInit(): void {
     this.movieForm = this._formBuilder.group({
       movieId: '',
       movieTitle: '',
+      movieDirector: '',
+      movieProducer: '',
       movieRating: '',
       movieDuration: '',
       movieTrailer: '',
@@ -81,5 +85,17 @@ export class ManageMoviesComponent implements OnInit {
   submitMovie() {
     console.log(this.genres);
     console.log(this.movieForm.value);
+  }
+
+  findByMovieId(movieId: number) {
+    this._service.getMovieInfoFromRemote(this.movieForm.value['movieId']).subscribe(
+      data => {
+        data
+      }
+    );
+  }
+
+  get movieId() {
+    return this.movieForm.value['movieId'];
   }
 }

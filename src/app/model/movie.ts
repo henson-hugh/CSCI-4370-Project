@@ -1,7 +1,7 @@
 export class Movie {
     mid: number;
     title: string;
-    direcor: string;
+    director: string;
     producer: string;
     synopsis: string;
     trailerpic: string;
