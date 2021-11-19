@@ -17,7 +17,9 @@ export class ManageMoviesComponent implements OnInit {
   movieForm: FormGroup;
   movie: Movie = new Movie();
   genres: Genre[] = [];
-  showingList: Showing[] = [];
+  showingList: Showing[] = [
+    new Showing(new Date('12-23-21'), new Date('12-23-21T00:00:00'))
+  ];
 
   selectable = true;
   removable = true;
@@ -35,9 +37,9 @@ export class ManageMoviesComponent implements OnInit {
       movieProducer: '',
       movieRating: '',
       movieDuration: '',
-      movieTrailer: '',
+      movieTrailerPic: '',
+      movieTrailerVid: '',
       movieSynopsis: '',
-      movieGenres: [],
       showings: this._formBuilder.array([])
     });
   }
@@ -75,7 +77,6 @@ export class ManageMoviesComponent implements OnInit {
 
   addShowing(): void {
     this.showings().push(this.createShowing());
-    this.movieForm.controls['movieGenres'].setValue(JSON.stringify(this.genres));
   }
 
   removeShowing(i: number) {
@@ -83,19 +84,56 @@ export class ManageMoviesComponent implements OnInit {
   }
 
   submitMovie() {
-    console.log(this.genres);
     console.log(this.movieForm.value);
+
+    this.movie.mid = this.movieForm.value['movieId'];
+    this.movie.title = this.movieForm.value['movieTitle'];
+    this.movie.director = this.movieForm.value['movieDirector'];
+    this.movie.producer = this.movieForm.value['movieProducer'];
+    this.movie.rating = this.movieForm.value['movieRating'];
+    this.movie.trailerpic = this.movieForm.value['movieTrailerPic'];
+    this.movie.trailervid = this.movieForm.value['movieTrailerVid'];
+    this.movie.synopsis = this.movieForm.value['movieSynopsis'];
+    this.movie.duration = this.movieForm.value['movieDuration'];
+    this.showingList = this.movieForm.value['showings'];
+    this.showingList.forEach(show => {
+      show.movieid = this.movieId;
+    })
+
+    console.log('movie ' + this.movie);
+    console.log('genres ' + this.genres);
+    console.log('showingList ' + this.showingList);
+
+    // call service methods save the changes to movie, genres, and showingList, respectively, to the database
   }
 
   findByMovieId(movieId: number) {
     this._service.getMovieInfoFromRemote(this.movieForm.value['movieId']).subscribe(
       data => {
-        data
+        console.log(data['director']);
+        this.movieForm.value['movieTitle'] = data['title']
+        this.movieForm.value['movieDirector'] = data['director']
+
+        // set all fields
+        // set genre array
+        // set showing array
       }
     );
   }
 
   get movieId() {
     return this.movieForm.value['movieId'];
+  }
+
+  get movieTitle() {
+    return this.movieForm.value['movieTitle'];
+  }
+
+  get movieDirector() {
+    return this.movieForm.value['movieDirector'];
+  }
+
+  get shows() {
+    return this.movieForm.value['showings'];
   }
 }

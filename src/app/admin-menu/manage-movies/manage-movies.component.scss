@@ -5,7 +5,19 @@
 
 .mat-button {
     font-size: 17px;
+}
+
+.container{
+    .mat-button {
+    font-size: 17px;
+    border: 1px solid black;
+    margin: 1rem;
  }
+}
+
+.mat-button.cancel {
+    color: red;
+}
   
 .toolbar-icon {
     border-radius: 50%;
@@ -13,17 +25,8 @@
     border-color: rgba(163,185,198);
 }
 
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(90deg, rgba(178,140,198,1) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(163,185,198) 100%);
-  color: white;
-}
-
 .title {
-    margin: 3rem 11rem;
+    margin: 3rem 15rem;
 }
 
 .general-fields {
@@ -47,8 +50,8 @@ body {
     width: 50%;
 }
 
-ul {
-    list-style-type: none;
+th {
+    text-align: left;
 }
 
 .mat-input-element {

@@ -1,0 +1,59 @@
+.mat-toolbar.mat-primary {
+  background: rgba(178, 140, 198, 1);
+  color: #fff;
+}
+
+.mat-button {
+  font-size: 17px;
+}
+
+.container {
+  .mat-button {
+    font-size: 17px;
+    border: 1px solid black;
+    margin: 1rem;
+  }
+}
+
+.mat-button.cancel {
+    color: red;
+}
+
+.toolbar-icon {
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: rgba(163, 185, 198);
+}
+
+.title {
+  margin: 3rem 15rem;
+}
+
+.general-fields {
+  margin-top: 1rem;
+}
+
+.container {
+  padding: 1rem;
+  background-color: white;
+  width: 75%;
+  margin: auto;
+  color: black;
+}
+
+.mat-form-field {
+  margin-right: 16px;
+  width: 335px;
+}
+
+.synopsis.mat-form-field {
+  width: 50%;
+}
+
+th {
+  text-align: left;
+}
+
+.mat-input-element {
+  color: black !important;
+}

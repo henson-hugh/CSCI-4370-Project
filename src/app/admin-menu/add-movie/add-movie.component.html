@@ -7,3 +7,194 @@
 <div class="title">
     <h1>Add Movie</h1>
 </div>
+<div class="container">
+    <form [formGroup]="movieForm">
+      <div class="general-fields">
+        <h3>Fill in Movie Information</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Enter Title"
+            name="title"
+            id="title"
+            formControlName="movieTitle"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Director</mat-label>
+          <input
+            matInput
+            placeholder="Enter Director"
+            name="director"
+            id="director"
+            formControlName="movieDirector"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Producer</mat-label>
+          <input
+            matInput
+            placeholder="Enter Producer"
+            name="producer"
+            id="producer"
+            formControlName="movieProducer"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Rating</mat-label>
+          <input
+            matInput
+            placeholder="Enter Rating"
+            name="rating"
+            id="rating"
+            formControlName="movieRating"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Duration</mat-label>
+          <input
+            matInput
+            placeholder="Enter Duration in Minutes"
+            name="duration"
+            id="duration"
+            formControlName="movieDuration"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <mat-chip-list #chipList required>
+            <mat-chip
+              *ngFor="let genre of genres"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(genre)"
+            >
+              {{ genre.name }}
+              <button matChipRemove *ngIf="removable">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="Enter list of genres..."
+              #genreInput
+              [matChipInputAddOnBlur]="addOnBlur"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)"
+            />
+          </mat-chip-list>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Trailer Picture</mat-label>
+          <input
+            matInput
+            placeholder="Enter Trailer Picture"
+            name="trailerPic"
+            id="trailerPic"
+            formControlName="movieTrailerPic"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Trailer Video</mat-label>
+            <input
+              matInput
+              placeholder="Enter Trailer Video"
+              name="trailerVid"
+              id="trailerVid"
+              formControlName="movieTrailerVid"
+              required
+            />
+          </mat-form-field>
+      </div>
+  
+      <mat-form-field class="synopsis" appearance="fill">
+        <mat-label>Synopsis</mat-label>
+        <textarea
+          matInput
+          formControlName="movieSynopsis"
+          placeholder="Enter Synopsis"
+          name="synopsis"
+          id="synopsis"
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="3"
+          cdkAutosizeMaxRows="7"
+          required
+        ></textarea>
+      </mat-form-field>
+  
+      <table class="table table-bordered" formArrayName="showings">
+        <tr>
+          <th colspan="2">Add Movie Showings:</th>
+        </tr>
+        <tr
+          *ngFor="let showing of showings().controls; let i = index"
+          [formGroupName]="i"
+        >
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="date"
+                class="form-control"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Time</mat-label>
+              <input
+                matInput
+                placeholder="HH-mm"
+                type="text"
+                formControlName="time"
+                class="form-control"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Room ID</mat-label>
+              <input
+                matInput
+                placeholder="Enter Room ID"
+                type="text"
+                formControlName="roomId"
+                class="form-control"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-button (click)="removeShowing(i)" class="btn btn-danger">
+              <mat-icon class="login-icon">delete</mat-icon>Remove
+            </button>
+          </td>
+        </tr>
+        <button
+          mat-button
+          type="button"
+          (click)="addShowing()"
+          class="btn btn-primary"
+        >
+          Add Showing
+        </button>
+      </table>
+  
+      <button mat-button (click)="submitMovie()">Submit New Movie</button>
+      <a class="active" id="logo" routerLink="/admin-menu" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+    </form>
+  </div>

@@ -7,6 +7,7 @@ export class Movie {
     trailerpic: string;
     trailervid: string;
     rating: string;
+    duration: number;
     
     constructor(){}
 }

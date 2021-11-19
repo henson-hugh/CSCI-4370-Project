@@ -24,8 +24,7 @@
 </div>
 <div class="container">
   <form [formGroup]="movieForm">
-    <h2>Edit Movie</h2>
-    <h3>Enter Movie ID</h3>
+    <h3>Select a Movie by ID</h3>
     <mat-form-field appearance="fill">
       <mat-label>Movie ID</mat-label>
       <input
@@ -38,7 +37,7 @@
         [value]="movieId"
       />
     </mat-form-field>
-    <button mat-button (click)="findByMovieId(movie.mid)">Search</button>
+    <button mat-button (click)="findByMovieId(movie.mid)">Select</button>
     <div class="general-fields">
       <h3>Fill in Movie Information</h3>
       <mat-form-field appearance="fill">
@@ -46,10 +45,11 @@
         <input
           matInput
           placeholder="Enter Title"
-          name="title"
-          id="title"
+          name="movieTitle"
+          id="movieTitle"
           formControlName="movieTitle"
           required
+          [value]="movieTitle"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -61,6 +61,7 @@
           id="director"
           formControlName="movieDirector"
           required
+          [value]="movieDirector"
         />
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -98,7 +99,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Genre</mat-label>
-        <mat-chip-list #chipList required formControlName="movieGenres">
+        <mat-chip-list #chipList required>
           <mat-chip
             *ngFor="let genre of genres"
             [selectable]="selectable"
@@ -112,7 +113,7 @@
           </mat-chip>
           <input
             placeholder="Enter list of genres..."
-            #fruitInput
+            #genreInput
             [matChipInputAddOnBlur]="addOnBlur"
             [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -121,16 +122,27 @@
         </mat-chip-list>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Trailer link</mat-label>
+        <mat-label>Trailer Picture</mat-label>
         <input
           matInput
-          placeholder="Enter Trailer Link"
-          name="trailerLink"
-          id="trailerLink"
-          formControlName="movieTrailer"
+          placeholder="Enter Trailer Picture"
+          name="trailerPic"
+          id="trailerPic"
+          formControlName="movieTrailerPic"
           required
         />
       </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Trailer Video</mat-label>
+          <input
+            matInput
+            placeholder="Enter Trailer Video"
+            name="trailerVid"
+            id="trailerVid"
+            formControlName="movieTrailerVid"
+            required
+          />
+        </mat-form-field>
     </div>
 
     <mat-form-field class="synopsis" appearance="fill">
@@ -213,7 +225,7 @@
       </button>
     </table>
 
-    <button mat-button (click)="submitMovie()">Save</button>
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="submitMovie()">Save Changes</button>
+    <a class="active" id="logo" routerLink="/admin-menu" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
   </form>
 </div>
