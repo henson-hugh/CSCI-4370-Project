@@ -40,6 +40,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AddMovieComponent } from './admin-menu/add-movie/add-movie.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
+import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage-promotions.component';
+import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.service';
+import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,8 @@ import {MatSelectModule} from '@angular/material/select';
     PasswordResetConfirmComponent,
     ToolbarComponent,
     ManageMoviesComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    ManagePromotionsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,8 +86,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatNativeDateModule,
     MatSelectModule
   ],
-  providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
-  bootstrap: [AppComponent],
+  providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, ManageMoviesService, AddMovieService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  bootstrap: [AppComponent]
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
