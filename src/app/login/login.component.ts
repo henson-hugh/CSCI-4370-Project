@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
         // check for privilege
         if (data['privilege'] == 'admin') { // send to admin page
+          sessionStorage.setItem('privilege', '1');
           this._router.navigate(['/admin-menu']);
         } else { // send to customer page
           if (!data['verified']) { // check verification

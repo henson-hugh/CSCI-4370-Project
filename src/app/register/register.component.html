@@ -11,10 +11,9 @@
 </div>
 <div class="register-title">
   <h2>Register</h2>
-  <b>Existing user? <a class="link" routerLink="/login" routerLinkActive="active">Login here!</a></b>
 </div>
 <mat-stepper orientation="vertical" #stepper linear>
-  
+
   <mat-step [stepControl]="firstFormGroup" [editable]="true">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Fill out your Login and Contact Details</ng-template>
@@ -90,3 +89,6 @@
     </form>
   </mat-step>
 </mat-stepper>
+<div>
+  <b>Existing user? <a class="link" routerLink="/login" routerLinkActive="active">Login here!</a></b>
+</div>

@@ -3,12 +3,33 @@
         <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
     </button>
     <span class="toolbar-title">Pigeon Theatres</span>
+    <p class="search-text">Search</p>
+    <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
+      <mat-label>By</mat-label>
+      <mat-select value="option0">
+        <mat-option value="option0">Title</mat-option>
+        <mat-option value="option1">Genre</mat-option>
+        <mat-option value="option2">Director</mat-option>
+        <mat-option value="option3">Producer</mat-option>
+        <mat-option value="option4">Cast</mat-option>
+        <mat-option value="option5">Rating</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>:</p>
+    <mat-form-field appearance="outline" class="search-bar" [style.width.px]=360>
+      <input matInput placeholder="Type here..."/>
+    </mat-form-field>
+    <a class="search-button" mat-raised-button color="primary" [routerLink] = " '/home' " routerLinkActive="active">
+      <mat-icon class="search-icon">search</mat-icon> Search
+    </a>
     <div class="spacer"></div>
     <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
-        <mat-icon class="login-icon">login</mat-icon> {{profileName}}
+        <mat-icon class="login-icon">{{loginIcon}}</mat-icon> {{profileName}}
     </a>
     <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
 </mat-toolbar>
+
+
 
 <header>
     <div class="title">
@@ -51,7 +72,7 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
-        
+
             <div class="movie-card recommended">
                 <mat-card class="recommended-card">
                     <mat-card-header>
@@ -73,7 +94,7 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
-        
+
             <div class="movie-card recommended">
                 <mat-card class="recommended-card">
                     <mat-card-header>
@@ -95,7 +116,7 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
-        
+
             <div class="movie-card recommended">
                 <mat-card class="recommended-card">
                     <mat-card-header>
@@ -127,7 +148,7 @@
         <h2 class="tab-title">Coming Soon</h2>
         <div class="movie-container action">
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -135,9 +156,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -145,9 +166,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -155,9 +176,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -180,7 +201,7 @@
         <h2 class="tab-title" id="action">Action</h2>
         <div class="movie-container action">
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -188,9 +209,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -198,9 +219,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -208,9 +229,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -228,7 +249,7 @@
         <h2 class="tab-title" id="comedy">Comedy</h2>
         <div class="movie-container action">
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -236,9 +257,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -246,9 +267,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -256,9 +277,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -276,7 +297,7 @@
         <h2 class="tab-title" id="mystery">Mystery</h2>
         <div class="movie-container action">
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -284,9 +305,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -294,9 +315,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
@@ -304,9 +325,9 @@
                     <a href="#"><p><b>Get Tickets ></b></p></a>
                 </div>
             </div>
-        
+
             <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">                
+                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
                 <div class="card-text">
                     <h2>The Sweet Man</h2>
                     <h3>2 hour 23 minutes</h3>
