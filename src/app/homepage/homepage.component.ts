@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { HomePageService } from './homepage.service';
@@ -10,9 +11,11 @@ import { HomePageService } from './homepage.service';
   encapsulation: ViewEncapsulation.None
 })
 export class HomepageComponent implements OnInit {
+  selectedValue: string;
   loggedIn: string = JSON.parse(sessionStorage.getItem('loggedIn') || 'false');
   userId: number = 0;
   customer: Customer = new Customer();
+  loginIcon: string = 'login';
   profileName: string = 'Login';
   profileURL: string = 'login';
   registerName: string = 'Register';
@@ -29,8 +32,14 @@ export class HomepageComponent implements OnInit {
           this.profileURL = "edit-profile";
           this.registerName = "Logout";
           this.registerURL = "logout";
+          this.loginIcon = "edit";
         })
     }
-  }
 
+
+    //send to admin page
+    if (sessionStorage.getItem('privilege')) {
+      this._router.navigate(['/admin-menu']);
+    }
+  }
 }

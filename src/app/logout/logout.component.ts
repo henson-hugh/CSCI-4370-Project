@@ -14,8 +14,7 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.removeItem('loggedIn');
-    sessionStorage.removeItem('cid');
+    sessionStorage.clear();
     this._router.navigate(['/home']);
   }
 

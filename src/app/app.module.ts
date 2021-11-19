@@ -38,6 +38,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AddMovieComponent } from './admin-menu/add-movie/add-movie.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MatSelectModule} from '@angular/material/select';
 import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage-promotions.component';
 import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.service';
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
@@ -81,9 +83,11 @@ import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
     TextFieldModule,
     MatChipsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, ManageMoviesService, AddMovieService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
