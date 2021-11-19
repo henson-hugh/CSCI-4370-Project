@@ -35,6 +35,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ManageMoviesComponent } from './admin-menu/manage-movies/manage-movies.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -71,9 +73,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCardModule,
     MatTabsModule,
     TextFieldModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [LoginService, RegistrationService, EditProfileService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

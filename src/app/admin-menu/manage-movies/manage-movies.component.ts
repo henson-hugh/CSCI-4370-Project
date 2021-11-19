@@ -3,6 +3,8 @@ import { Genre } from 'src/app/model/genre';
 import { Movie } from 'src/app/model/movie';
 import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { Showing } from 'src/app/model/showing';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-movies',
@@ -11,17 +13,33 @@ import {MatChipInputEvent} from '@angular/material/chips';
 })
 export class ManageMoviesComponent implements OnInit {
 
+  movieForm: FormGroup;
   movie: Movie = new Movie();
   genres: Genre[] = [];
+
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
 
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.movieForm = this._formBuilder.group({
+      movieId: '',
+      movieTitle: '',
+      movieRating: '',
+      movieDuration: '',
+      movieTrailer: '',
+      movieSynopsis: '',
+      movieGenres: [],
+      showings: this._formBuilder.array([])
+    });
+  }
+
+  showings(): FormArray {
+    return this.movieForm.get('showings') as FormArray;
   }
 
   
@@ -41,5 +59,27 @@ export class ManageMoviesComponent implements OnInit {
     if (index >= 0) {
       this.genres.splice(index, 1);
     }
+  }
+
+  createShowing(): FormGroup {
+    return this._formBuilder.group({
+      date: '',
+      time: '',
+      roomId: ''
+    });
+  }
+
+  addShowing(): void {
+    this.showings().push(this.createShowing());
+    this.movieForm.controls['movieGenres'].setValue(JSON.stringify(this.genres));
+  }
+
+  removeShowing(i: number) {
+    this.showings().removeAt(i);
+  }
+
+  submitMovie() {
+    console.log(this.genres);
+    console.log(this.movieForm.value);
   }
 }
