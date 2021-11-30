@@ -2,7 +2,7 @@
     <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
         <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
     </button>
-    <span class="toolbar-title">Pigeon Theatres</span>
+    <a class="toolbar-link" routerLink="/home" routerLinkActive="active"><span class="toolbar-title">Pigeon Theatres</span></a>
     <p class="search-text">Search</p>
     <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
       <mat-label>By</mat-label>
@@ -28,8 +28,6 @@
     </a>
     <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
 </mat-toolbar>
-
-
 
 <header>
     <div class="title">

@@ -44,7 +44,7 @@
     <label for="check"><b>Remember me</b></label>
     <input id="check" type="checkbox" [(ngModel)]="remember" [ngModelOptions]="{standalone: true}" checked/>
 
-    <button class="submit" type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button class="button" type="submit" [disabled]="!loginForm.valid">Login</button>
 
     <p style="text-align: center">
       <b>New user? <a class="link" routerLink="/register" routerLinkActive="active">Register here!</a></b>
