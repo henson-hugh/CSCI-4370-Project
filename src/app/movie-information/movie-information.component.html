@@ -2,7 +2,7 @@
   <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
       <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
   </button>
-  <span class="toolbar-title">Pigeon Theatres</span>
+  <a class="toolbar-link" routerLink="/home" routerLinkActive="active"><span class="toolbar-title">Pigeon Theatres</span></a>
   <p class="search-text">Search</p>
   <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
     <mat-label>By</mat-label>
@@ -29,25 +29,58 @@
   <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
 </mat-toolbar>
 
-<header>
-  <div class="title">
-    <h1>{{movie.title}}</h1>
+
+<div class="movie-title">
+  <h1>{{movie.title}}</h1>
+  <iframe width="100%" height="600" [src]="safeUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+
+<div class="movie-info-container">
+  <div class="movie-details">
+    <h2>Information about the movie:</h2>
+
+    <p>{{movie.synopsis}}</p>
+
+    <div class="text">
+      <p><b>Rating:</b> </p>
+      <p class="content">{{movie.rating}}</p>
+    </div>
+
+    <div class="text">
+      <p><b>Duration:</b> </p>
+      <p class="content">{{movie.duration}} minutes</p>
+    </div>
+
+    <div class="text">
+      <p><b>Director:</b> </p>
+      <p class="content">{{movie.director}}</p>
+    </div>
+
+    <div class="text">
+      <p><b>Producer:</b> </p>
+      <p class="content">{{movie.producer}}</p>
+    </div>
+
+    <div class="text">
+      <p style="display: inline;"><b>Genres:</b> </p>
+      <p class="content" *ngFor="let genre of genres" style="display: inline; flex: none">{{genre.name}}</p>
+    </div>
+
+    <div class="text">
+      <p><b>Times:</b> </p>
+      <p class="content" *ngFor="let showing of showings">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</p>
+    </div>
+    <a class="book-button" mat-raised-button [routerLink]=" '/book'">Book Tickets</a>
   </div>
+  <div class="movie-poster">
+    <img src={{movie.trailerpic}} height="500" width="315" alt="Movie Picture" class="movie-image">
+  </div>
+ 
+</div>
 
-
-</header>
-<img src={{movie.trailerpic}} alt="Photo of a Shiba Inu" class="movie-image">
-    <br>
-    <p class="movie-details">Rated: {{movie.rating}}</p><br>
-    <p class="movie-details">Duration: {{movie.duration}}Minutes</p><br>
-    <p class="movie-details">Director: {{movie.director}}</p><br>
-    <p class="movie-details">Producer: {{movie.producer}}</p><br>
-    <p class="movie-details">About: {{movie.synopsis}}</p><br>
-    <p style="display: inline;" class="movie-details">Genres:</p>
-    <p *ngFor="let genre of genres" style="display: inline;" class="movie-details"> {{genre.name}}</p>
-    <br>
-    <p class="movie-details">Times:</p>
-    <p *ngFor="let showing of showings" class="movie-details">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</p>
-
-<a class="movie-button"mat-raised-button [routerLink]=" '/book'">Book Tickets</a>
-
+<div class="footer">
+  <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" class="footer-logo" alt="logo" height="100px" width="100px"></a>
+  <p id="copyright">Pigeon Theatres</p>
+</div>

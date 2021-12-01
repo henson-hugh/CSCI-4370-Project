@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { Genre } from '../model/genre';
@@ -27,8 +28,10 @@ export class MovieInformationComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
+  displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
+  safeUrl: SafeResourceUrl;
 
-  constructor(private _service: MovieInformationService, private _router: Router) {}
+  constructor(private _service: MovieInformationService, private _router: Router, private _sanitizer: DomSanitizer) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -55,11 +58,17 @@ export class MovieInformationComponent implements OnInit {
         this.movie.synopsis = data.movie['synopsis'];
         this.movie.duration = data.movie['duration'];
         this.movie.trailerpic = data.movie['trailerpic'];
+
+        this.movie.trailervid = data.movie['trailervid'] + '?origin=localhost:4200';
+        this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailervid);
+
         this.genres = data.genre;
         this.showings = data.showing;
       })
+    
+    
   }
-
+  
   search() {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);

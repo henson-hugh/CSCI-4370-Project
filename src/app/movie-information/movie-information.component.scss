@@ -21,54 +21,10 @@ img.footer-logo {
   text-align: right;
 }
 
-.row {margin: 0 -5px;}
-
-.movie-container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-#genre-label {
-  margin-top: 10rem;
-}
-
-.genre {
-  margin-left: 1rem;
-}
-
-.movie-card {
-  padding: 16px;
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.title-logo {
-    margin: 1rem;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: rgba(178,140,198,1) rgba(163,185,198);
-}
-
-.subtitle-container:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.subtitle {
-    width: 33%;
-}
-
-#recommended {
-    float: left;
-    padding-left: 1rem;
+.movie-title {
+  margin: auto;
+  margin-top: 3rem;
+  width: 60%;
 }
 
 #info {
@@ -99,26 +55,9 @@ img.footer-logo {
   margin-left: 1rem;
 }
 
-header {
-  margin-top: 2rem;
-}
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.mat-tab-label {
-  min-width: 25px !important;
-  padding: 5px;
+.toolbar-link {
+  text-decoration: none;
   color: white;
-}
-
-.mat-tab-label.mat-tab-label-active {
-  min-width: 25px !important;
-  color: white;
-  font-weight: 700;
-  background-color: rgba(178,140,198,1);
 }
 
 .search-icon{
@@ -150,31 +89,36 @@ header {
   margin: auto;
 }
 
-.movie-details{
-  margin: 0px;
-  padding: 0px;
-  margin-left: 1rem;
+.book-button {
+  margin-top: 1rem;
+  width: 200px;
 }
 
-.movie-image{
+.movie-info-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin:auto;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 2rem;
+  width: 60%;
+  clear: both;
 }
-.book-details{
+
+.movie-details {
+  width: 50%;
+}
+
+.movie-poster {
+  width: 50%;
+}
+
+.movie-poster img {
   float: right;
-  margin-right: 5rem;
-}
-.book-button{
-float: right;
-margin-right: 5rem;
 }
 
-.tab-title {
-  margin-left: 1rem;
+.text {
+  display: flex; 
 }
 
-.label-title {
+.content {
   margin-left: 1rem;
 }

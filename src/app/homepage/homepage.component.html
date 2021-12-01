@@ -56,18 +56,18 @@
                       <mat-card-title>{{movie.movie.title}}</mat-card-title>
                       <mat-card-subtitle>Rated: {{movie.movie.rating}} </mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src={{movie.movie.trailerpic}} alt="Photo of a Shiba Inu">
+                    <img mat-card-image src={{movie.movie.trailerpic}} alt="Movie Poster">
                     <mat-card-content>
                       <p style="display: inline;">Genres:</p>
                       <p style="display: inline;"*ngFor="let genre of movie.genres">
                         {{genre.name}}
                       </p>
                       <p>
-                        Duration: {{movie.movie.duration}}Min
+                        Duration: {{movie.movie.duration}} minutes
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
-                      <button mat-button (click)="gotoInfo(movie.movie.mid)">Goto</button>
+                      <button mat-button (click)="gotoInfo(movie.movie.mid)">More Info</button>
                       <button mat-button>Book</button>
                     </mat-card-actions>
                 </mat-card>
@@ -106,156 +106,7 @@
       </div>
     </div>
     </mat-tab>
-  </mat-tab-group>
-
-<!-- <h1 id="genre-label" class="genre">Popular Genres</h1>
-
-<mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="coming-soon-icon">rocket_launch</mat-icon>
-            <span class="label-title">Action</span>
-        </ng-template>
-        <h2 class="tab-title" id="action">Action</h2>
-        <div class="movie-container action">
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="coming-soon-icon">question_mark</mat-icon>
-            <span class="label-title">Mystery</span>
-        </ng-template>
-        <h2 class="tab-title" id="comedy">Comedy</h2>
-        <div class="movie-container action">
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon class="coming-soon-icon">sentiment_very_satisfied</mat-icon>
-            <span class="label-title">Comedy</span>
-        </ng-template>
-        <h2 class="tab-title" id="mystery">Mystery</h2>
-        <div class="movie-container action">
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-
-            <div class="movie-card action">
-                <img src="assets/images/card1.jpg" alt="The Sweet Man" height="300px" width="350px">
-                <div class="card-text">
-                    <h2>The Sweet Man</h2>
-                    <h3>2 hour 23 minutes</h3>
-                    <h3>PG-13</h3>
-                    <a href="#"><p><b>Get Tickets ></b></p></a>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-</mat-tab-group> -->
+</mat-tab-group>
 
 <div class="footer">
     <a class="active" id="nav-logo" routerLink="/home" routerLinkActive="active"><img src="assets/images/sample-logo.jpg" class="footer-logo" alt="logo" height="100px" width="100px"></a>
