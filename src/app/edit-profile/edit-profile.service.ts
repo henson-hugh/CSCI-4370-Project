@@ -15,6 +15,14 @@ export class EditProfileService {
     return this._http.get<any>("http://localhost:8080/customer/" + sessionStorage.getItem('cid'));
   }
 
+  public getUserInfoFromRemote(uid: number): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/getUser", sessionStorage.getItem('cid'));
+  }
+
+  public getPaymentCardInfoFromRemote(customer: Customer): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/customer/getPayment" + sessionStorage.getItem('cid'), customer);
+  }
+
   public updateCustomerFromRemote(customer: Customer): Observable<any> {
     return this._http.post<any>("http://localhost:8080/customer/save", customer);
   }
