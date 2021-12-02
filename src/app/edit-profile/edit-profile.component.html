@@ -5,7 +5,8 @@
 </div>
 <div class="container">
   <form [formGroup]="profileForm">
-      <small class="invalid">{{msg}}</small>
+      <h3>All profile edits require you to enter your current password for security.</h3>
+      <!-- <small class="invalid"><b>{{msg}}</b></small><br> -->
       <mat-form-field appearance="fill">
         <mat-label>Change First Name</mat-label>
         <input
@@ -27,6 +28,7 @@
         />
       </mat-form-field>
       <br>
+      <small class="invalid"><b>{{msg}}</b></small><br>
       <mat-form-field appearance="fill">
         <mat-label>Enter Current Password</mat-label>
         <input type="password" matInput formControlName="oldPassword" placeholder="Enter Current Password" name="oldPassword" id="oldPassword" required>
@@ -93,7 +95,7 @@
       </mat-form-field>
       <table class="table table-bordered" formArrayName="paymentCards">
         <tr>
-          <th colspan="2">Add Payment Cards:</th>
+          <th colspan="2">Payment Cards:</th>
         </tr>
         <tr
           *ngFor="let paymentCards of paymentCards().controls; let i = index"
@@ -127,7 +129,7 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </td>
-          <td><span>Billing Address</span></td>
+          <td class="billing-subtitle"><span><b>Billing Address:</b></span></td>
           
           <td>
             <mat-form-field appearance="fill">
@@ -194,9 +196,9 @@
         </button>
       </table>
 
-        <!-- <label><b>Change promotion notifications</b></label><br>
-        <input type="checkbox" id="email" name="email" value="I would like to receive emails about promotions!" [(ngModel)]="customer.getPromo">
-        <label id="emailLabel"><b>I would like to receive emails about promotions!</b></label> -->
+        <label><b>Change promotion notifications</b></label><br>
+        <input type="checkbox" id="email" name="email" value="I would like to receive emails about promotions!" formControlName="promo">
+        <label id="emailLabel"><b>I would like to receive emails about promotions!</b></label>
       <div class="bottom">
           <button mat-button class="button save" [disabled]="!profileForm.valid" (click)="updateCustomer()">Save</button>
           <a routerLink="/home" routerLinkActive="active"><button mat-button class="button remove">Cancel</button></a>

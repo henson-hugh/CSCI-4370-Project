@@ -3,18 +3,23 @@
 }
 
 .button {
-    border: none;
+    border: 1px solid black;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: block;
     font-size: 16px;
-    margin: 0.5rem 2rem 0.5rem 0;
+    margin: 1rem;
     cursor: pointer;
-    background-color: rgb(147,141,147);
-    width: 50%;
-    float: left;
+    background-color: rgba(178,140,198,1);
+    width: 25%;
+}
+
+
+.invalid {
+    color: red;
+    margin-bottom: 1rem;
 }
 
 .container {
@@ -31,4 +36,5 @@
 
 .mat-form-field {
     margin-right: 16px;
+    width: 12rem;
 }

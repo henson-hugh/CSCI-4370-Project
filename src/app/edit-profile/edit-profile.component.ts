@@ -3,7 +3,7 @@ import { EditProfileService } from './edit-profile.service';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { User } from '../model/user';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validator, Validators, MaxLengthValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 export class EditProfileComponent implements OnInit {
 
   profileForm: FormGroup;
-  msg: string = '';
+  msg: string = 'Passwords must be at least 8 characters in length';
   customer: Customer = new Customer();
   user: User = new User();
 
@@ -21,9 +21,9 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this._formBuilder.group({
-      oldPassword: '',
-      newPassword: '',
-      confirmPassword: '',
+      oldPassword: ['', Validators.compose([Validators.required, Validators.min(8)])],
+      newPassword: ['', Validators.min(8)],
+      confirmPassword: ['', Validators.min(8)],
       firstName: '',
       lastName: '',
       street: '',
@@ -31,17 +31,14 @@ export class EditProfileComponent implements OnInit {
       state: '',
       zip: '',
       phone: '',
-      paymentCards: this._formBuilder.array([]),
-      promo: [false, '']
+      paymentCards: this._formBuilder.array([], [Validators.maxLength(3)]),
+      promo: false
     });
-    // this._service.getUserInfoFromRemote(Number(sessionStorage.getItem('cid'))).subscribe(
-    //   data => {
-    //     this.user.uid = data['uid'];
-    //     this.user.password = data['password'];
-    //   });
+
     this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
         this.customer.cid = data.customer['cid'];
+        this.user.uid = this.customer.cid;
 
         this.profileForm.controls.firstName.setValue(data.customer['firstName']);
         this.profileForm.controls.lastName.setValue(data.customer['lastName']);
@@ -55,23 +52,32 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateCustomer() {
-    if (this.profileForm.controls.oldPassword.value != null && this.profileForm.controls.newPassword.value != null) {
+    if (this.profileForm.controls.paymentCards.value)
+    if (this.profileForm.controls.oldPassword.value) {
       console.log(this.profileForm.controls.oldPassword.value)
+      this.user.password = this.profileForm.controls.oldPassword.value;
       this._service.verifyOldPasswordFromRemote(this.user).subscribe(
-      data => {
-        console.log("verified old password");
-        this.user.password = this.profileForm.controls.newPassword.value;
-        this._service.updateUserPasswordFromRemote(this.user).subscribe(
-          result => {
-            console.log("updated password");
+        data => {
+          this.updateCustomerDetails(); // updates other information first when password is verified
+
+          if (this.profileForm.controls.oldPassword.value && this.profileForm.controls.newPassword.value) { // checks if password needs to change
+            if (this.profileForm.controls.newPassword.value == this.profileForm.controls.confirmPassword.value) { // checks if new password and confirm password entered correctly
+              this.user.password = this.profileForm.controls.newPassword.value;                               
+              this._service.updateUserPasswordFromRemote(this.user).subscribe(
+                result => {
+                  console.log("updated password");
+                });
+            } else {
+              console.log('in here');
+              this.msg = 'Please confirm your new password correctly.'
+            }
           }
-        );
-      },
-      error => {
-        this.msg = 'Current password is incorrect'
-      });
+          this._router.navigate(['/home']);
+        },
+        error => {
+          this.msg = 'Current password is incorrect';
+        });
     }
-    this.updateCustomerDetails();
   }
 
   updateCustomerDetails() {    
@@ -82,12 +88,11 @@ export class EditProfileComponent implements OnInit {
     this.customer.state = this.profileForm.controls.state.value;
     this.customer.zip = this.profileForm.controls.zip.value;
     this.customer.phone = this.profileForm.controls.phone.value;
+    this.customer.getPromo = this.profileForm.controls.promo.value;
 
     this._service.updateCustomerFromRemote(this.customer).subscribe(
       data => {
-
         console.log("Response" + data['email']);
-        this._router.navigate(['/home']);
       },
       error => {
         this.msg = 'Enter all required fields'
