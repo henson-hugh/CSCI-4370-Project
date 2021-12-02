@@ -38,11 +38,19 @@ export class SearchComponent implements OnInit {
       )
     }
     // Search results
+    if (this.searchval != "") {
     this._service.getMovieInfoFromRemote(this.type, this.searchval).subscribe(
       data => {
         this.cards = Array.of(data);
         console.log(data);
       })
+    } else {
+      this._service.getMovieInfoFromRemote("all", "").subscribe(
+        data => {
+          this.cards = Array.of(data);
+          console.log(data);
+        })
+    }
 
     console.log(this.type);
   }
