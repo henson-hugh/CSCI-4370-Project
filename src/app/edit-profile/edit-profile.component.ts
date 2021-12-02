@@ -47,14 +47,13 @@ export class EditProfileComponent implements OnInit {
         this.profileForm.controls.state.setValue(data.customer['state']);
         this.profileForm.controls.zip.setValue(data.customer['zip']);
         this.profileForm.controls.phone.setValue(data.customer['phone']);
+        this.profileForm.controls.promo.setValue(data.customer['getPromo']);
       }
     )
   }
 
   updateCustomer() {
-    if (this.profileForm.controls.paymentCards.value)
     if (this.profileForm.controls.oldPassword.value) {
-      console.log(this.profileForm.controls.oldPassword.value)
       this.user.password = this.profileForm.controls.oldPassword.value;
       this._service.verifyOldPasswordFromRemote(this.user).subscribe(
         data => {
@@ -68,7 +67,6 @@ export class EditProfileComponent implements OnInit {
                   console.log("updated password");
                 });
             } else {
-              console.log('in here');
               this.msg = 'Please confirm your new password correctly.'
             }
           }
@@ -92,11 +90,13 @@ export class EditProfileComponent implements OnInit {
 
     this._service.updateCustomerFromRemote(this.customer).subscribe(
       data => {
-        console.log("Response" + data['email']);
+        console.log("Customer updated");
       },
       error => {
         this.msg = 'Enter all required fields'
       });
+
+    // add payment card to database
   }
 
   paymentCards(): FormArray {

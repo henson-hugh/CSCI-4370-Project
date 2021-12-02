@@ -62,13 +62,11 @@ export class HomepageComponent implements OnInit {
     this._service.getNowMovieInfoFromRemote().subscribe(
       data => {
         this.nowCards = Array.of(data);
-        console.log(data);
       })
 
       this._service.getSoonMovieInfoFromRemote().subscribe(
         data => {
           this.soonCards = Array.of(data);
-          console.log(data);
         })
 
   }
