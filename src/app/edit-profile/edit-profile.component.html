@@ -1,60 +1,207 @@
 <app-toolbar></app-toolbar>
-<form #editProfileForm="ngForm" (ngSubmit)="updateCustomer()">
-    <h1>Edit Profile</h1>
-    <small class="invalid">{{msg}}</small>
-    <div class="container">
-        <div class="left profile">
-            <label><b>Change First Name</b></label><br>
-            <input type="text" placeholder="Enter first name" name="fName" #firstName="ngModel" [(ngModel)]="customer.firstName" required /><br>
 
-            <label><b>Change Last Name</b></label><br>
-            <input type="text" placeholder="Enter last name" name="lName" #lastName="ngModel" [(ngModel)]="customer.lastName" /><br>
+<div class="profile-title">
+  <h1>Edit Profile</h1>
+</div>
+<div class="container">
+  <form [formGroup]="profileForm">
+      <h3>All profile edits require you to enter your current password for security.</h3>
+      <!-- <small class="invalid"><b>{{msg}}</b></small><br> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Change First Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter first name"
+          name="firstName"
+          id="firstName"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Change Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter last name"
+          name="lastName"
+          id="lastName"
+          formControlName="lastName"
+        />
+      </mat-form-field>
+      <br>
+      <small class="invalid"><b>{{msg}}</b></small><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Current Password</mat-label>
+        <input type="password" matInput formControlName="oldPassword" placeholder="Enter Current Password" name="oldPassword" id="oldPassword" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter New Password</mat-label>
+        <input type="password" matInput formControlName="newPassword" placeholder="Enter New Password" name="newPassword" id="newPassword">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" placeholder="Re-enter New Password" name="confirmPassword" id="confirmPassword">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Change Street</mat-label>
+        <input
+          matInput
+          placeholder="Enter street"
+          name="street"
+          id="street"
+          formControlName="street"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Change City</mat-label>
+        <input
+          matInput
+          placeholder="Enter city"
+          name="city"
+          id="city"
+          formControlName="city"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Change State</mat-label>
+        <input
+          matInput
+          placeholder="Enter state"
+          name="state"
+          id="state"
+          formControlName="state"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Change Zip Code</mat-label>
+        <input
+          matInput
+          placeholder="Enter zip"
+          name="zip"
+          id="zip"
+          formControlName="zip"
+        />
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Change Phone Number</mat-label>
+        <input
+          matInput
+          placeholder="Enter phone"
+          name="phone"
+          id="phone"
+          formControlName="phone"
+        />
+      </mat-form-field>
+      <table class="table table-bordered" formArrayName="paymentCards">
+        <tr>
+          <th colspan="2">Payment Cards:</th>
+        </tr>
+        <tr
+          *ngFor="let paymentCards of paymentCards().controls; let i = index"
+          [formGroupName]="i"
+        >
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Card Number</mat-label>
+              <input
+                matInput
+                placeholder="Enter Card Number"
+                type="text"
+                formControlName="cardNumber"
+                class="form-control"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Expiration Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="expDate"
+                class="form-control"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td class="billing-subtitle"><span><b>Billing Address:</b></span></td>
+          
+          <td>
+            <mat-form-field appearance="fill">
+            <mat-label>Change Street</mat-label>
+            <input
+              matInput
+              placeholder="Enter street"
+              name="street"
+              id="street"
+              formControlName="street"
+            />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+            <mat-label>Change City</mat-label>
+            <input
+              matInput
+              placeholder="Enter city"
+              name="city"
+              id="city"
+              formControlName="city"
+            />
+          </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+            <mat-label>Change State</mat-label>
+            <input
+              matInput
+              placeholder="Enter state"
+              name="state"
+              id="state"
+              formControlName="state"
+            />
+          </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+            <mat-label>Change Zip Code</mat-label>
+            <input
+              matInput
+              placeholder="Enter zip"
+              name="zip"
+              id="zip"
+              formControlName="zip"
+            />
+          </mat-form-field>
+          </td>
+          <br>
+          <td>
+            <button mat-button (click)="removePaymentCard(i)" class="btn btn-danger">
+              <mat-icon class="login-icon">delete</mat-icon>Remove
+            </button>
+          </td>
+        </tr>
+        <button
+          mat-button
+          type="button"
+          (click)="addPaymentCard()"
+          class="btn btn-primary"
+        >
+          Add Payment Card
+        </button>
+      </table>
 
-            <label><b>Current Password</b></label><br>
-            <input type="password" placeholder="Enter current password" name="old password" #opassword="ngModel" [(ngModel)]="user.password" /><br>
-
-            <label><b>New Password</b></label><br>
-            <input type="password" placeholder="Enter password" name="password" #password="ngModel" [(ngModel)]="newPass" /><br>
-
-            <label><b>Re-enter new password</b></label><br>
-            <input type="password" placeholder="Re-enter password" name="confirmPassword" #confirmPassword="ngModel" ngModel [required]="newPass ? true : false"
-            (ngModel)="newPass"
-            #confirmref="ngModel"
-            [class.is-invalid]="confirmref.invalid && confirmref.touched"/>
-            <div *ngIf="confirmref.invalid &&(confirmref.touched || confirmref.dirty)" class ="alert alert-danger">
-              <div [hidden]="!confirmref.errors?.required">
-                <small class="invalid">Password is required</small>
-              </div>
-            </div> <br>
-
-            <label for="street"><b>Street</b></label><br>
-            <input type="text" placeholder="Enter Street" name="street" #street="ngModel" [(ngModel)]="customer.street"><br>
-
-            <label for="city"><b>City</b></label><br>
-            <input type="text" placeholder="Enter City" name="city" #city="ngModel" [(ngModel)]="customer.city"><br>
-
-            <label for="state"><b>State</b></label><br>
-            <input type="text" placeholder="Enter State" name="state" #state="ngModel" [(ngModel)]="customer.state"><br>
-
-            <label for="zip"><b>Zip</b></label><br>
-            <input type="text" placeholder="Enter Zip" name="zip" #zip="ngModel" [(ngModel)]="customer.zip"><br>
-
-            <label for="phone"><b>Phone</b></label><br>
-            <input type="text" placeholder="Enter Phone" name="phone" #phone="ngModel" [(ngModel)]="customer.phone"><br>
-
-            <!-- <label for="paymentCard"><b>Payment Card</b></label><br>
-            <input type="text" placeholder="Enter Payment Card" name="paymentCard" #paymentCard="ngModel" (ngModel)="customer.paymentCard"><br>
-
-            <label for="expDate"><b>Expiration Date</b></label><br>
-            <input type="text" placeholder="Enter Expiration Date" name="expDate" #expDate="ngModel" [(ngModel)]="customer.expDate"><br> -->
-
-            <label><b>Change promotion notifications</b></label><br>
-            <input type="checkbox" id="email" name="email" value="I would like to receive emails about promotions!" [(ngModel)]="customer.getPromo">
-            <label id="emailLabel"><b>I would like to receive emails about promotions!</b></label>
-        </div>
-    </div>
-    <div class="bottom">
-        <button class="button save" [disabled]="!editProfileForm.valid">Save</button>
-        <button class="button remove">Cancel</button>
-    </div>
-</form>
+        <label><b>Change promotion notifications</b></label><br>
+        <input type="checkbox" id="email" name="email" value="I would like to receive emails about promotions!" formControlName="promo">
+        <label id="emailLabel"><b>I would like to receive emails about promotions!</b></label>
+      <div class="bottom">
+          <button mat-button class="button save" [disabled]="!profileForm.valid" (click)="updateCustomer()">Save</button>
+          <a routerLink="/home" routerLinkActive="active"><button mat-button class="button remove">Cancel</button></a>
+      </div>
+  </form>
+</div>
