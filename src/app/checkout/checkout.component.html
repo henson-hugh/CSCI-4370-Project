@@ -1,1 +1,46 @@
-<p>checkout works!</p>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a class="toolbar-link" routerLink="/home" routerLinkActive="active"><span class="toolbar-title">Pigeon Theatres</span></a>
+  <p class="search-text">Search</p>
+  <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
+      <mat-label>By</mat-label>
+      <mat-select [(value)]="type">
+      <mat-option value="title">Title</mat-option>
+      <mat-option value="genre">Genre</mat-option>
+      <mat-option value="director">Director</mat-option>
+      <mat-option value="producer">Producer</mat-option>
+      <mat-option value="cast">Cast</mat-option>
+      <mat-option value="rating">Rating</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <p>:</p>
+  <mat-form-field appearance="outline" class="search-bar" [style.width.px]=360>
+      <input matInput placeholder="Type here..." [(ngModel)]="searchval"/>
+  </mat-form-field>
+  <a class="search-button" mat-raised-button color="primary" role="button" (click)="search()">
+      <mat-icon class="search-icon">search</mat-icon> Search
+  </a>
+  <div class="spacer"></div>
+  <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
+      <mat-icon class="login-icon">{{loginIcon}}</mat-icon> {{profileName}}
+  </a>
+  <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
+</mat-toolbar>
+
+<div class="movie-container recommended" *ngFor="let seat of seats; index as i">
+  <div class="movie-card recommended" fxLayout="row">
+  <mat-card class="example-card" style="float: left">
+    <mat-card-header>
+      <mat-card-title>{{movie.title}}</mat-card-title>
+      <mat-card-subtitle>Room: {{showing.roomid}} </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src={{movie.trailerpic}} alt="Movie Poster" style="width: 175px; margin: auto">
+    <mat-card-content>
+      <p style="display: inline;">Seat: {{seat}}</p>
+      <p>Price: ${{find(i)}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>

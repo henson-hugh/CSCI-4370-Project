@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Promotion } from 'src/app/model/promotion';
 import { ManagePromotionsService } from './manage-promotions.service';
 
@@ -12,7 +13,7 @@ export class ManagePromotionsComponent implements OnInit {
   promotionForm: FormGroup;
   promotion: Promotion = new Promotion();
 
-  constructor(private _formBuilder: FormBuilder, private _service: ManagePromotionsService) { }
+  constructor(private _formBuilder: FormBuilder, private _service: ManagePromotionsService, private _router: Router) { }
 
   ngOnInit(): void {
     this.promotionForm = this._formBuilder.group({
@@ -35,6 +36,7 @@ export class ManagePromotionsComponent implements OnInit {
     this._service.addPromotionInfoFromRemote(this.promotion).subscribe(
       data => {
         console.log('promotion saved');
+        this._router.navigate(['/admin-menu']);
     });
   }
 }

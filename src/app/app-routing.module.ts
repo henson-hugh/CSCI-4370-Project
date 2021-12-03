@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'seat-selection', component: SeatSelectionComponent},
   { path: 'manage-users', component: ManageUsersComponent},
   { path: 'add-admin', component: AddAdminComponent},
-  { path: 'manage-prices', component: ManagePricesComponent}
+  { path: 'manage-prices', component: ManagePricesComponent},
   { path: 'checkout', component: CheckoutComponent},
   { path: 'ticket-type', component: TicketTypeComponent}
 ];

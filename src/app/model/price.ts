@@ -1,7 +1,7 @@
 export class Price {
-  aTicket: number;
-  cTicket: number;
-  sTicket: number;
+  aticket: number;
+  cticket: number;
+  sticket: number;
   fee: number;
 
   constructor(){}

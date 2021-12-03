@@ -55,8 +55,8 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { ManagePricesComponent } from './manage-prices/manage-prices.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutService } from './checkout.service';
 import { TicketTypeComponent } from './ticket-type/ticket-type.component';
+import { CheckoutService } from './checkout/checkout.service';
 
 @NgModule({
   declarations: [
@@ -109,15 +109,15 @@ import { TicketTypeComponent } from './ticket-type/ticket-type.component';
     MatSelectModule,
     MatButtonToggleModule
   ],
-  providers: [LoginService, 
-    RegistrationService, 
-    EditProfileService, 
-    MatDatepickerModule, 
-    ManageMoviesService, 
-    AddMovieService, 
-    ShowingTimeService, 
-    SeatSelectionService, 
-    SearchService, 
+  providers: [LoginService,
+    RegistrationService,
+    EditProfileService,
+    MatDatepickerModule,
+    ManageMoviesService,
+    AddMovieService,
+    ShowingTimeService,
+    SeatSelectionService,
+    SearchService,
     MovieInformationService,
     CheckoutService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],

@@ -85,6 +85,9 @@ export class TicketTypeComponent implements OnInit {
   }
 
   saveTicketTypes() {
+    localStorage.setItem('child', this.ticketTypeForm.value['child']);
+    localStorage.setItem('adult', this.ticketTypeForm.value['adult']);
+    localStorage.setItem('elderly', this.ticketTypeForm.value['elderly']);
     this._router.navigate(['checkout']);
   }
 }

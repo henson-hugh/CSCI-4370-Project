@@ -5,5 +5,10 @@ export class Seat {
     time: Date;
     date: Date;
 
-    constructor(){}
+    constructor(roomid: number, name: string, stime: Date, sDate: Date){
+      this.showroomid = roomid;
+      this.seatname = name;
+      this.time = stime;
+      this.date = sDate;
+    }
 }

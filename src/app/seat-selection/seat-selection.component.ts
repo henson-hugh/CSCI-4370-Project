@@ -31,7 +31,8 @@ export class SeatSelectionComponent implements OnInit {
   genres: Genre[] = [];
   showings: Showing[] = [];
   showing: Showing = new Showing();
-  seats: Seat[] = [];
+  seats: string[] = [];
+
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
   seatSelectionControl: FormControl = new FormControl();
   seatSelectionForm: FormGroup;
@@ -68,7 +69,7 @@ export class SeatSelectionComponent implements OnInit {
         this.genres = data.genre;
         this.showings = data.showing;
       });
-    
+
       this.showing.sid = localStorage.getItem('showingSid') as unknown as number;
       this.showing.date = localStorage.getItem('showingDate') as unknown as Date;
       this.showing.time = localStorage.getItem('showingTime') as unknown as Date;
@@ -82,7 +83,7 @@ export class SeatSelectionComponent implements OnInit {
           console.log(data);
         });
   }
-  
+
   search() {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);
@@ -95,9 +96,10 @@ export class SeatSelectionComponent implements OnInit {
 
   submitSeats() {
     if (this.seatSelectionControl != null) {
-      for (let seat of this.seatSelectionControl.value) { // find a way to save the separate seats through this.seatSelectionControl as it holds all values for the selected
-        console.log(seat);
+      for (let seat of this.seats) { // find a way to save the separate seats through this.seatSelectionControl as it holds all values for the selected
+
       }
+      localStorage.setItem('seats', JSON.stringify(this.seatSelectionControl.value));
       this._router.navigate(['/ticket-type']);
     } else {
       this.msg = 'Please select a seat';

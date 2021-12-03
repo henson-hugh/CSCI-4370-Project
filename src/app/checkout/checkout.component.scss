@@ -1,0 +1,159 @@
+* {box-sizing: border-box;}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+img.footer-logo {
+  float: right;
+  margin: 1rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgba(178,140,198,1) rgba(163,185,198);
+}
+
+#copyright {
+  padding-top: 3rem;
+  text-align: right;
+}
+
+.row {margin: 0 -5px;}
+
+.movie-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#genre-label {
+  margin-top: 10rem;
+}
+
+.genre {
+  margin-left: 1rem;
+}
+
+.movie-card {
+  padding: 16px;
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title-logo {
+    margin: 1rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgba(178,140,198,1) rgba(163,185,198);
+}
+
+.subtitle-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.subtitle {
+    width: 33%;
+}
+
+#recommended {
+    float: left;
+    padding-left: 1rem;
+}
+
+#info {
+  float: left;
+  padding: 0.5rem 0 0 10rem;
+}
+
+.mat-toolbar.mat-primary {
+  background: rgba(178,140,198,1);
+  color: #fff;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button {
+  font-size: 17px;
+}
+
+.toolbar-icon {
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: rgba(163,185,198);
+}
+
+.toolbar-title {
+  margin-left: 1rem;
+}
+
+header {
+  margin-top: 2rem;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  color: white;
+}
+
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  color: white;
+  font-weight: 700;
+  background-color: rgba(178,140,198,1);
+}
+
+.search-icon{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.search-text{
+  display: inline-block;
+  margin-left: 3rem;
+}
+
+.search-filter{
+  margin-left: 1rem;
+  margin-right:5px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+.search-bar{
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+.search-button{
+  height: 40px;
+  margin: auto;
+}
+
+.tab-title {
+  margin-left: 1rem;
+}
+
+.label-title {
+  margin-left: 1rem;
+}

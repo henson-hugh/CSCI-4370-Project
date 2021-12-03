@@ -10,7 +10,7 @@ export class ManagePricesService {
 
   constructor(private _http: HttpClient) { }
 
-  public suspendCustomerFromRemote(price: Price): Observable<any> {
+  public changePriceFromRemote(price: Price): Observable<any> {
     return this._http.post<any>("http://localhost:8080/admin/price/edit", price);
   }
 }
