@@ -17,7 +17,10 @@ export class ManagePromotionsComponent implements OnInit {
   ngOnInit(): void {
     this.promotionForm = this._formBuilder.group({
       discount: '',
-      pcode: ''
+      pcode: '',
+      startDate: '',
+      endDate: '',
+      promoDescription: ''
     });
   }
 
@@ -25,7 +28,10 @@ export class ManagePromotionsComponent implements OnInit {
     console.log(this.promotionForm.value);
     this.promotion.discount = this.promotionForm.value['discount'];
     this.promotion.pcode = this.promotionForm.value['pcode'];
-    
+    this.promotion.startDate = this.promotionForm.value['startDate'];
+    this.promotion.endDate = this.promotionForm.value['endDate'];
+    this.promotion.description = this.promotionForm.value['promoDescription'];
+
     this._service.addPromotionInfoFromRemote(this.promotion).subscribe(
       data => {
         console.log('promotion saved');

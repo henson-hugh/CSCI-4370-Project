@@ -36,6 +36,47 @@
             required
           />
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Promotion Key (Optional)</mat-label>
+          <input
+            matInput
+            placeholder="Enter 6-Digit Promo Key"
+            name="pcode"
+            id="pcode"
+            formControlName="pcode"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="endDate"
+            class="form-control"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="synopsis" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="promoDescription"
+            placeholder="Enter Description"
+            name="description"
+            id="description"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="3"
+            cdkAutosizeMaxRows="7"
+          ></textarea>
+        </mat-form-field>
 
       </div>
 

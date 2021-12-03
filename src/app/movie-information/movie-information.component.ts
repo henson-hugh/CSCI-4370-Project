@@ -28,6 +28,7 @@ export class MovieInformationComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
+  casts: string[] = [];
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
   safeUrl: SafeResourceUrl;
 
@@ -64,11 +65,12 @@ export class MovieInformationComponent implements OnInit {
 
         this.genres = data.genre;
         this.showings = data.showing;
+        this.casts = data.cast;
       })
-    
-    
+
+
   }
-  
+
   search() {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);
