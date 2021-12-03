@@ -50,7 +50,7 @@
       <h3>Promo Key</h3>
       <mat-form-field appearance="fill">
         <mat-label>Key</mat-label>
-        <input matInput formControlName="cardNumber" placeholder="Enter Key" name="promokey" id="promokey">
+        <input matInput formControlName="promoKey" placeholder="Enter Key" name="promokey" id="promokey">
       </mat-form-field>
       <h3>Payment Information</h3>
       <span class="info"><b>Card Info: </b></span>
@@ -63,7 +63,7 @@
           <input
             matInput
             [matDatepicker]="picker"
-            formControlName="cardNumber"
+            formControlName="expdate"
             class="form-control"
           />
           <mat-datepicker-toggle
@@ -80,7 +80,7 @@
         placeholder="Enter street"
         name="street"
         id="street"
-        formControlName="cardNumber"
+        formControlName="street"
       />
       </mat-form-field>
 
@@ -92,7 +92,7 @@
         placeholder="Enter city"
         name="city"
         id="city"
-        formControlName="cardNumber"
+        formControlName="city"
       />
       </mat-form-field>
 
@@ -104,7 +104,7 @@
         placeholder="Enter state"
         name="state"
         id="state"
-        formControlName="cardNumber"
+        formControlName="state"
       />
       </mat-form-field>
 
@@ -115,12 +115,14 @@
         placeholder="Enter zip"
         name="zip"
         id="zip"
-        formControlName="cardNumber"
+        formControlName="zip"
       />
       </mat-form-field>
     </div>
 
+    <h3>Total: {{finalPrice}}</h3>
+
     <button mat-button (click)="checkout()">Checkout</button>
-    <a class="active" id="cancel" routerLink="/manage-users" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+    <a class="active" id="cancel" routerLink="/ticket-select" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
   </form>
 </div>

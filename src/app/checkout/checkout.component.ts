@@ -1,11 +1,13 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Booking } from '../model/booking';
 import { Customer } from '../model/customer';
 import { Genre } from '../model/genre';
 import { Movie } from '../model/movie';
 import { PaymentCard } from '../model/payment-card';
 import { Showing } from '../model/showing';
+import { Ticket } from '../model/ticket';
 import { CheckoutService } from './checkout.service';
 
 @Component({
@@ -35,6 +37,9 @@ export class CheckoutComponent implements OnInit {
   seats: string[] = [];
   prices: number[] = [];
   card: PaymentCard = new PaymentCard();
+  finalPrice: number = 0;
+  book: Booking = new Booking();
+  ticket: Ticket[] = [];
 
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
   seatSelectionControl: FormControl = new FormControl();
@@ -43,7 +48,13 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkoutForm =this._formBuilder.group({
-      cardNumber: ''
+      cardNumber: '',
+      expdate: '',
+      street: '',
+      city: '',
+      state: '',
+      zip: '',
+      promoKey: ''
     });
     this.seats = JSON.parse(localStorage.getItem("seats") || "");
     this.showing.roomid = JSON.parse(localStorage.getItem("showingRoomid") || "");
@@ -57,6 +68,7 @@ export class CheckoutComponent implements OnInit {
         data => {
           for (let i = 0; i < Number(localStorage.getItem('child')); i++) {
             this.prices.push(data);
+            this.finalPrice += data;
           }
         });
 
@@ -64,6 +76,7 @@ export class CheckoutComponent implements OnInit {
         data => {
           for (let i = 0; i < Number(localStorage.getItem('adult')); i++) {
             this.prices.push(data);
+            this.finalPrice += data;
           }
         });
 
@@ -71,16 +84,22 @@ export class CheckoutComponent implements OnInit {
         data => {
           for (let i = 0; i < Number(localStorage.getItem('elderly')); i++) {
             this.prices.push(data);
+            this.finalPrice += data;
           }
         });
 
         this.customer.cid = Number(sessionStorage.getItem('cid') || "");
         this._service.getCardFromRemote(this.customer).subscribe(
           data => {
-            this.checkoutForm.controls.cardNumber.setValue = data['cardNumber'];
-            console.log(data['cardNumber']);
+            
+            this.checkoutForm.controls.cardNumber.setValue(data['cardNumber']);
+            this.checkoutForm.controls.expdate.setValue(data['expDate']);
+            this.checkoutForm.controls.street.setValue(data['street']);
+            this.checkoutForm.controls.city.setValue(data['city']);
+            this.checkoutForm.controls.state.setValue(data['state']);
+            this.checkoutForm.controls.zip.setValue(data['zip']);
+            console.log(data);
           });
-
   }
 
   search() {
@@ -94,6 +113,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout(){
+    this.book.customerid = this.customer.cid;
+    // this._service.saveBookingFromRemote(this.book).subscribe(
+    //   data => {
+        
+    //   });
+
+      this._router.navigate(['/home']);
 
   }
 

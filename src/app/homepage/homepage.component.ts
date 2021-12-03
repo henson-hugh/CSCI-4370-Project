@@ -77,6 +77,6 @@ export class HomepageComponent implements OnInit {
   }
 
   goToShowingTimes() {
-
+    this._router.navigate(['/showing-times']);
   }
 }
