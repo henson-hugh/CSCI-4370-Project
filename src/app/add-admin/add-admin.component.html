@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/admin-menu" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a mat-button routerLink="/manage-users" routerLinkActive="active">Back To Manage Users</a>
+</mat-toolbar>
+<div class="title">
+  <h1>Add New Admin</h1>
+</div>
+<div class="container">
+  <form [formGroup]="adminForm">
+    <div class="general-fields">
+      <h3>Admin Login</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter Email" name="email" id="email" required>
+      </mat-form-field>
+      <br>
+      <small class="info"><b>Password must be at least 8 characters</b></small><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Enter password" name="password" id="password" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="confirmPasswordCtrl" placeholder="Re-enter Password" name="confirmPassword" id="confirmPassword" required>
+      </mat-form-field>
+    </div>
+
+    <button mat-button (click)="addAdmin()">Create New Admin</button>
+    <a class="active" id="cancel" routerLink="/manage-users" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+  </form>
+</div>
