@@ -45,6 +45,12 @@ import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.se
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 import { SearchComponent } from './search/search.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
+import { ShowingTimeService } from './showing-time/showing-time.service';
+import { SeatSelectionService } from './seat-selection/seat-selection.service';
+import { SearchService } from './search/search.service';
+import { MovieInformationService } from './movie-information/movie-information.service';
+import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -67,7 +73,8 @@ import { ShowingTimeComponent } from './showing-time/showing-time.component';
     AddMovieComponent,
     ManagePromotionsComponent,
     SearchComponent,
-    ShowingTimeComponent
+    ShowingTimeComponent,
+    SeatSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -88,9 +95,20 @@ import { ShowingTimeComponent } from './showing-time/showing-time.component';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonToggleModule
   ],
-  providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, ManageMoviesService, AddMovieService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, 
+    RegistrationService, 
+    EditProfileService, 
+    MatDatepickerModule, 
+    ManageMoviesService, 
+    AddMovieService, 
+    ShowingTimeService, 
+    SeatSelectionService, 
+    SearchService, 
+    MovieInformationService, 
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
