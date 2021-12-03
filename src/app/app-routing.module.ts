@@ -19,6 +19,7 @@ import { MovieInformationComponent } from './movie-information/movie-information
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { ManagePricesComponent } from './manage-prices/manage-prices.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'movie-information', component: MovieInformationComponent},
   { path: 'showing-time', component: ShowingTimeComponent},
   { path: 'manage-users', component: ManageUsersComponent},
-  { path: 'add-admin', component: AddAdminComponent}
+  { path: 'add-admin', component: AddAdminComponent},
+  { path: 'manage-prices', component: ManagePricesComponent}
 ];
 
 @NgModule({

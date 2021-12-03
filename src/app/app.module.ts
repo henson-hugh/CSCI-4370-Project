@@ -47,6 +47,7 @@ import { SearchComponent } from './search/search.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { ManagePricesComponent } from './manage-prices/manage-prices.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     SearchComponent,
     ShowingTimeComponent,
     ManageUsersComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    ManagePricesComponent
   ],
   imports: [
     BrowserModule,

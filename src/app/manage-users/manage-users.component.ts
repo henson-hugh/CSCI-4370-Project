@@ -78,6 +78,7 @@ export class ManageUsersComponent implements OnInit {
       }
     );
 
+    console.log(this.customer);
     this._service.saveCustomerInfoFromRemote(this.customer).subscribe(
       data => {
 
@@ -88,11 +89,17 @@ export class ManageUsersComponent implements OnInit {
 
   suspendUser() {
     if (this.customer.suspend) {
-
+      this._service.unsuspendCustomerFromRemote(this.customer).subscribe(
+        data => {
+          this._router.navigate(['/admin-menu']);
+        }
+      );
     } else {
-
+      this._service.suspendCustomerFromRemote(this.customer).subscribe(
+        data => {
+          this._router.navigate(['/admin-menu']);
+        }
+      );
     }
-
-    this._router.navigate(['/home']);
   }
 }

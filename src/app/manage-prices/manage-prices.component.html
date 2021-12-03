@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/admin-menu" routerLinkActive="active">
+      <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+  </button>
+  <a mat-button routerLink="/admin-menu" routerLinkActive="active">Back To Admin Menu</a>
+</mat-toolbar>
+<div class="title">
+    <h1>Manage Prices</h1>
+</div>
+<div class="container">
+    <form [formGroup]="priceForm">
+      <div class="general-fields">
+        <h3>Ticket Prices</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Child</mat-label>
+          <input
+            matInput
+            placeholder="Enter Child Ticket Price"
+            name="childprice"
+            id="childprice"
+            formControlName="childprice"
+            required
+          />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Adult</mat-label>
+            <input
+              matInput
+              placeholder="Enter Adult Ticket Price"
+              name="adultprice"
+              id="adultprice"
+              formControlName="adultprice"
+              required
+            />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Senior</mat-label>
+              <input
+                matInput
+                placeholder="Enter Senior Ticket Price"
+                name="seniorprice"
+                id="seniorprice"
+                formControlName="seniorprice"
+                required
+              />
+              </mat-form-field>
+
+              <h3>Online Fee</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Fee</mat-label>
+          <input
+            matInput
+            placeholder="Enter Online Fee"
+            name="fee"
+            id="fee"
+            formControlName="fee"
+            required
+          />
+          </mat-form-field>
+
+
+      </div>
+
+      <button mat-button (click)="changePrices()">Change Prices</button>
+      <a class="active" id="logo" routerLink="/admin-menu" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+    </form>
+</div>

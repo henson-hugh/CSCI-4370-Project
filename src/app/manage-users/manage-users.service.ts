@@ -20,6 +20,14 @@ export class ManageUsersService {
   }
 
   public saveCustomerInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/admin/customer/save/", customer);
+    return this._http.post<any>("http://localhost:8080/admin/customer/edit/", customer);
+  }
+
+  public unsuspendCustomerFromRemote(customer: Customer): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/admin/customer/unsuspend/", customer);
+  }
+
+  public suspendCustomerFromRemote(customer: Customer): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/admin/customer/suspend/", customer);
   }
 }
