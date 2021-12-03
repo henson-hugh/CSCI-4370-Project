@@ -53,10 +53,10 @@ import { SeatSelectionComponent } from './seat-selection/seat-selection.componen
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { ManagePricesComponent } from './manage-prices/manage-prices.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutService } from './checkout.service';
 import { TicketTypeComponent } from './ticket-type/ticket-type.component';
-
 
 @NgModule({
   declarations: [
@@ -83,6 +83,7 @@ import { TicketTypeComponent } from './ticket-type/ticket-type.component';
     SeatSelectionComponent,
     ManageUsersComponent,
     AddAdminComponent,
+    ManagePricesComponent,
     CheckoutComponent,
     TicketTypeComponent
   ],

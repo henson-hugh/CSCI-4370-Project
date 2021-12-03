@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AddMovieService } from '../admin-menu/add-movie/add-movie.service';
 import { User } from '../model/user';
 import { AddAdminService } from './add-admin.service';
 
