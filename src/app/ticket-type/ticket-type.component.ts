@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
-import { SeatSelectionService } from './seat-selection.service';
-import { Movie } from '../model/movie';
 import { Genre } from '../model/genre';
+import { Movie } from '../model/movie';
 import { Showing } from '../model/showing';
-import { Seat } from '../model/seat';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Ticket } from '../model/ticket';
+import { MovieInformationService } from '../movie-information/movie-information.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-seat-selection',
-  templateUrl: './seat-selection.component.html',
-  styleUrls: ['./seat-selection.component.scss']
+  selector: 'app-ticket-type',
+  templateUrl: './ticket-type.component.html',
+  styleUrls: ['./ticket-type.component.scss']
 })
-export class SeatSelectionComponent implements OnInit {
+export class TicketTypeComponent implements OnInit {
 
-  msg: string = '';
   selectedValue: string;
   searchval: string = (localStorage.getItem('search') || '');
   type: string = (localStorage.getItem('type') || '');
@@ -30,17 +29,21 @@ export class SeatSelectionComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
-  showing: Showing = new Showing();
-  seats: Seat[] = [];
+  casts: string[] = [];
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
-  seatSelectionControl: FormControl = new FormControl();
-  seatSelectionForm: FormGroup;
-  constructor(private _formBuilder: FormBuilder, private _service: SeatSelectionService, private _router: Router) { }
+  ticketTypeForm: FormGroup;
+  ticket: Ticket = new Ticket();
+
+  constructor(private _formBuilder: FormBuilder, private _service: MovieInformationService, private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    this.seatSelectionForm = this._formBuilder.group({
-      seatSelectionControl: this._formBuilder.array([])
+
+    this.ticketTypeForm = this._formBuilder.group({
+      child: '',
+      adult: '',
+      elderly: ''
     });
+
     if (this.loggedIn.toString() == 'true') {
       this.userId = Number(sessionStorage.getItem('cid')) || 0;
       this.customer.cid = this.userId;
@@ -65,42 +68,23 @@ export class SeatSelectionComponent implements OnInit {
         this.movie.duration = data.movie['duration'];
         this.movie.trailerpic = data.movie['trailerpic'];
 
+        this.movie.trailervid = data.movie['trailervid'] + '?origin=localhost:4200';
+
         this.genres = data.genre;
         this.showings = data.showing;
-      });
-    
-      this.showing.sid = localStorage.getItem('showingSid') as unknown as number;
-      this.showing.date = localStorage.getItem('showingDate') as unknown as Date;
-      this.showing.time = localStorage.getItem('showingTime') as unknown as Date;
-      this.showing.roomid = localStorage.getItem('showingRoomid') as unknown as number;
-      this.showing.movieid = this.movie.mid;
+        this.casts = data.cast;
+      })
 
-      console.log(this.showing);
-
-      this._service.getTakenSeatsFromRemote(this.showing).subscribe( // getting a 500, the showing entity has the correct info
-        data => {
-          console.log(data);
-        });
+    // get info from seat-selection page with seatid
   }
-  
+
   search() {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);
     this._router.navigate(['/search']);
   }
 
-  addSeat() {
-    console.log(this.seatSelectionControl.value); // this functions is not needed
-  }
-
-  submitSeats() {
-    if (this.seatSelectionControl != null) {
-      for (let seat of this.seatSelectionControl.value) { // find a way to save the separate seats through this.seatSelectionControl as it holds all values for the selected
-        console.log(seat);
-      }
-      this._router.navigate(['/ticket-type']);
-    } else {
-      this.msg = 'Please select a seat';
-    }
+  saveTicketTypes() {
+    this._router.navigate(['checkout']);
   }
 }

@@ -54,7 +54,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutService } from './checkout/checkout.service';
+import { CheckoutService } from './checkout.service';
+import { TicketTypeComponent } from './ticket-type/ticket-type.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { CheckoutService } from './checkout/checkout.service';
     SeatSelectionComponent,
     ManageUsersComponent,
     AddAdminComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    TicketTypeComponent
   ],
   imports: [
     BrowserModule,

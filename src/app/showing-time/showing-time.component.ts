@@ -70,8 +70,11 @@ export class ShowingTimeComponent implements OnInit {
   }
 
   selectTime(showing: Showing) {
-    let value = '';
-    // localStorage.setItem('showDate', showing.date);
     console.log(showing.date)
+    localStorage.setItem('showingDate', showing.date as unknown as string);
+    localStorage.setItem('showingTime', showing.time as unknown as string);
+    localStorage.setItem('showingRoomid', showing.roomid as unknown as string);
+    localStorage.setItem('showingSid', showing.sid as unknown as string);
+    this._router.navigate(['seat-selection']);
   }
 }

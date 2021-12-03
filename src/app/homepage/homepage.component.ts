@@ -76,5 +76,7 @@ export class HomepageComponent implements OnInit {
     this._router.navigate(['/movie-information']);
   }
 
+  goToShowingTimes() {
 
+  }
 }

@@ -21,6 +21,7 @@ import { SeatSelectionComponent } from './seat-selection/seat-selection.componen
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { TicketTypeComponent } from './ticket-type/ticket-type.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'seat-selection', component: SeatSelectionComponent},
   { path: 'manage-users', component: ManageUsersComponent},
   { path: 'add-admin', component: AddAdminComponent},
-  { path: 'checkout', component: CheckoutComponent}
+  { path: 'checkout', component: CheckoutComponent},
+  { path: 'ticket-type', component: TicketTypeComponent}
 ];
 
 @NgModule({
