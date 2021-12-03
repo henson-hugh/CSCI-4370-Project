@@ -6,7 +6,6 @@
 <div class="container">
   <form [formGroup]="profileForm">
       <h3>All profile edits require you to enter your current password for security.</h3>
-      <!-- <small class="invalid"><b>{{msg}}</b></small><br> -->
       <mat-form-field appearance="fill">
         <mat-label>Change First Name</mat-label>
         <input
@@ -95,7 +94,7 @@
       </mat-form-field>
       <table class="table table-bordered" formArrayName="paymentCards">
         <tr>
-          <th colspan="2">Payment Cards:</th>
+          <th colspan="2">Save up to 3 Payment Cards on your account:</th>
         </tr>
         <tr
           *ngFor="let paymentCards of paymentCards().controls; let i = index"

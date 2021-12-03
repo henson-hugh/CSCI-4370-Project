@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../model/customer';
 import { User } from '../model/user';
+import { PaymentCard } from '../model/payment-card';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class EditProfileService {
 
   public getPaymentCardInfoFromRemote(customer: Customer): Observable<any> {
     return this._http.post<any>("http://localhost:8080/customer/payment/retrieve", customer);
+  }
+
+  public updatePaymentCardInfoFromRemote(paymentCard: PaymentCard): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/customer/payment/edit", paymentCard);
   }
 
   public updateCustomerFromRemote(customer: Customer): Observable<any> {
