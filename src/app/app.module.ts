@@ -45,17 +45,15 @@ import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.se
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 import { SearchComponent } from './search/search.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
-<<<<<<< HEAD
 import { ShowingTimeService } from './showing-time/showing-time.service';
 import { SeatSelectionService } from './seat-selection/seat-selection.service';
 import { SearchService } from './search/search.service';
 import { MovieInformationService } from './movie-information/movie-information.service';
 import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-=======
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
->>>>>>> f24fa62f7fcbb9faf394ad61050cf3a0b0cd6df4
+
 
 @NgModule({
   declarations: [
@@ -79,12 +77,9 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     ManagePromotionsComponent,
     SearchComponent,
     ShowingTimeComponent,
-<<<<<<< HEAD
     SeatSelectionComponent
-=======
     ManageUsersComponent,
     AddAdminComponent
->>>>>>> f24fa62f7fcbb9faf394ad61050cf3a0b0cd6df4
   ],
   imports: [
     BrowserModule,

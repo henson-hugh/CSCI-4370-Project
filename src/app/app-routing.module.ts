@@ -17,12 +17,9 @@ import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage
 import { SearchComponent } from './search/search.component';
 import { MovieInformationComponent } from './movie-information/movie-information.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
-<<<<<<< HEAD
 import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
-=======
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
->>>>>>> f24fa62f7fcbb9faf394ad61050cf3a0b0cd6df4
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -43,12 +40,9 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'movie-information', component: MovieInformationComponent},
   { path: 'showing-time', component: ShowingTimeComponent},
-<<<<<<< HEAD
   { path: 'seat-selection', component: SeatSelectionComponent}
-=======
   { path: 'manage-users', component: ManageUsersComponent},
   { path: 'add-admin', component: AddAdminComponent}
->>>>>>> f24fa62f7fcbb9faf394ad61050cf3a0b0cd6df4
 ];
 
 @NgModule({
