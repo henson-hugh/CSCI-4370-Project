@@ -54,6 +54,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutService } from './checkout/checkout.service';
 
 
 @NgModule({
@@ -114,7 +115,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ShowingTimeService, 
     SeatSelectionService, 
     SearchService, 
-    MovieInformationService, 
+    MovieInformationService,
+    CheckoutService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

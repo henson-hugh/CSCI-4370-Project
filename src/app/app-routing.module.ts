@@ -20,6 +20,7 @@ import { ShowingTimeComponent } from './showing-time/showing-time.component';
 import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'showing-time', component: ShowingTimeComponent},
   { path: 'seat-selection', component: SeatSelectionComponent},
   { path: 'manage-users', component: ManageUsersComponent},
-  { path: 'add-admin', component: AddAdminComponent}
+  { path: 'add-admin', component: AddAdminComponent},
+  { path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
