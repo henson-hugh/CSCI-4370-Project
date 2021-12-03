@@ -53,6 +53,7 @@ import { SeatSelectionComponent } from './seat-selection/seat-selection.componen
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -77,9 +78,10 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     ManagePromotionsComponent,
     SearchComponent,
     ShowingTimeComponent,
-    SeatSelectionComponent
+    SeatSelectionComponent,
     ManageUsersComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

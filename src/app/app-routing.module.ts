@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'movie-information', component: MovieInformationComponent},
   { path: 'showing-time', component: ShowingTimeComponent},
-  { path: 'seat-selection', component: SeatSelectionComponent}
+  { path: 'seat-selection', component: SeatSelectionComponent},
   { path: 'manage-users', component: ManageUsersComponent},
   { path: 'add-admin', component: AddAdminComponent}
 ];
