@@ -17,6 +17,8 @@ import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage
 import { SearchComponent } from './search/search.component';
 import { MovieInformationComponent } from './movie-information/movie-information.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -36,7 +38,9 @@ const routes: Routes = [
   { path: 'manage-promotions', component: ManagePromotionsComponent},
   { path: 'search', component: SearchComponent},
   { path: 'movie-information', component: MovieInformationComponent},
-  { path: 'showing-time', component: ShowingTimeComponent}
+  { path: 'showing-time', component: ShowingTimeComponent},
+  { path: 'manage-users', component: ManageUsersComponent},
+  { path: 'add-admin', component: AddAdminComponent}
 ];
 
 @NgModule({

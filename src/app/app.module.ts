@@ -45,6 +45,8 @@ import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.se
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 import { SearchComponent } from './search/search.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { ShowingTimeComponent } from './showing-time/showing-time.component';
     AddMovieComponent,
     ManagePromotionsComponent,
     SearchComponent,
-    ShowingTimeComponent
+    ShowingTimeComponent,
+    ManageUsersComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
