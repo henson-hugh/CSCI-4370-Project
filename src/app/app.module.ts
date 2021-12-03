@@ -44,6 +44,7 @@ import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage
 import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.service';
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 import { SearchComponent } from './search/search.component';
+import { ShowingTimeComponent } from './showing-time/showing-time.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SearchComponent } from './search/search.component';
     ManageMoviesComponent,
     AddMovieComponent,
     ManagePromotionsComponent,
-    SearchComponent
+    SearchComponent,
+    ShowingTimeComponent
   ],
   imports: [
     BrowserModule,

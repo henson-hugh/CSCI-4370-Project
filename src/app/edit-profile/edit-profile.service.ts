@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../model/customer';
 import { User } from '../model/user';
+import { PaymentCard } from '../model/payment-card';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class EditProfileService {
     return this._http.get<any>("http://localhost:8080/customer/" + sessionStorage.getItem('cid'));
   }
 
-  public getUserInfoFromRemote(uid: number): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/getUser", sessionStorage.getItem('cid'));
+  public getPaymentCardInfoFromRemote(customer: Customer): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/customer/payment/retrieve", customer);
   }
 
-  public getPaymentCardInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/customer/getPayment" + sessionStorage.getItem('cid'), customer);
+  public updatePaymentCardInfoFromRemote(paymentCard: PaymentCard): Observable<any> {
+    return this._http.post<any>("http://localhost:8080/customer/payment/edit", paymentCard);
   }
 
   public updateCustomerFromRemote(customer: Customer): Observable<any> {
@@ -34,4 +35,5 @@ export class EditProfileService {
   public updateUserPasswordFromRemote(user: User): Observable<any> {
     return this._http.post<any>("http://localhost:8080/updatePass", user);
   }
+
 }

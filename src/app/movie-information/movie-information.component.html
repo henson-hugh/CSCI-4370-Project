@@ -36,8 +36,6 @@
   <iframe width="100%" height="600" [src]="safeUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-
-
 <div class="movie-info-container">
   <div class="movie-details">
     <h2>Information about the movie:</h2>
@@ -70,10 +68,10 @@
     </div>
 
     <div class="text">
-      <p><b>Times:</b> </p>
+      <p><b>Select a booking showtime:</b> </p>
       <p class="content" *ngFor="let showing of showings">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</p>
     </div>
-    <a class="book-button" mat-raised-button [routerLink]=" '/book'">Book Tickets</a>
+    <a class="book-button" mat-raised-button [routerLink]=" '/showing-time'">Book Tickets</a>
   </div>
   <div class="movie-poster">
     <img src={{movie.trailerpic}} height="500" width="315" alt="Movie Picture" class="movie-image">

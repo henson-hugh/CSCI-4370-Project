@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { User } from '../model/user';
 import { FormBuilder, FormGroup, FormArray, Validator, Validators, MaxLengthValidator } from '@angular/forms';
+import { PaymentCard } from '../model/payment-card';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,6 +17,7 @@ export class EditProfileComponent implements OnInit {
   msg: string = 'Passwords must be at least 8 characters in length';
   customer: Customer = new Customer();
   user: User = new User();
+  paymentCardList: PaymentCard[] = [];
 
   constructor(private _service: EditProfileService, private _router: Router, private _formBuilder: FormBuilder) { }
 
@@ -38,7 +40,7 @@ export class EditProfileComponent implements OnInit {
     this._service.getCustomerInfoFromRemote(this.customer).subscribe(
       data => {
         this.customer.cid = data.customer['cid'];
-        this.user.uid = this.customer.cid;
+        this.user.uid = data.customer['userid'];
 
         this.profileForm.controls.firstName.setValue(data.customer['firstName']);
         this.profileForm.controls.lastName.setValue(data.customer['lastName']);
@@ -48,9 +50,25 @@ export class EditProfileComponent implements OnInit {
         this.profileForm.controls.zip.setValue(data.customer['zip']);
         this.profileForm.controls.phone.setValue(data.customer['phone']);
         this.profileForm.controls.promo.setValue(data.customer['getPromo']);
-      }
-    )
-  }
+
+        this._service.getPaymentCardInfoFromRemote(this.customer).subscribe(
+          cardData => {
+            cardData.forEach((element: any) =>{
+    
+              var d = new Date(element['expDate']);
+    
+              this.paymentCards().push(this._formBuilder.group({
+                cardNumber: element['cardNumber'],
+                expDate: new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + d.getTimezoneOffset()).toISOString(),
+                street: element['street'],
+                city: element['city'],
+                state: element['street'],
+                zip: element['zip']
+              }));
+            });
+          });
+      });
+  };
 
   updateCustomer() {
     if (this.profileForm.controls.oldPassword.value) {
@@ -87,6 +105,10 @@ export class EditProfileComponent implements OnInit {
     this.customer.zip = this.profileForm.controls.zip.value;
     this.customer.phone = this.profileForm.controls.phone.value;
     this.customer.getPromo = this.profileForm.controls.promo.value;
+    this.paymentCardList = this.profileForm.value['paymentCards'];
+    this.paymentCardList.forEach(card => {
+      card.customerid = this.customer.cid;
+    });
 
     this._service.updateCustomerFromRemote(this.customer).subscribe(
       data => {
@@ -97,6 +119,13 @@ export class EditProfileComponent implements OnInit {
       });
 
     // add payment card to database
+    this.paymentCardList.forEach(card => {
+      this._service.updatePaymentCardInfoFromRemote(card).subscribe(
+        data =>{
+          console.log('payment card saved');
+        }
+      )
+    });
   }
 
   paymentCards(): FormArray {

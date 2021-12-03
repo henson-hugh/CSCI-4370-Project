@@ -4,6 +4,7 @@ import { RegistrationService } from './registration.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../model/user';
+import { PaymentCard } from '../model/payment-card';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  paymentCard: PaymentCard = new PaymentCard();
 
   constructor(private _service: RegistrationService, private _router: Router, private _formBuilder: FormBuilder) { }
 
@@ -25,8 +27,8 @@ export class RegisterComponent implements OnInit {
       emailCtrl: ['', Validators.compose([Validators.required, Validators.email])],
       firstNameCtrl: ['', Validators.required],
       lastNameCtrl: ['', Validators.required],
-      passwordCtrl: ['', Validators.required],
-      confirmPasswordCtrl: ['', Validators.required],
+      passwordCtrl: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      confirmPasswordCtrl: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       phoneCtrl: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -38,6 +40,10 @@ export class RegisterComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       cardNumberCtrl: [''],
       expDateCtrl: [''],
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: [''],
     });
   }
 
@@ -59,10 +65,27 @@ export class RegisterComponent implements OnInit {
         this.setCustomerValues();
         this._service.saveCustomerFromRemote(this.customer).subscribe(
           result => {
-            console.log('Customer' + result);
+            console.log('Customer' + result['cid']);
+            this.customer.cid = result['cid'];
+            
+            if (this.thirdFormGroup.value['cardNumberCtrl'] && this.thirdFormGroup.value['expDateCtrl'] &&
+            this.thirdFormGroup.value['street'] && this.thirdFormGroup.value['city'] && this.thirdFormGroup.value['state'] && this.thirdFormGroup.value['zip']) {
+              this.paymentCard.customerid = result['cid'];
+              this.paymentCard.cardNumber = this.thirdFormGroup.value['cardNumberCtrl'];
+              this.paymentCard.expDate = this.thirdFormGroup.value['expDateCtrl'];
+              this.paymentCard.street = this.thirdFormGroup.value['street'];
+              this.paymentCard.city = this.thirdFormGroup.value['city'];
+              this.paymentCard.state = this.thirdFormGroup.value['state'];
+              this.paymentCard.zip = this.thirdFormGroup.value['zip'];
+
+              this._service.savePaymentCardFromRemote(this.paymentCard).subscribe(
+                data => {
+                  console.log('save payment');
+                }
+              );
+          }
           }
         )
-
         this._router.navigate(['/confirm-email']);
         
       }, 
