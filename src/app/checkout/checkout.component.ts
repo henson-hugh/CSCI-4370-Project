@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { Genre } from '../model/genre';
 import { Movie } from '../model/movie';
+import { PaymentCard } from '../model/payment-card';
 import { Showing } from '../model/showing';
 import { CheckoutService } from './checkout.service';
 
@@ -14,6 +15,7 @@ import { CheckoutService } from './checkout.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  checkoutForm: FormGroup;
   msg: string = '';
   selectedValue: string;
   searchval: string = (localStorage.getItem('search') || '');
@@ -32,6 +34,7 @@ export class CheckoutComponent implements OnInit {
   showing: Showing = new Showing();
   seats: string[] = [];
   prices: number[] = [];
+  card: PaymentCard = new PaymentCard();
 
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
   seatSelectionControl: FormControl = new FormControl();
@@ -39,6 +42,9 @@ export class CheckoutComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _service: CheckoutService, private _router: Router) { }
 
   ngOnInit(): void {
+    this.checkoutForm =this._formBuilder.group({
+      cardNumber: ''
+    });
     this.seats = JSON.parse(localStorage.getItem("seats") || "");
     this.showing.roomid = JSON.parse(localStorage.getItem("showingRoomid") || "");
     this._service.getMovieInfoFromRemote(Number(localStorage.getItem("movieid"))).subscribe(
@@ -68,6 +74,12 @@ export class CheckoutComponent implements OnInit {
           }
         });
 
+        this.customer.cid = Number(sessionStorage.getItem('cid') || "");
+        this._service.getCardFromRemote(this.customer).subscribe(
+          data => {
+            this.checkoutForm.controls.cardNumber.setValue = data['cardNumber'];
+            console.log(data['cardNumber']);
+          });
 
   }
 
@@ -79,6 +91,10 @@ export class CheckoutComponent implements OnInit {
 
   find(i: number) {
     return this.prices[i];
+  }
+
+  checkout(){
+
   }
 
 }

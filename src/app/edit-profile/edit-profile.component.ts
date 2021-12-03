@@ -54,9 +54,9 @@ export class EditProfileComponent implements OnInit {
         this._service.getPaymentCardInfoFromRemote(this.customer).subscribe(
           cardData => {
             cardData.forEach((element: any) =>{
-    
+
               var d = new Date(element['expDate']);
-    
+
               this.paymentCards().push(this._formBuilder.group({
                 cardNumber: element['cardNumber'],
                 expDate: new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() + d.getTimezoneOffset()).toISOString(),
@@ -79,7 +79,7 @@ export class EditProfileComponent implements OnInit {
 
           if (this.profileForm.controls.oldPassword.value && this.profileForm.controls.newPassword.value) { // checks if password needs to change
             if (this.profileForm.controls.newPassword.value == this.profileForm.controls.confirmPassword.value) { // checks if new password and confirm password entered correctly
-              this.user.password = this.profileForm.controls.newPassword.value;                               
+              this.user.password = this.profileForm.controls.newPassword.value;
               this._service.updateUserPasswordFromRemote(this.user).subscribe(
                 result => {
                   console.log("updated password");
@@ -96,7 +96,7 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  updateCustomerDetails() {    
+  updateCustomerDetails() {
     this.customer.firstName = this.profileForm.controls.firstName.value;
     this.customer.lastName = this.profileForm.controls.lastName.value;
     this.customer.street = this.profileForm.controls.street.value;

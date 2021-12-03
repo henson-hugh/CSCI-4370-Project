@@ -29,18 +29,98 @@
   <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
 </mat-toolbar>
 
-<div class="movie-container recommended" *ngFor="let seat of seats; index as i">
-  <div class="movie-card recommended" fxLayout="row">
-  <mat-card class="example-card" style="float: left">
-    <mat-card-header>
-      <mat-card-title>{{movie.title}}</mat-card-title>
-      <mat-card-subtitle>Room: {{showing.roomid}} </mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src={{movie.trailerpic}} alt="Movie Poster" style="width: 175px; margin: auto">
-    <mat-card-content>
-      <p style="display: inline;">Seat: {{seat}}</p>
-      <p>Price: ${{find(i)}}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+<div class="container">
+  <div class="movie-container recommended"  style="display: block;">
+    <div fxLayout="row" *ngFor="let seat of seats; index as i">
+      <mat-card class="movie-card recommended" style="width: 200px">
+        <mat-card-header>
+          <mat-card-title>{{movie.title}}</mat-card-title>
+          <mat-card-subtitle>Room: {{showing.roomid}} </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{movie.trailerpic}} alt="Movie Poster" style="width: 175px; margin: auto">
+        <mat-card-content>
+          <p>Seat: {{seat}}</p>
+          <p>Price: ${{find(i)}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <form [formGroup]="checkoutForm">
+    <div class="general-fields">
+      <h3>Promo Key</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Key</mat-label>
+        <input matInput formControlName="cardNumber" placeholder="Enter Key" name="promokey" id="promokey">
+      </mat-form-field>
+      <h3>Payment Information</h3>
+      <span class="info"><b>Card Info: </b></span>
+      <mat-form-field appearance="fill">
+        <mat-label>Card Number</mat-label>
+        <input matInput formControlName="cardNumber" placeholder="XXXX-XXXX-XXXX">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Expiration Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="cardNumber"
+            class="form-control"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field><br>
+      <span class="info"><b>Billing Address: </b></span>
+      <mat-form-field appearance="fill">
+      <mat-label>Change Street</mat-label>
+      <input
+        matInput
+        placeholder="Enter street"
+        name="street"
+        id="street"
+        formControlName="cardNumber"
+      />
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+      <mat-label>Change City</mat-label>
+      <input
+        matInput
+        placeholder="Enter city"
+        name="city"
+        id="city"
+        formControlName="cardNumber"
+      />
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+      <mat-label>Change State</mat-label>
+      <input
+        matInput
+        placeholder="Enter state"
+        name="state"
+        id="state"
+        formControlName="cardNumber"
+      />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+      <mat-label>Change Zip Code</mat-label>
+      <input
+        matInput
+        placeholder="Enter zip"
+        name="zip"
+        id="zip"
+        formControlName="cardNumber"
+      />
+      </mat-form-field>
+    </div>
+
+    <button mat-button (click)="checkout()">Checkout</button>
+    <a class="active" id="cancel" routerLink="/manage-users" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+  </form>
 </div>
