@@ -1,0 +1,103 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+        <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+    </button>
+    <a class="toolbar-link" routerLink="/home" routerLinkActive="active"><span class="toolbar-title">Pigeon Theatres</span></a>
+    <p class="search-text">Search</p>
+    <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
+        <mat-label>By</mat-label>
+        <mat-select [(value)]="type">
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="genre">Genre</mat-option>
+        <mat-option value="director">Director</mat-option>
+        <mat-option value="producer">Producer</mat-option>
+        <mat-option value="cast">Cast</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p>:</p>
+    <mat-form-field appearance="outline" class="search-bar" [style.width.px]=360>
+        <input matInput placeholder="Type here..." [(ngModel)]="searchval"/>
+    </mat-form-field>
+    <a class="search-button" mat-raised-button color="primary" role="button" (click)="search()">
+        <mat-icon class="search-icon">search</mat-icon> Search
+    </a>
+    <div class="spacer"></div>
+    <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
+        <mat-icon class="login-icon">{{loginIcon}}</mat-icon> {{profileName}}
+    </a>
+    <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
+</mat-toolbar>
+
+<div class="title">
+    <h1>Select your Seats</h1>
+</div>
+<div class="container">
+    <img src="../assets/images/movie-screen.png" height="400" width="800">
+    <mat-button-toggle-group name="seats" aria-label="seats" multiple>
+        <table>
+            <tr>
+                <td><mat-button-toggle value="A1">A1</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A2</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A3</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A4</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A5</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A6</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A7</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A8</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A9</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">A10</mat-button-toggle></td>
+            </tr>
+            <tr>
+                <td><mat-button-toggle value="A1">B1</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B2</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B3</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B4</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B5</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B6</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B7</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B8</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B9</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">B10</mat-button-toggle></td>
+            </tr>
+            <tr>
+                <td><mat-button-toggle value="A1">C1</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C2</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C3</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C4</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C5</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C6</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C7</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C8</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C9</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">C10</mat-button-toggle></td>
+            </tr>
+            <tr>
+                <td><mat-button-toggle value="A1">D1</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D2</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D3</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D4</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D5</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D6</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D7</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D8</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D9</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">D10</mat-button-toggle></td>
+            </tr>
+            <tr>
+                <td><mat-button-toggle value="A1">E1</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E2</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E3</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E4</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E5</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E6</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E7</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E8</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E9</mat-button-toggle></td>
+                <td><mat-button-toggle value="A1">E10</mat-button-toggle></td>
+            </tr>
+        </table>
+    </mat-button-toggle-group>
+</div>
+
+<a class="button" mat-raised-button [routerLink]=" '/#'">Submit Selection</a>

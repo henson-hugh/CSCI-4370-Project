@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
-import { ShowingTimeService } from './showing-time.service';
+import { SeatSelectionService } from './seat-selection.service';
 import { Movie } from '../model/movie';
 import { Genre } from '../model/genre';
 import { Showing } from '../model/showing';
 
 @Component({
-  selector: 'app-showing-time',
-  templateUrl: './showing-time.component.html',
-  styleUrls: ['./showing-time.component.scss']
+  selector: 'app-seat-selection',
+  templateUrl: './seat-selection.component.html',
+  styleUrls: ['./seat-selection.component.scss']
 })
-export class ShowingTimeComponent implements OnInit {
+export class SeatSelectionComponent implements OnInit {
 
   selectedValue: string;
   searchval: string = (localStorage.getItem('search') || '');
@@ -27,10 +27,9 @@ export class ShowingTimeComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
-  showSelection: Showing = new Showing();
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
 
-  constructor(private _service: ShowingTimeService, private _router: Router) { }
+  constructor(private _service: SeatSelectionService, private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -67,11 +66,5 @@ export class ShowingTimeComponent implements OnInit {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);
     this._router.navigate(['/search']);
-  }
-
-  selectTime(showing: Showing) {
-    let value = '';
-    // localStorage.setItem('showDate', showing.date);
-    console.log(showing.date)
   }
 }

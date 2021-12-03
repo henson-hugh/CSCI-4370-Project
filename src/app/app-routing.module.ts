@@ -17,6 +17,7 @@ import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage
 import { SearchComponent } from './search/search.component';
 import { MovieInformationComponent } from './movie-information/movie-information.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
+import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'movie-information', component: MovieInformationComponent},
   { path: 'showing-time', component: ShowingTimeComponent},
+  { path: 'seat-selection', component: SeatSelectionComponent}
   { path: 'manage-users', component: ManageUsersComponent},
   { path: 'add-admin', component: AddAdminComponent}
 ];

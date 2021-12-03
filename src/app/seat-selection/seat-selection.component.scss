@@ -56,32 +56,44 @@
 }
 
 .title {
-  margin: 3rem 15rem;
+    margin: 3rem 15rem;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    padding: 1rem;
 }
 
 .container {
-  margin: 3rem 15rem;
-}
-
-.content {
-    margin: 2rem;
-    border: 1px solid black;
-}
-
-.movie-poster {
     margin: auto;
-    width: 315px;
+    margin-top: 2rem;
+    width: 50%;
+}
+
+.container img {
+    margin: auto;
+    width: 100%;
+}
+
+.container table {
+    margin: auto;
+    background-color: white;
+    color: black;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgba(178,140,198,1);
 }
 
 .button {
-  border: 1px solid black;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 16px;
-  margin: 1rem auto;
-  cursor: pointer;
-  background-color: rgba(178,140,198,1);
-  width: 40%;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 3rem auto;
+    cursor: pointer;
+    background-color: rgba(178,140,198,1);
+    width: 40%;
 }

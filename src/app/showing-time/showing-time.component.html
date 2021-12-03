@@ -37,6 +37,9 @@
     <div class="movie-poster">
         <img src={{movie.trailerpic}} height="500" width="315" alt="Movie Picture" class="movie-image">
     </div>
-    <a mat-button class="content" *ngFor="let showing of showings">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</a>
+    <form>
+        <button mat-button class="button" *ngFor="let showing of showings" (click)="selectTime(showing)" name="showSelection">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</button>
+    </form>
+    
 </div>
 
