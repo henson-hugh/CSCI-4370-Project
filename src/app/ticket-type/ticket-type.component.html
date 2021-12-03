@@ -30,16 +30,51 @@
 </mat-toolbar>
 
 <div class="title">
-    <h1>Select a Showtime</h1>
-</div>
-<div class="container">
-    <h2>Available Times for {{movie.title}}:</h2>
-    <div class="movie-poster">
-        <img src={{movie.trailerpic}} height="500" width="315" alt="Movie Picture" class="movie-image">
-    </div>
-    <form>
-        <button mat-button class="button" *ngFor="let showing of showings" (click)="selectTime(showing)" name="showSelection">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</button>
-    </form>
-    
+    <h1>Enter the amount of each type of ticket</h1>
 </div>
 
+<div class="container">
+    <form [formGroup]="ticketTypeForm">
+      <h3>Child $X</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Child</mat-label>
+        <input
+          matInput
+          placeholder="Amount of child tickets"
+          name="child"
+          id="child"
+          formControlName="child"
+          required
+        />
+      </mat-form-field>
+
+        <h3>Adult $X</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Adult</mat-label>
+          <input
+            matInput
+            placeholder="Amount of adult tickets"
+            name="adult"
+            id="adult"
+            formControlName="adult"
+            required
+          />
+        </mat-form-field>
+        <h3>Elderly $X</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Eldery</mat-label>
+          <input
+            matInput
+            placeholder="Amount of elderly tickets"
+            name="elderly"
+            id="elderly"
+            formControlName="elderly"
+            required
+          />
+        </mat-form-field><br>
+
+      <button mat-button (click)="saveTicketTypes()">Proceed to Checkout</button>
+      <a class="active" id="logo" routerLink="/movie-information" routerLinkActive="active"><button mat-button class="cancel">Cancel</button></a>
+    </form>
+  </div>
+  

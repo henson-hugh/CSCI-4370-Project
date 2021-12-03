@@ -45,9 +45,18 @@ import { ManageMoviesService } from './admin-menu/manage-movies/manage-movies.se
 import { AddMovieService } from './admin-menu/add-movie/add-movie.service';
 import { SearchComponent } from './search/search.component';
 import { ShowingTimeComponent } from './showing-time/showing-time.component';
+import { ShowingTimeService } from './showing-time/showing-time.service';
+import { SeatSelectionService } from './seat-selection/seat-selection.service';
+import { SearchService } from './search/search.service';
+import { MovieInformationService } from './movie-information/movie-information.service';
+import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { ManagePricesComponent } from './manage-prices/manage-prices.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutService } from './checkout.service';
+import { TicketTypeComponent } from './ticket-type/ticket-type.component';
 
 @NgModule({
   declarations: [
@@ -71,9 +80,12 @@ import { ManagePricesComponent } from './manage-prices/manage-prices.component';
     ManagePromotionsComponent,
     SearchComponent,
     ShowingTimeComponent,
+    SeatSelectionComponent,
     ManageUsersComponent,
     AddAdminComponent,
-    ManagePricesComponent
+    ManagePricesComponent,
+    CheckoutComponent,
+    TicketTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -94,9 +106,21 @@ import { ManagePricesComponent } from './manage-prices/manage-prices.component';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonToggleModule
   ],
-  providers: [LoginService, RegistrationService, EditProfileService, MatDatepickerModule, ManageMoviesService, AddMovieService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [LoginService, 
+    RegistrationService, 
+    EditProfileService, 
+    MatDatepickerModule, 
+    ManageMoviesService, 
+    AddMovieService, 
+    ShowingTimeService, 
+    SeatSelectionService, 
+    SearchService, 
+    MovieInformationService,
+    CheckoutService,
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

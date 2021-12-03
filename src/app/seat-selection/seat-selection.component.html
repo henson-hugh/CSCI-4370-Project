@@ -1,0 +1,106 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <button mat-icon-button class="home-icon" aria-label="home-icon" routerLink="/home" routerLinkActive="active">
+        <img class="toolbar-icon" src="assets/images/sample-logo.jpg" alt="logo" height="40px" width="40px">
+    </button>
+    <a class="toolbar-link" routerLink="/home" routerLinkActive="active"><span class="toolbar-title">Pigeon Theatres</span></a>
+    <p class="search-text">Search</p>
+    <mat-form-field appearance="outline" class="search-filter" [style.width.px]=90>
+        <mat-label>By</mat-label>
+        <mat-select [(value)]="type">
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="genre">Genre</mat-option>
+        <mat-option value="director">Director</mat-option>
+        <mat-option value="producer">Producer</mat-option>
+        <mat-option value="cast">Cast</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p>:</p>
+    <mat-form-field appearance="outline" class="search-bar" [style.width.px]=360>
+        <input matInput placeholder="Type here..." [(ngModel)]="searchval"/>
+    </mat-form-field>
+    <a class="search-button" mat-raised-button color="primary" role="button" (click)="search()">
+        <mat-icon class="search-icon">search</mat-icon> Search
+    </a>
+    <div class="spacer"></div>
+    <a mat-raised-button color="primary" [routerLink] = " '/' + profileURL " routerLinkActive="active">
+        <mat-icon class="login-icon">{{loginIcon}}</mat-icon> {{profileName}}
+    </a>
+    <a mat-button [routerLink] = " '/' + registerURL " routerLinkActive="active">{{registerName}}</a>
+</mat-toolbar>
+
+<div class="title">
+    <h1>Select your Seats</h1>
+</div>
+<div class="container">
+    <form [formGroup]="seatSelectionForm">
+        <img src="../assets/images/movie-screen.png" height="400" width="800">
+        <mat-button-toggle-group [formControl]="seatSelectionControl" multiple>
+            <table>
+                <tr>
+                    <td><mat-button-toggle (click)="addSeat()" value="A1">A1</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A2">A2</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A3">A3</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A4">A4</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A5">A5</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A6">A6</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A7">A7</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A8">A8</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A9">A9</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="A10">A10</mat-button-toggle></td>
+                </tr>
+                <tr>
+                    <td><mat-button-toggle (click)="addSeat()" value="B1">B1</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B2">B2</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B3">B3</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B4">B4</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B5">B5</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B6">B6</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B7">B7</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B8">B8</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B9">B9</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="B10">B10</mat-button-toggle></td>
+                </tr>
+                <tr>
+                    <td><mat-button-toggle (click)="addSeat()" value="C1">C1</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C2">C2</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C3">C3</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C4">C4</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C5">C5</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C6">C6</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C7">C7</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C8">C8</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C9">C9</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="C10">C10</mat-button-toggle></td>
+                </tr>
+                <tr>
+                    <td><mat-button-toggle (click)="addSeat()" value="D1">D1</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D2">D2</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D3">D3</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D4">D4</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D5">D5</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D6">D6</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D7">D7</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D8">D8</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D9">D9</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="D10">D10</mat-button-toggle></td>
+                </tr>
+                <tr>
+                    <td><mat-button-toggle (click)="addSeat()" value="E1">E1</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E2">E2</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E3">E3</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E4">E4</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E5">E5</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E6">E6</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E7">E7</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E8">E8</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E9">E9</mat-button-toggle></td>
+                    <td><mat-button-toggle (click)="addSeat()" value="E10">E10</mat-button-toggle></td>
+                </tr>
+            </table>
+        </mat-button-toggle-group>
+        <small class="invalid"><b>{{msg}}</b></small><br>
+        <button class="button" mat-raised-button (click)="submitSeats()">Submit Selection</button>
+    </form>
+</div>
+

@@ -71,7 +71,7 @@
       <p><b>Select a booking showtime:</b> </p>
       <p class="content" *ngFor="let showing of showings">{{showing.date}}, {{showing.time}} at Theatre {{showing.roomid}}</p>
     </div>
-    <a class="book-button" mat-raised-button [routerLink]=" '/showing-time'">Book Tickets</a>
+    <a class="book-button" mat-raised-button routerLink="/showing-time">Book Tickets</a>
   </div>
   <div class="movie-poster">
     <img src={{movie.trailerpic}} height="500" width="315" alt="Movie Picture" class="movie-image">

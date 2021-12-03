@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
-import { ShowingTimeService } from './showing-time.service';
+import { SeatSelectionService } from './seat-selection.service';
 import { Movie } from '../model/movie';
 import { Genre } from '../model/genre';
 import { Showing } from '../model/showing';
+import { Seat } from '../model/seat';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-showing-time',
-  templateUrl: './showing-time.component.html',
-  styleUrls: ['./showing-time.component.scss']
+  selector: 'app-seat-selection',
+  templateUrl: './seat-selection.component.html',
+  styleUrls: ['./seat-selection.component.scss']
 })
-export class ShowingTimeComponent implements OnInit {
+export class SeatSelectionComponent implements OnInit {
 
+  msg: string = '';
   selectedValue: string;
   searchval: string = (localStorage.getItem('search') || '');
   type: string = (localStorage.getItem('type') || '');
@@ -27,13 +30,17 @@ export class ShowingTimeComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
-  showSelection: Showing = new Showing();
+  showing: Showing = new Showing();
+  seats: Seat[] = [];
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
-
-  constructor(private _service: ShowingTimeService, private _router: Router) { }
+  seatSelectionControl: FormControl = new FormControl();
+  seatSelectionForm: FormGroup;
+  constructor(private _formBuilder: FormBuilder, private _service: SeatSelectionService, private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
-
+    this.seatSelectionForm = this._formBuilder.group({
+      seatSelectionControl: this._formBuilder.array([])
+    });
     if (this.loggedIn.toString() == 'true') {
       this.userId = Number(sessionStorage.getItem('cid')) || 0;
       this.customer.cid = this.userId;
@@ -60,7 +67,20 @@ export class ShowingTimeComponent implements OnInit {
 
         this.genres = data.genre;
         this.showings = data.showing;
-      })
+      });
+    
+      this.showing.sid = localStorage.getItem('showingSid') as unknown as number;
+      this.showing.date = localStorage.getItem('showingDate') as unknown as Date;
+      this.showing.time = localStorage.getItem('showingTime') as unknown as Date;
+      this.showing.roomid = localStorage.getItem('showingRoomid') as unknown as number;
+      this.showing.movieid = this.movie.mid;
+
+      console.log(this.showing);
+
+      this._service.getTakenSeatsFromRemote(this.showing).subscribe( // getting a 500, the showing entity has the correct info
+        data => {
+          console.log(data);
+        });
   }
   
   search() {
@@ -69,12 +89,18 @@ export class ShowingTimeComponent implements OnInit {
     this._router.navigate(['/search']);
   }
 
-  selectTime(showing: Showing) {
-    console.log(showing.date)
-    localStorage.setItem('showingDate', showing.date as unknown as string);
-    localStorage.setItem('showingTime', showing.time as unknown as string);
-    localStorage.setItem('showingRoomid', showing.roomid as unknown as string);
-    localStorage.setItem('showingSid', showing.sid as unknown as string);
-    this._router.navigate(['seat-selection']);
+  addSeat() {
+    console.log(this.seatSelectionControl.value); // this functions is not needed
+  }
+
+  submitSeats() {
+    if (this.seatSelectionControl != null) {
+      for (let seat of this.seatSelectionControl.value) { // find a way to save the separate seats through this.seatSelectionControl as it holds all values for the selected
+        console.log(seat);
+      }
+      this._router.navigate(['/ticket-type']);
+    } else {
+      this.msg = 'Please select a seat';
+    }
   }
 }

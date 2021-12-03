@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
-import { ShowingTimeService } from './showing-time.service';
-import { Movie } from '../model/movie';
 import { Genre } from '../model/genre';
+import { Movie } from '../model/movie';
 import { Showing } from '../model/showing';
+import { Ticket } from '../model/ticket';
+import { MovieInformationService } from '../movie-information/movie-information.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-showing-time',
-  templateUrl: './showing-time.component.html',
-  styleUrls: ['./showing-time.component.scss']
+  selector: 'app-ticket-type',
+  templateUrl: './ticket-type.component.html',
+  styleUrls: ['./ticket-type.component.scss']
 })
-export class ShowingTimeComponent implements OnInit {
+export class TicketTypeComponent implements OnInit {
 
   selectedValue: string;
   searchval: string = (localStorage.getItem('search') || '');
@@ -27,12 +29,20 @@ export class ShowingTimeComponent implements OnInit {
   movie: Movie = new Movie();
   genres: Genre[] = [];
   showings: Showing[] = [];
-  showSelection: Showing = new Showing();
+  casts: string[] = [];
   displayedColumns: string[] = ['Rating', 'Duration', 'Director', 'Producer', 'Synopsis'];
+  ticketTypeForm: FormGroup;
+  ticket: Ticket = new Ticket();
 
-  constructor(private _service: ShowingTimeService, private _router: Router) { }
+  constructor(private _formBuilder: FormBuilder, private _service: MovieInformationService, private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
+
+    this.ticketTypeForm = this._formBuilder.group({
+      child: '',
+      adult: '',
+      elderly: ''
+    });
 
     if (this.loggedIn.toString() == 'true') {
       this.userId = Number(sessionStorage.getItem('cid')) || 0;
@@ -58,23 +68,23 @@ export class ShowingTimeComponent implements OnInit {
         this.movie.duration = data.movie['duration'];
         this.movie.trailerpic = data.movie['trailerpic'];
 
+        this.movie.trailervid = data.movie['trailervid'] + '?origin=localhost:4200';
+
         this.genres = data.genre;
         this.showings = data.showing;
+        this.casts = data.cast;
       })
+
+    // get info from seat-selection page with seatid
   }
-  
+
   search() {
     localStorage.setItem('search', this.searchval);
     localStorage.setItem('type', this.type);
     this._router.navigate(['/search']);
   }
 
-  selectTime(showing: Showing) {
-    console.log(showing.date)
-    localStorage.setItem('showingDate', showing.date as unknown as string);
-    localStorage.setItem('showingTime', showing.time as unknown as string);
-    localStorage.setItem('showingRoomid', showing.roomid as unknown as string);
-    localStorage.setItem('showingSid', showing.sid as unknown as string);
-    this._router.navigate(['seat-selection']);
+  saveTicketTypes() {
+    this._router.navigate(['checkout']);
   }
 }
