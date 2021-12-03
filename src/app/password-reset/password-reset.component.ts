@@ -13,7 +13,7 @@ export class PasswordResetComponent implements OnInit {
 
   newPass: string = "";
   customer: Customer = new Customer();
-  user: User;
+  user: User = new User();
 
 
   constructor(private _service: PasswordResetService, private _router: Router) { }
@@ -23,8 +23,8 @@ export class PasswordResetComponent implements OnInit {
 
   resetPassword() {
     this.user.password = this.newPass;
-    this.customer.cid = parseInt(localStorage.getItem('resetid') || "0");
-    this._service.resetPasswordFromRemote(this.customer).subscribe(
+    this.user.uid = parseInt(localStorage.getItem('resetid') || "0");
+    this._service.resetPasswordFromRemote(this.user).subscribe(
       data => {
         console.log("Response active: " + data['active']);
         localStorage.removeItem('resetid');

@@ -49,8 +49,8 @@ export class RegisterComponent implements OnInit {
     console.log(this.firstFormGroup.value['lastNameCtrl']);
     console.log(this.firstFormGroup.value['passwordCtrl']);
     console.log(this.firstFormGroup.value['confirmPasswordCtrl']);
-    
-    
+
+
     this._service.registerUserFromRemote(this.user).subscribe(
       data => {
         console.log('User' + data);
@@ -64,8 +64,8 @@ export class RegisterComponent implements OnInit {
         )
 
         this._router.navigate(['/confirm-email']);
-        
-      }, 
+
+      },
       error => {
         console.log('Error with registering user.');
       });
@@ -79,6 +79,7 @@ export class RegisterComponent implements OnInit {
   setCustomerValues() {
     this.customer.firstName = this.firstFormGroup.value['firstNameCtrl'];
     this.customer.lastName = this.firstFormGroup.value['lastNameCtrl'];
+    this.customer.phone = this.firstFormGroup.value['phoneCtrl'];
     this.customer.street = this.firstFormGroup.value['streetCtrl'];
     this.customer.city = this.secondFormGroup.value['cityCtrl'];
     this.customer.state = this.firstFormGroup.value['stateCtrl'];

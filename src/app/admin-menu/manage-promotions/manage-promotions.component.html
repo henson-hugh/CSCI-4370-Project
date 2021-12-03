@@ -36,6 +36,63 @@
             required
           />
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Promotion Key (Optional)</mat-label>
+          <input
+            matInput
+            placeholder="Enter a 6 digit key"
+            name="key"
+            id="key"
+            formControlName="key"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="startDate"
+            class="form-control"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="endDate"
+            class="form-control"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="synopsis" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Enter description"
+            name="description"
+            id="description"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="3"
+            cdkAutosizeMaxRows="7"
+          ></textarea>
+        </mat-form-field>
 
       </div>
 

@@ -21,8 +21,8 @@ export class PasswordResetEmailComponent implements OnInit {
   sendResetEmail() {
     this._service.sendResetEmailFromRemote(this.email).subscribe(
       data => {
-        this.id = data['cid'];
-        localStorage.setItem("resetid", this.id.toString());
+        //this.id = data['uid'];
+        localStorage.setItem("resetid", data['uid']);
         this._router.navigate(['/home']);
       }
     )
