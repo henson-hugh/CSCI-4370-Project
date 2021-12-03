@@ -17,6 +17,7 @@
   <mat-step [stepControl]="firstFormGroup" [editable]="true">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Fill out your Login and Contact Details</ng-template>
+      <small class="info"><b>All fields in step 1 are required</b></small><br>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="emailCtrl" placeholder="Enter Email" name="email" id="email" required>
@@ -28,15 +29,16 @@
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
         <input matInput formControlName="lastNameCtrl" placeholder="Enter Last Name" name="lastName" id="lastName" required>
-      </mat-form-field>
+      </mat-form-field><br>
+      <small class="info"><b>Password must be at least 8 characters</b></small><br>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="passwordCtrl" placeholder="Enter Password" name="password" id="password" required>
+        <input type="password" matInput formControlName="passwordCtrl" placeholder="Enter password" name="password" id="password" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Confirm Password</mat-label>
         <input type="password" matInput formControlName="confirmPasswordCtrl" placeholder="Re-enter Password" name="confirmPassword" id="confirmPassword" required>
-      </mat-form-field>
+      </mat-form-field><br>
       <mat-form-field appearance="fill">
         <mat-label>Phone</mat-label>
         <input matInput formControlName="phoneCtrl" placeholder="Enter Phone Number" name="phone" id="phone" required>
@@ -74,13 +76,70 @@
   <mat-step [stepControl]="thirdFormGroup" [optional]="true">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Fill out your payment information</ng-template>
+      <span class="info"><b>Card Info: </b></span>
       <mat-form-field appearance="fill">
         <mat-label>Card Number</mat-label>
         <input matInput formControlName="cardNumberCtrl" placeholder="XXXX-XXXX-XXXX">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Expiration Date</mat-label>
-        <input matInput formControlName="expDateCtrl" placeholder="XX/XX">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="expDateCtrl"
+            class="form-control"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field><br>
+      <span class="info"><b>Billing Address: </b></span>
+      <mat-form-field appearance="fill">
+      <mat-label>Change Street</mat-label>
+      <input
+        matInput
+        placeholder="Enter street"
+        name="street"
+        id="street"
+        formControlName="street"
+      />
+      </mat-form-field>
+      
+      
+      <mat-form-field appearance="fill">
+      <mat-label>Change City</mat-label>
+      <input
+        matInput
+        placeholder="Enter city"
+        name="city"
+        id="city"
+        formControlName="city"
+      />
+      </mat-form-field>
+      
+      
+      <mat-form-field appearance="fill">
+      <mat-label>Change State</mat-label>
+      <input
+        matInput
+        placeholder="Enter state"
+        name="state"
+        id="state"
+        formControlName="state"
+      />
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+      <mat-label>Change Zip Code</mat-label>
+      <input
+        matInput
+        placeholder="Enter zip"
+        name="zip"
+        id="zip"
+        formControlName="zip"
+      />
       </mat-form-field>
       <div>
         <button class="stepper-button" mat-button matStepperPrevious>Back</button>

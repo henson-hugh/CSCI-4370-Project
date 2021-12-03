@@ -1,0 +1,74 @@
+.mat-toolbar.mat-primary {
+  background: rgba(178, 140, 198, 1);
+  color: #fff;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button {
+  font-size: 17px;
+}
+
+.toolbar-icon {
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: rgba(163, 185, 198);
+}
+
+.toolbar-title {
+  margin-left: 1rem;
+}
+
+.toolbar-link {
+  text-decoration: none;
+  color: white;
+}
+
+.search-icon {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.search-text {
+  display: inline-block;
+  margin-left: 3rem;
+}
+
+.search-filter {
+  margin-left: 1rem;
+  margin-right: 5px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+.search-bar {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+.search-button {
+  height: 40px;
+  margin: auto;
+}
+
+.title {
+  margin: 3rem 15rem;
+}
+
+.container {
+  margin: 3rem 15rem;
+}
+
+.content {
+    margin: 2rem;
+    border: 1px solid black;
+}
+
+.movie-poster {
+    margin: auto;
+    width: 315px;
+}

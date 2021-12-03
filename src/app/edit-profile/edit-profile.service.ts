@@ -16,7 +16,7 @@ export class EditProfileService {
   }
 
   public getPaymentCardInfoFromRemote(customer: Customer): Observable<any> {
-    return this._http.post<any>("http://localhost:8080/customer/payment/retrieve" + sessionStorage.getItem('cid'), customer);
+    return this._http.post<any>("http://localhost:8080/customer/payment/retrieve", customer);
   }
 
   public updateCustomerFromRemote(customer: Customer): Observable<any> {
@@ -31,5 +31,4 @@ export class EditProfileService {
     return this._http.post<any>("http://localhost:8080/updatePass", user);
   }
 
-  public 
 }

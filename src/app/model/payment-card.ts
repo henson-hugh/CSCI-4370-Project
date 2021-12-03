@@ -1,5 +1,6 @@
 export class PaymentCard {
     pcid: number;
+    customerid: number;
     cardNumber: number;
     expDate: Date;
     street: string;

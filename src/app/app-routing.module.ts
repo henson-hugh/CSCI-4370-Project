@@ -16,6 +16,7 @@ import { AddMovieComponent } from './admin-menu/add-movie/add-movie.component';
 import { ManagePromotionsComponent } from './admin-menu/manage-promotions/manage-promotions.component';
 import { SearchComponent } from './search/search.component';
 import { MovieInformationComponent } from './movie-information/movie-information.component';
+import { ShowingTimeComponent } from './showing-time/showing-time.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'add-movie', component: AddMovieComponent},
   { path: 'manage-promotions', component: ManagePromotionsComponent},
   { path: 'search', component: SearchComponent},
-  { path: 'movie-information', component: MovieInformationComponent}
+  { path: 'movie-information', component: MovieInformationComponent},
+  { path: 'showing-time', component: ShowingTimeComponent}
 ];
 
 @NgModule({
